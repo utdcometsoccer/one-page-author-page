@@ -31,23 +31,23 @@ function getLocale(): string {
 
 function getLocaleFile(): string {
   const locale = getLocale()
-  const base = process.env.REACT_APP_LOCALE_BASE || '/locales'
+  const base = import.meta.env.VITE_LOCALE_BASE || '/locales'
   return `${base}/${locale}.json`
 }
 
 function getAuthorDataFile(): string {
   const locale = getLocale()
-  const base = process.env.REACT_APP_AUTHOR_DATA_BASE || ''
+  const base = import.meta.env.VITE_AUTHOR_DATA_BASE || ''
   return `${base}/author-data-${locale}.json`
 }
 
 function getDefaultAuthorDataFile(): string {
-  const base = process.env.REACT_APP_AUTHOR_DATA_BASE || ''
+  const base = import.meta.env.VITE_AUTHOR_DATA_BASE || ''
   return `${base}/data.json`
 }
 
 function getDefaultLocaleFile(): string {
-  const base = process.env.REACT_APP_LOCALE_BASE || '/locales'
+  const base = import.meta.env.VITE_LOCALE_BASE || '/locales'
   return `${base}/en-us.json`
 }
 
