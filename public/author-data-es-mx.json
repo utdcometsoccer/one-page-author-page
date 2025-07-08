@@ -1,0 +1,21 @@
+{
+  "name": "Juana Pérez",
+  "welcome": "¡Bienvenido a mi página de autora! Soy Juana Pérez, una narradora apasionada y aprendiz de por vida.",
+  "aboutMe": "Escribo libros de ficción y no ficción que inspiran y entretienen. Mi camino como autora comenzó con el amor por las palabras y el deseo de conectar con lectores de todo el mundo.",
+  "headshot": "/sampleheadshot.webp",
+  "books": [
+    {
+      "title": "El Arte de la Imaginación",
+      "description": "Una guía para desbloquear tu potencial creativo a través de la narración."
+    },
+    {
+      "title": "Viajes No Escritos",
+      "description": "Una colección de relatos cortos que exploran la belleza de la vida cotidiana."
+    },
+    {
+      "title": "Aprender a Aprender",
+      "description": "Estrategias y consejos para estudiantes y mentes curiosas."
+    }
+  ],
+  "copyright": "© 2025 Juana Pérez. Todos los derechos reservados."
+}
