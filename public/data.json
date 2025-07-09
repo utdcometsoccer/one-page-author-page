@@ -1,0 +1,21 @@
+{
+  "name": "Jane Doe",
+  "welcome": "Welcome to my author page! I'm Jane Doe, a passionate storyteller and lifelong learner.",
+  "aboutMe": "I write fiction and non-fiction books that inspire and entertain. My journey as an author began with a love for words and a desire to connect with readers around the world.",
+  "headshot": "/sampleheadshot.webp",
+  "books": [
+    {
+      "title": "The Art of Imagination",
+      "description": "A guide to unlocking your creative potential through storytelling."
+    },
+    {
+      "title": "Journeys Unwritten",
+      "description": "A collection of short stories exploring the beauty of everyday life."
+    },
+    {
+      "title": "Learning to Learn",
+      "description": "Strategies and insights for lifelong learners and curious minds."
+    }
+  ],
+  "copyright": "© 2025 Jane Doe. All rights reserved."
+}
