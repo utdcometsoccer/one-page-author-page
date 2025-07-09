@@ -15,6 +15,7 @@ type Book = {
   title: string
   description: string
   url?: string
+  cover?: string // Add cover property
 }
 
 type SocialLink = {
@@ -83,6 +84,12 @@ function App() {
     myBooks: 'My Books',
     loading: 'Loading...'
   })
+  const [darkMode, setDarkMode] = useState(true)
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-theme', darkMode)
+    document.body.classList.toggle('light-theme', !darkMode)
+  }, [darkMode])
 
   // Fetch locale headers
   useEffect(() => {
@@ -184,27 +191,40 @@ function App() {
         <div className="books-grid">
           {data.books.map((book, idx) => (
             <article className="book-card" key={idx}>
-              {book.url ? (
-                <a
-                  href={book.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: '#1a0dab', textDecoration: 'none', fontWeight: 600 }}
-                >
-                  <h3>{book.title}</h3>
-                </a>
-              ) : (
-                <h3>{book.title}</h3>
-              )}
-              <p>{book.description}</p>
+              <div className="book-info-with-cover">
+                {book.cover && (
+                  <div className='book-cover'>
+                    <img
+                    src={book.cover}
+                    alt={`Cover of ${book.title}`}
+                    className="book-cover-thumb"
+                    />
+                  </div>
+                )}
+                <div className="book-info">
+                  {book.url ? (
+                    <a
+                      href={book.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: '#1a0dab', textDecoration: 'none', fontWeight: 600 }}
+                    >
+                      <h3>{book.title}</h3>
+                    </a>
+                  ) : (
+                    <h3>{book.title}</h3>
+                  )}
+                  <p>{book.description}</p>
+                </div>
+              </div>
             </article>
           ))}
         </div>
       </section>
 
       <footer>
-        <p>{data.copyright}</p>
-        {data.social && (
+        <p>{data?.copyright}</p>
+        {data?.social && (
           <div className="social-links" style={{ marginTop: '0.5rem' }}>
             {data.social.map((link) => {
               const key = link.name.toLowerCase()
@@ -215,7 +235,7 @@ function App() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.name}
-                  style={{ margin: '0 0.5rem', color: '#222', fontSize: '1.7rem', verticalAlign: 'middle' }}
+                  style={{ margin: '0 0.5rem', color: 'inherit', fontSize: '1.7rem', verticalAlign: 'middle' }}
                 >
                   {socialIcons[key] || link.name}
                 </a>
@@ -223,6 +243,13 @@ function App() {
             })}
           </div>
         )}
+        <button
+          className="theme-toggle-btn"
+          onClick={() => setDarkMode((prev) => !prev)}
+          aria-label="Toggle dark/light theme"
+        >
+          {darkMode ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
+        </button>
       </footer>
     </div>
   )

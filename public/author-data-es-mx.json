@@ -1,32 +1,40 @@
 {
-  "name": "Juana Pérez",
-  "welcome": "¡Bienvenido a mi página de autora! Soy Juana Pérez, una narradora apasionada y aprendiz de por vida.",
-  "aboutMe": "Escribo libros de ficción y no ficción que inspiran y entretienen. Mi camino como autora comenzó con el amor por las palabras y el deseo de conectar con lectores de todo el mundo.",
-  "headshot": "/sampleheadshot.webp",
+  "name": "Monica Salmon",
+  "welcome": "Monica Salmon es una autora superventas con una trayectoria literaria única, que ofrece una gama diversa de libros que abordan temas como el cáncer de mama, el erotismo y el abuso infantil materno. Su escritura explora sin miedo temas controvertidos y sensibles, cautivando a los lectores con narrativas impactantes.",
+  "aboutMe": "Psicóloga clínica, autora best seller y columnista del periódico El Heraldo de México.",
+  "headshot": "/monicasalmonheadshot.avif",
   "books": [
     {
-      "title": "El Arte de la Imaginación",
-      "description": "Una guía para desbloquear tu potencial creativo a través de la narración.",
-      "url": "https://www.amazon.com.mx/dp/B0CEXAMPLE1"
+      "title": "Debajo de mi piel (Edición en español)",
+      "description": "Bajo mi piel",
+      "url": "https://a.co/d/7I7IW1g",
+      "cover": "/covers/debajo-de-mi-piel.avif"
     },
     {
-      "title": "Viajes No Escritos",
-      "description": "Una colección de relatos cortos que exploran la belleza de la vida cotidiana.",
-      "url": "https://www.amazon.com.mx/dp/B0CEXAMPLE2"
+      "title": "Cuídame de ti (Edición en español)",
+      "description": "Protégeme de ti",
+      "url": "https://a.co/d/9DHKoSi",
+      "cover": "/covers/cuidame-de-ti.avif"
     },
     {
-      "title": "Aprender a Aprender",
-      "description": "Estrategias y consejos para estudiantes y mentes curiosas.",
-      "url": "https://www.amazon.com.mx/dp/B0CEXAMPLE3"
+      "title": "Olvidaré tu nombre (Edición en español)",
+      "description": "Olvidaré tu nombre",
+      "url": "https://a.co/d/8LogW2H",
+      "cover": "/covers/olvidare-tu-nombre.avif"
+    },
+    {
+      "title": "Que quede entre nosotros (Edición en español)",
+      "description": "Que quede entre nosotros",
+      "url": "https://a.co/d/aJkE6IX",
+      "cover": "/covers/que-quede-entre-nosotros.avif"
     }
   ],
-  "copyright": "© 2025 Juana Pérez. Todos los derechos reservados.",
+  "copyright": "© 2025 Monica Soto Reyes Salmon. Todos los derechos reservados.",
   "social": [
-    { "name": "Facebook", "url": "https://facebook.com/juanaperez" },
-    { "name": "Twitter", "url": "https://twitter.com/juanaperez" },
-    { "name": "Instagram", "url": "https://instagram.com/juanaperez" },
-    { "name": "LinkedIn", "url": "https://linkedin.com/in/juanaperez" },
-    { "name": "YouTube", "url": "https://youtube.com/juanaperez" },
-    { "name": "GitHub", "url": "https://github.com/juanaperez" }
+    { "name": "Facebook", "url": "https://www.facebook.com/13Mokanita" },
+    { "name": "Twitter", "url": "https://x.com/monicasalmon_" },
+    { "name": "Instagram", "url": "https://www.instagram.com/monicasalmon_" },
+    { "name": "LinkedIn", "url": "https://linkedin.com/in/monicasotoreyessalmon" },
+    { "name": "YouTube", "url": "https://www.youtube.com/c/Caf%C3%A9SinEgo" }
   ]
 }

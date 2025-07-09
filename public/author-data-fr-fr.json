@@ -1,32 +1,40 @@
 {
-  "name": "Jeanne Dupont",
-  "welcome": "Bienvenue sur ma page d'auteur ! Je suis Jeanne Dupont, une conteuse passionnée et une éternelle apprenante.",
-  "aboutMe": "J'écris des livres de fiction et de non-fiction qui inspirent et divertissent. Mon parcours d'auteure a commencé par l'amour des mots et le désir de connecter avec des lecteurs du monde entier.",
-  "headshot": "/sampleheadshot.webp",
+  "name": "Monica Salmon",
+  "welcome": "Monica Salmon est une auteure à succès avec un parcours littéraire unique, offrant une gamme variée de livres qui abordent des sujets tels que le cancer du sein, l'érotisme et la maltraitance maternelle. Son écriture explore sans crainte des thèmes controversés et sensibles tout en captivant les lecteurs avec des récits puissants.",
+  "aboutMe": "Psychologue clinicienne, auteure à succès et chroniqueuse pour le journal El Heraldo de México.",
+  "headshot": "/monicasalmonheadshot.avif",
   "books": [
     {
-      "title": "L'Art de l'Imagination",
-      "description": "Un guide pour libérer votre potentiel créatif grâce à la narration.",
-      "url": "https://www.amazon.fr/dp/B0CEXAMPLE1"
+      "title": "Debajo de mi piel (Édition espagnole)",
+      "description": "Sous ma peau",
+      "url": "https://a.co/d/7I7IW1g",
+      "cover": "/covers/debajo-de-mi-piel.avif"
     },
     {
-      "title": "Voyages Inédits",
-      "description": "Une collection de nouvelles explorant la beauté de la vie quotidienne.",
-      "url": "https://www.amazon.fr/dp/B0CEXAMPLE2"
+      "title": "Cuídame de ti (Édition espagnole)",
+      "description": "Protège-moi de toi",
+      "url": "https://a.co/d/9DHKoSi",
+      "cover": "/covers/cuidame-de-ti.avif"
     },
     {
-      "title": "Apprendre à Apprendre",
-      "description": "Stratégies et conseils pour les étudiants et les esprits curieux.",
-      "url": "https://www.amazon.fr/dp/B0CEXAMPLE3"
+      "title": "Olvidaré tu nombre (Édition espagnole)",
+      "description": "J'oublierai ton nom",
+      "url": "https://a.co/d/8LogW2H",
+      "cover": "/covers/olvidare-tu-nombre.avif"
+    },
+    {
+      "title": "Que quede entre nosotros (Édition espagnole)",
+      "description": "Que cela reste entre nous",
+      "url": "https://a.co/d/aJkE6IX",
+      "cover": "/covers/que-quede-entre-nosotros.avif"
     }
   ],
-  "copyright": "© 2025 Jeanne Dupont. Tous droits réservés.",
+  "copyright": "© 2025 Monica Soto Reyes Salmon. Tous droits réservés.",
   "social": [
-    { "name": "Facebook", "url": "https://facebook.com/jeannedupont" },
-    { "name": "Twitter", "url": "https://twitter.com/jeannedupont" },
-    { "name": "Instagram", "url": "https://instagram.com/jeannedupont" },
-    { "name": "LinkedIn", "url": "https://linkedin.com/in/jeannedupont" },
-    { "name": "YouTube", "url": "https://youtube.com/jeannedupont" },
-    { "name": "GitHub", "url": "https://github.com/jeannedupont" }
+    { "name": "Facebook", "url": "https://www.facebook.com/13Mokanita" },
+    { "name": "Twitter", "url": "https://x.com/monicasalmon_" },
+    { "name": "Instagram", "url": "https://www.instagram.com/monicasalmon_" },
+    { "name": "LinkedIn", "url": "https://linkedin.com/in/monicasotoreyessalmon" },
+    { "name": "YouTube", "url": "https://www.youtube.com/c/Caf%C3%A9SinEgo" }
   ]
 }

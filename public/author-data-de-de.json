@@ -1,32 +1,40 @@
 {
-  "name": "Johanna Müller",
-  "welcome": "Willkommen auf meiner Autorenseite! Ich bin Johanna Müller, eine leidenschaftliche Geschichtenerzählerin und lebenslange Lernerin.",
-  "aboutMe": "Ich schreibe Belletristik und Sachbücher, die inspirieren und unterhalten. Mein Weg als Autorin begann mit der Liebe zu Worten und dem Wunsch, mit Lesern auf der ganzen Welt in Kontakt zu treten.",
-  "headshot": "/sampleheadshot.webp",
+  "name": "Monica Salmon",
+  "welcome": "Monica Salmon ist eine Bestsellerautorin mit einem einzigartigen literarischen Hintergrund und bietet eine vielfältige Auswahl an Büchern, die Themen wie Brustkrebs, Erotik und mütterlichen Kindesmissbrauch behandeln. Ihr Schreiben erforscht furchtlos kontroverse und sensible Themen und fesselt die Leser mit eindrucksvollen Erzählungen.",
+  "aboutMe": "Klinische Psychologin, Bestsellerautorin und Kolumnistin für die Zeitung El Heraldo de México.",
+  "headshot": "/monicasalmonheadshot.avif",
   "books": [
     {
-      "title": "Die Kunst der Vorstellungskraft",
-      "description": "Ein Leitfaden, um Ihr kreatives Potenzial durch Geschichtenerzählen zu entfalten.",
-      "url": "https://www.amazon.de/dp/B0CEXAMPLE1"
+      "title": "Debajo de mi piel (Spanische Ausgabe)",
+      "description": "Unter meiner Haut",
+      "url": "https://a.co/d/7I7IW1g",
+      "cover": "/covers/debajo-de-mi-piel.avif"
     },
     {
-      "title": "Ungeschriebene Reisen",
-      "description": "Eine Sammlung von Kurzgeschichten über die Schönheit des Alltags.",
-      "url": "https://www.amazon.de/dp/B0CEXAMPLE2"
+      "title": "Cuídame de ti (Spanische Ausgabe)",
+      "description": "Beschütze mich vor dir",
+      "url": "https://a.co/d/9DHKoSi",
+      "cover": "/covers/cuidame-de-ti.avif"
     },
     {
-      "title": "Lernen zu Lernen",
-      "description": "Strategien und Tipps für Lernende und neugierige Köpfe.",
-      "url": "https://www.amazon.de/dp/B0CEXAMPLE3"
+      "title": "Olvidaré tu nombre (Spanische Ausgabe)",
+      "description": "Ich werde deinen Namen vergessen",
+      "url": "https://a.co/d/8LogW2H",
+      "cover": "/covers/olvidare-tu-nombre.avif"
+    },
+    {
+      "title": "Que quede entre nosotros (Spanische Ausgabe)",
+      "description": "Das bleibt unter uns",
+      "url": "https://a.co/d/aJkE6IX",
+      "cover": "/covers/que-quede-entre-nosotros.avif"
     }
   ],
-  "copyright": "© 2025 Johanna Müller. Alle Rechte vorbehalten.",
+  "copyright": "© 2025 Monica Soto Reyes Salmon. Alle Rechte vorbehalten.",
   "social": [
-    { "name": "Facebook", "url": "https://facebook.com/johannamuller" },
-    { "name": "Twitter", "url": "https://twitter.com/johannamuller" },
-    { "name": "Instagram", "url": "https://instagram.com/johannamuller" },
-    { "name": "LinkedIn", "url": "https://linkedin.com/in/johannamuller" },
-    { "name": "YouTube", "url": "https://youtube.com/johannamuller" },
-    { "name": "GitHub", "url": "https://github.com/johannamuller" }
+    { "name": "Facebook", "url": "https://www.facebook.com/13Mokanita" },
+    { "name": "Twitter", "url": "https://x.com/monicasalmon_" },
+    { "name": "Instagram", "url": "https://www.instagram.com/monicasalmon_" },
+    { "name": "LinkedIn", "url": "https://linkedin.com/in/monicasotoreyessalmon" },
+    { "name": "YouTube", "url": "https://www.youtube.com/c/Caf%C3%A9SinEgo" }
   ]
 }
