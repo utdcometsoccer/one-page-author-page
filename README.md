@@ -1,69 +1,34 @@
-# React + TypeScript + Vite
+# One Page Author Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive, single-page React + TypeScript + Vite application for authors. This project features:
 
-Currently, two official plugins are available:
+- Author bio, headshot, and book showcase
+- Responsive design with breakpoints at 600px, 768px, 992px, and 1200px
+- Hamburger menu for navigation on mobile and desktop
+- Book links (e.g., to Amazon)
+- Social media links with Material UI icons
+- Locale support for multiple languages (English, French, German, Mexican Spanish)
+- All content (text, images, links) is loaded from locale-specific JSON files in the `public` folder
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Locales
 
-## Expanding the ESLint configuration
+The app automatically detects the user's browser language and loads the appropriate locale files for UI headers and author data. If a locale is not found, it falls back to English (`en-us`).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Locale header files are stored in `public/locales/` (e.g., `en-us.json`, `fr-fr.json`, `de-de.json`, `es-mx.json`)
+- Author data files are stored in `public/` (e.g., `data.json`, `author-data-fr-fr.json`, `author-data-de-de.json`, `author-data-es-mx.json`)
+- All sample data files use the same headshot path: `/sampleheadshot.webp`
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Adding a New Locale
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. Add a new header file in `public/locales/` (e.g., `it-it.json`)
+2. Add a new author data file in `public/` (e.g., `author-data-it-it.json`)
+3. Translate the content as needed
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Development
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This project uses Vite for fast development and HMR. To run locally:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm install
+npm run dev
 ```

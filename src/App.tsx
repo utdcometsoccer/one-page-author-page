@@ -3,10 +3,23 @@ import { useState, useEffect } from 'react'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import CircularProgress from '@mui/material/CircularProgress'
+import FacebookIcon from '@mui/icons-material/Facebook'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import InstagramIcon from '@mui/icons-material/Instagram'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import YouTubeIcon from '@mui/icons-material/YouTube'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import type { JSX } from 'react/jsx-runtime'
 
 type Book = {
   title: string
   description: string
+  url?: string
+}
+
+type SocialLink = {
+  name: string
+  url: string
 }
 
 type AuthorData = {
@@ -16,6 +29,7 @@ type AuthorData = {
   headshot: string
   books: Book[]
   copyright: string
+  social?: SocialLink[]
 }
 
 type LocaleHeaders = {
@@ -49,6 +63,15 @@ function getDefaultAuthorDataFile(): string {
 function getDefaultLocaleFile(): string {
   const base = import.meta.env.VITE_LOCALE_BASE || '/locales'
   return `${base}/en-us.json`
+}
+
+const socialIcons: Record<string, JSX.Element> = {
+  facebook: <FacebookIcon />,
+  twitter: <TwitterIcon />,
+  instagram: <InstagramIcon />,
+  linkedin: <LinkedInIcon />,
+  youtube: <YouTubeIcon />,
+  github: <GitHubIcon />,
 }
 
 function App() {
@@ -161,7 +184,18 @@ function App() {
         <div className="books-grid">
           {data.books.map((book, idx) => (
             <article className="book-card" key={idx}>
-              <h3>{book.title}</h3>
+              {book.url ? (
+                <a
+                  href={book.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#1a0dab', textDecoration: 'none', fontWeight: 600 }}
+                >
+                  <h3>{book.title}</h3>
+                </a>
+              ) : (
+                <h3>{book.title}</h3>
+              )}
               <p>{book.description}</p>
             </article>
           ))}
@@ -170,6 +204,25 @@ function App() {
 
       <footer>
         <p>{data.copyright}</p>
+        {data.social && (
+          <div className="social-links" style={{ marginTop: '0.5rem' }}>
+            {data.social.map((link) => {
+              const key = link.name.toLowerCase()
+              return (
+                <a
+                  key={key}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.name}
+                  style={{ margin: '0 0.5rem', color: '#222', fontSize: '1.7rem', verticalAlign: 'middle' }}
+                >
+                  {socialIcons[key] || link.name}
+                </a>
+              )
+            })}
+          </div>
+        )}
       </footer>
     </div>
   )
