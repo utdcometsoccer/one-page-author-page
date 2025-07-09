@@ -9,6 +9,8 @@ import InstagramIcon from '@mui/icons-material/Instagram'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import YouTubeIcon from '@mui/icons-material/YouTube'
 import GitHubIcon from '@mui/icons-material/GitHub'
+import ThreadsIcon from './assets/threads.svg'
+import TikTokIcon from '@mui/icons-material/MusicNote'; // Use MusicNote as a TikTok icon substitute
 import type { JSX } from 'react/jsx-runtime'
 
 type Book = {
@@ -73,6 +75,8 @@ const socialIcons: Record<string, JSX.Element> = {
   linkedin: <LinkedInIcon />,
   youtube: <YouTubeIcon />,
   github: <GitHubIcon />,
+  threads: <img src={ThreadsIcon} alt='Threads icon' className='social-icon social-icon-threads' />,
+  tiktok: <TikTokIcon />, // Add TikTok icon (using MusicNote as a substitute)
 }
 
 function App() {
