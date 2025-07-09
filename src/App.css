@@ -340,6 +340,8 @@ a:focus {
 
 .about-me-text {
   overflow: hidden;
+  color: var(--color-text);
+  text-align: left;
 }
 
 /* Responsive: stack image above text on small screens */
@@ -351,13 +353,13 @@ a:focus {
   }
 
   .about-me-content {
-    text-align: center;
-    color: #222;
+    text-align: left;
+    color: var(--color-text);
   }
 
   .about-me-text {
-    text-align: center;
-    color: #222;
+    text-align: left;
+    color: var(--color-text);
   }
 }
 
