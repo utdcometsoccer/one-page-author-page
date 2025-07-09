@@ -6,16 +6,27 @@
   "books": [
     {
       "title": "The Art of Imagination",
-      "description": "A guide to unlocking your creative potential through storytelling."
+      "description": "A guide to unlocking your creative potential through storytelling.",
+      "url": "https://www.amazon.com/dp/B0CEXAMPLE1"
     },
     {
       "title": "Journeys Unwritten",
-      "description": "A collection of short stories exploring the beauty of everyday life."
+      "description": "A collection of short stories exploring the beauty of everyday life.",
+      "url": "https://www.amazon.com/dp/B0CEXAMPLE2"
     },
     {
       "title": "Learning to Learn",
-      "description": "Strategies and insights for lifelong learners and curious minds."
+      "description": "Strategies and insights for lifelong learners and curious minds.",
+      "url": "https://www.amazon.com/dp/B0CEXAMPLE3"
     }
   ],
-  "copyright": "© 2025 Jane Doe. All rights reserved."
+  "copyright": "© 2025 Jane Doe. All rights reserved.",
+  "social": [
+    { "name": "Facebook", "url": "https://facebook.com/janedoe" },
+    { "name": "Twitter", "url": "https://twitter.com/janedoe" },
+    { "name": "Instagram", "url": "https://instagram.com/janedoe" },
+    { "name": "LinkedIn", "url": "https://linkedin.com/in/janedoe" },
+    { "name": "YouTube", "url": "https://youtube.com/janedoe" },
+    { "name": "GitHub", "url": "https://github.com/janedoe" }
+  ]
 }
