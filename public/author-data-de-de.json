@@ -1,35 +1,40 @@
 {
-  "name": "Julia Jung",
-  "welcome": "Willkommen auf meiner Autorenseite! Ich bin eine leidenschaftliche Schriftstellerin, die Geschichten und Ideen mit der Welt teilt.",
-  "aboutMe": "Ich schreibe Belletristik und Sachbücher, die Leser überall inspirieren, unterhalten und informieren.",
-  "headshot": "/sampleheadshot.webp",
+  "name": "Monica Salmon",
+  "welcome": "Monica Salmon ist eine Bestsellerautorin mit einem einzigartigen literarischen Hintergrund und bietet eine vielfältige Auswahl an Büchern, die Themen wie Brustkrebs, Erotik und mütterlichen Kindesmissbrauch behandeln. Ihr Schreiben erforscht furchtlos kontroverse und sensible Themen und fesselt die Leser mit eindrucksvollen Erzählungen.",
+  "aboutMe": "Klinische Psychologin, Bestsellerautorin und Kolumnistin für die Zeitung El Heraldo de México.",
+  "headshot": "/monicasalmonheadshot.avif",
   "books": [
     {
-      "title": "Die Reise Beginnt",
-      "description": "Eine inspirierende Geschichte über Abenteuer und Selbstfindung.",
-      "url": "https://www.example.com/book1",
-      "cover": "/covers/TheJoyOfCookingCover.jpg"
+      "title": "Debajo de mi piel (Spanische Ausgabe)",
+      "description": "Unter meiner Haut",
+      "url": "https://a.co/d/7I7IW1g",
+      "cover": "/covers/debajo-de-mi-piel.avif"
     },
     {
-      "title": "Reflexionen",
-      "description": "Eine Sammlung von Essays und Gedanken über das Leben und die Kreativität.",
-      "url": "https://www.example.com/book2",
-      "cover": "/covers/TheJoyOfCookingCover.jpg"
+      "title": "Cuídame de ti (Spanische Ausgabe)",
+      "description": "Beschütze mich vor dir",
+      "url": "https://a.co/d/9DHKoSi",
+      "cover": "/covers/cuidame-de-ti.avif"
     },
     {
-      "title": "Jeden Tag Lernen",
-      "description": "Praktische Ratschläge für lebenslange Lernende und neugierige Köpfe.",
-      "url": "https://www.example.com/book3",
-      "cover": "/covers/TheJoyOfCookingCover.jpg"
+      "title": "Olvidaré tu nombre (Spanische Ausgabe)",
+      "description": "Ich werde deinen Namen vergessen",
+      "url": "https://a.co/d/8LogW2H",
+      "cover": "/covers/olvidare-tu-nombre.avif"
+    },
+    {
+      "title": "Que quede entre nosotros (Spanische Ausgabe)",
+      "description": "Das bleibt unter uns",
+      "url": "https://a.co/d/aJkE6IX",
+      "cover": "/covers/que-quede-entre-nosotros.avif"
     }
   ],
-  "copyright": "© 2025 Julia Jung. Alle Rechte vorbehalten.",
+  "copyright": "© 2025 Monica Soto Reyes Salmon. Alle Rechte vorbehalten.",
   "social": [
-    { "name": "Facebook", "url": "https://facebook.com" },
-    { "name": "Twitter", "url": "https://twitter.com" },
-    { "name": "Instagram", "url": "https://instagram.com" },
-    { "name": "LinkedIn", "url": "https://linkedin.com" },
-    { "name": "YouTube", "url": "https://youtube.com" },
-    { "name": "TikTok", "url": "https://tiktok.com" }
+    { "name": "Facebook", "url": "https://www.facebook.com/13Mokanita" },
+    { "name": "Twitter", "url": "https://x.com/monicasalmon_" },
+    { "name": "Instagram", "url": "https://www.instagram.com/monicasalmon_" },
+    { "name": "LinkedIn", "url": "https://linkedin.com/in/monicasotoreyessalmon" },
+    { "name": "YouTube", "url": "https://www.youtube.com/c/Caf%C3%A9SinEgo" }
   ]
 }
