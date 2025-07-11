@@ -31,5 +31,6 @@
     { "name": "LinkedIn", "url": "https://linkedin.com" },
     { "name": "YouTube", "url": "https://youtube.com" },
     { "name": "TikTok", "url": "https://tiktok.com" }
-  ]
+  ],
+  "email": "julie.jacques@example.com"
 }
