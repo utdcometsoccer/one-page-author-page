@@ -1,40 +1,43 @@
 {
   "name": "Monica Salmon",
-  "welcome": "Monica Salmon ist eine Bestsellerautorin mit einem einzigartigen literarischen Hintergrund und bietet eine vielfältige Auswahl an Büchern, die Themen wie Brustkrebs, Erotik und mütterlichen Kindesmissbrauch behandeln. Ihr Schreiben erforscht furchtlos kontroverse und sensible Themen und fesselt die Leser mit eindrucksvollen Erzählungen.",
-  "aboutMe": "Klinische Psychologin, Bestsellerautorin und Kolumnistin für die Zeitung El Heraldo de México.",
+  "welcome": "Mónica Salmón es una autora superventas con una trayectoria literaria única, que ofrece una gama diversa de libros que abordan temas como el cáncer de mama, el erotismo y el abuso infantil materno. Su escritura explora sin miedo temas controvertidos y sensibles, cautivando a los lectores con narrativas impactantes.",
+  "aboutMe": "Psicóloga clínica, autora best seller y columnista del periódico El Heraldo de México.",
   "headshot": "/monicasalmonheadshot.avif",
   "books": [
     {
-      "title": "Debajo de mi piel (Spanische Ausgabe)",
-      "description": "Unter meiner Haut",
+      "title": "Debajo de mi piel (Edición en español)",
+      "description": "Bajo mi piel",
       "url": "https://a.co/d/7I7IW1g",
       "cover": "/covers/debajo-de-mi-piel.avif"
     },
     {
-      "title": "Cuídame de ti (Spanische Ausgabe)",
-      "description": "Beschütze mich vor dir",
+      "title": "Cuídame de ti (Edición en español)",
+      "description": "Protégeme de ti",
       "url": "https://a.co/d/9DHKoSi",
       "cover": "/covers/cuidame-de-ti.avif"
     },
     {
-      "title": "Olvidaré tu nombre (Spanische Ausgabe)",
-      "description": "Ich werde deinen Namen vergessen",
+      "title": "Olvidaré tu nombre (Edición en español)",
+      "description": "Olvidaré tu nombre",
       "url": "https://a.co/d/8LogW2H",
       "cover": "/covers/olvidare-tu-nombre.avif"
     },
     {
-      "title": "Que quede entre nosotros (Spanische Ausgabe)",
-      "description": "Das bleibt unter uns",
+      "title": "Que quede entre nosotros (Edición en español)",
+      "description": "Que quede entre nosotros",
       "url": "https://a.co/d/aJkE6IX",
       "cover": "/covers/que-quede-entre-nosotros.avif"
     }
   ],
-  "copyright": "© 2025 Monica Soto Reyes Salmon. Alle Rechte vorbehalten.",
+  "copyright": "© 2025 Monica Soto Reyes Salmon. Todos los derechos reservados.",
   "social": [
     { "name": "Facebook", "url": "https://www.facebook.com/13Mokanita" },
     { "name": "Twitter", "url": "https://x.com/monicasalmon_" },
     { "name": "Instagram", "url": "https://www.instagram.com/monicasalmon_" },
-    { "name": "LinkedIn", "url": "https://linkedin.com/in/monicasotoreyessalmon" },
-    { "name": "YouTube", "url": "https://www.youtube.com/c/Caf%C3%A9SinEgo" }
-  ]
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/m%C3%B3nica-salm%C3%B3n-9917414b" },
+    { "name": "YouTube", "url": "https://www.youtube.com/c/Caf%C3%A9SinEgo" },
+    { "name": "Threads", "url": "https://www.threads.com/@monicasalmon_" },
+    { "name": "Substack", "url": "https://substack.com/@mokanita" }
+  ],
+  "email": "psicologa.monicasalmon@gmail.com"
 }

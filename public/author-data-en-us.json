@@ -36,6 +36,8 @@
     { "name": "Instagram", "url": "https://www.instagram.com/monicasalmon_" },
     { "name": "LinkedIn", "url": "https://www.linkedin.com/in/m%C3%B3nica-salm%C3%B3n-9917414b" },
     { "name": "YouTube", "url": "https://www.youtube.com/c/Caf%C3%A9SinEgo" },
-    { "name": "Threads", "url": "https://www.threads.com/@monicasalmon_" }
-  ]
+    { "name": "Threads", "url": "https://www.threads.com/@monicasalmon_" },
+    { "name": "Substack", "url": "https://substack.com/@mokanita" }
+  ],
+  "email": "psicologa.monicasalmon@gmail.com"
 }

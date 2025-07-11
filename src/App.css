@@ -404,3 +404,31 @@ body.light-theme .social-icon {
   color: #222;
   filter: none;
 }
+
+.contact-me {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--color-bg-section);
+  box-shadow: var(--color-shadow);
+  color: var(--color-text);
+  text-align: left;
+}
+
+.contact-me-content {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.contact-email-link {
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.contact-email-link:hover,
+.contact-email-link:focus {
+  color: #fff;
+  background: var(--color-link);
+  border-radius: 2px;
+  text-decoration: underline;
+}
