@@ -10,6 +10,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import YouTubeIcon from '@mui/icons-material/YouTube'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import ThreadsIcon from './assets/threads.svg'
+import SubstackIcon from './assets/substack.png'
 import TikTokIcon from '@mui/icons-material/MusicNote'; // Use MusicNote as a TikTok icon substitute
 import type { JSX } from 'react/jsx-runtime'
 
@@ -33,7 +34,6 @@ type AuthorData = {
   books: Book[]
   copyright: string
   social?: SocialLink[]
-  email?: string // Optional email field
 }
 
 type LocaleHeaders = {
@@ -41,12 +41,6 @@ type LocaleHeaders = {
   aboutMe: string
   myBooks: string
   loading?: string
-  emailPrompt?: string
-  contactMe?: string
-  emailLinkText?: string
-  noEmail?: string
-  switchToLight?: string
-  switchToDark?: string
 }
 
 function getLocale(): string {
@@ -84,6 +78,7 @@ const socialIcons: Record<string, JSX.Element> = {
   github: <GitHubIcon />,
   threads: <img src={ThreadsIcon} alt='Threads icon' className='social-icon social-icon-threads' />,
   tiktok: <TikTokIcon />, // Add TikTok icon (using MusicNote as a substitute)
+  substack: <img src={SubstackIcon} alt='Substack icon' className='social-icon social-icon-substack' />,
 }
 
 function App() {
@@ -171,9 +166,6 @@ function App() {
           <li>
             <button onClick={() => handleNav('my-books')}>{headers.myBooks}</button>
           </li>
-          <li>
-            <button onClick={() => handleNav('contact-me')}>{headers.contactMe || 'Contact Me'}</button>
-          </li>
         </ul>
       </nav>
 
@@ -236,33 +228,6 @@ function App() {
         </div>
       </section>
 
-      <section className="contact-me" id="contact-me">
-        <h2>{headers.contactMe || 'Contact Me'}</h2>
-        <div className="contact-me-content">
-          <p>
-            {data.email ? (
-              <>
-                {headers.emailPrompt || 'Feel free to reach out:'}&nbsp;
-                <a
-                  href={`mailto:${data.email}`}
-                  className="contact-email-link"
-                  style={{
-                    color: 'var(--color-link)',
-                    textDecoration: 'underline',
-                    fontWeight: 500,
-                    wordBreak: 'break-all'
-                  }}
-                >
-                  {headers.emailLinkText || 'Email Me'}
-                </a>
-              </>
-            ) : (
-              <>{headers.noEmail || 'No contact email provided.'}</>
-            )}
-          </p>
-        </div>
-      </section>
-
       <footer>
         <p>{data?.copyright}</p>
         {data?.social && (
@@ -289,9 +254,7 @@ function App() {
           onClick={() => setDarkMode((prev) => !prev)}
           aria-label="Toggle dark/light theme"
         >
-          {darkMode
-            ? headers.switchToLight || 'Switch to Light Theme'
-            : headers.switchToDark || 'Switch to Dark Theme'}
+          {darkMode ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
         </button>
       </footer>
     </div>
