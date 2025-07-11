@@ -1,11 +1,3 @@
-/* Align Substack icon with other social icons */
-.social-icon-substack {
-  height: 1.7rem;
-  width: 1.7rem;
-  display: inline-block;
-  vertical-align: middle;
-  margin-bottom: 0.35rem; /* Adjust as needed for perfect alignment */
-}
 /* Theme variables */
 :root {
   --color-bg: #181a1b;
@@ -411,4 +403,32 @@ body.light-theme .social-icon {
   /* Material UI icons in light mode are usually #222 or #1a1a1a */
   color: #222;
   filter: none;
+}
+
+.contact-me {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--color-bg-section);
+  box-shadow: var(--color-shadow);
+  color: var(--color-text);
+  text-align: left;
+}
+
+.contact-me-content {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.contact-email-link {
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.contact-email-link:hover,
+.contact-email-link:focus {
+  color: #fff;
+  background: var(--color-link);
+  border-radius: 2px;
+  text-decoration: underline;
 }
