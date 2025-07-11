@@ -30,7 +30,8 @@
     { "name": "Instagram", "url": "https://instagram.com" },
     { "name": "LinkedIn", "url": "https://linkedin.com" },
     { "name": "YouTube", "url": "https://youtube.com" },
-    { "name": "TikTok", "url": "https://tiktok.com" }
+    { "name": "TikTok", "url": "https://tiktok.com" },
+    { "name": "Substack", "url": "https://monicasalmon.substack.com" }
   ],
   "email": "julia.jung@example.com"
 }

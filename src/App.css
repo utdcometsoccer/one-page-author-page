@@ -1,3 +1,11 @@
+/* Align Substack icon with other social icons */
+.social-icon-substack {
+  height: 1.7rem;
+  width: 1.7rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0.35rem; /* Adjust as needed for perfect alignment */
+}
 /* Theme variables */
 :root {
   --color-bg: #181a1b;
