@@ -32,5 +32,6 @@
     { "name": "YouTube", "url": "https://www.youtube.com/c/Caf%C3%A9SinEgo" },
     { "name": "Threads", "url": "https://www.threads.com/@monicasalmon_" },
     { "name": "Substack", "url": "https://monicasalmon.substack.com" }
-  ]
+  ],
+  "email": "jane.johnson@example.com"
 }
