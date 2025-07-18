@@ -1,0 +1,37 @@
+{
+  "name": "Julie Jacques",
+  "welcome": "Bienvenue sur ma page d’auteur ! Je suis une écrivaine passionnée qui partage des histoires et des idées avec le monde.",
+  "aboutMe": "J’écris des livres de fiction et de non-fiction qui inspirent, divertissent et informent les lecteurs partout.",
+  "headshot": "/sampleheadshot.webp",
+  "books": [
+    {
+      "title": "Le Voyage Commence",
+      "description": "Un récit inspirant d’aventure et de découverte de soi.",
+      "url": "https://www.example.com/book1",
+      "cover": "/covers/TheJoyOfCookingCover.jpg"
+    },
+    {
+      "title": "Réflexions",
+      "description": "Une collection d’essais et de pensées sur la vie et la créativité.",
+      "url": "https://www.example.com/book2",
+      "cover": "/covers/TheJoyOfCookingCover.jpg"
+    },
+    {
+      "title": "Apprendre Chaque Jour",
+      "description": "Des conseils pratiques pour les apprenants à vie et les esprits curieux.",
+      "url": "https://www.example.com/book3",
+      "cover": "/covers/TheJoyOfCookingCover.jpg"
+    }
+  ],
+  "copyright": "© 2025 Julie Jacques. Tous droits réservés.",
+  "social": [
+    { "name": "Facebook", "url": "https://www.facebook.com/13Mokanita" },
+    { "name": "Twitter", "url": "https://x.com/monicasalmon_" },
+    { "name": "Instagram", "url": "https://www.instagram.com/monicasalmon_" },
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/m%C3%B3nica-salm%C3%B3n-9917414b" },
+    { "name": "YouTube", "url": "https://www.youtube.com/c/Caf%C3%A9SinEgo" },
+    { "name": "Threads", "url": "https://www.threads.com/@monicasalmon_" },
+    { "name": "Substack", "url": "https://monicasalmon.substack.com" }
+  ],
+  "email": "julie.jacques@example.com"
+}

@@ -7,7 +7,9 @@ export default defineConfig({
   plugins: [react()],
   test: {
     globals: true,
-     browser: {
+    setupFiles: './setupTests.ts',
+    environment: 'jsdom',
+    browser: {
       enabled: true,
       provider: 'playwright',
       instances: [

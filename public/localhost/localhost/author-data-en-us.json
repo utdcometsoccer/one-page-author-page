@@ -1,0 +1,37 @@
+{
+  "name": "Jane Johnson",
+  "welcome": "Welcome to my author page! I am a passionate writer sharing stories and ideas with the world.",
+  "aboutMe": "I write fiction and non-fiction books that inspire, entertain, and inform readers everywhere.",
+  "headshot": "/sampleheadshot.webp",
+  "books": [
+    {
+      "title": "The Journey Begins",
+      "description": "An inspiring tale of adventure and self-discovery.",
+      "url": "https://www.example.com/book1",
+      "cover": "/covers/TheJoyOfCookingCover.jpg"
+    },
+    {
+      "title": "Reflections",
+      "description": "A collection of essays and thoughts on life and creativity.",
+      "url": "https://www.example.com/book2",
+      "cover": "/covers/TheJoyOfCookingCover.jpg"
+    },
+    {
+      "title": "Learning Every Day",
+      "description": "Practical advice for lifelong learners and curious minds.",
+      "url": "https://www.example.com/book3",
+      "cover": "/covers/TheJoyOfCookingCover.jpg"
+    }
+  ],
+  "copyright": "© 2025 Jane Johnson. All rights reserved.",
+  "social": [
+    { "name": "Facebook", "url": "https://www.facebook.com/13Mokanita" },
+    { "name": "Twitter", "url": "https://x.com/monicasalmon_" },
+    { "name": "Instagram", "url": "https://www.instagram.com/monicasalmon_" },
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/m%C3%B3nica-salm%C3%B3n-9917414b" },
+    { "name": "YouTube", "url": "https://www.youtube.com/c/Caf%C3%A9SinEgo" },
+    { "name": "Threads", "url": "https://www.threads.com/@monicasalmon_" },
+    { "name": "Substack", "url": "https://monicasalmon.substack.com" }
+  ],
+  "email": "jane.johnson@example.com"
+}
