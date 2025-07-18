@@ -1,0 +1,37 @@
+{
+  "name": "Julia Jung",
+  "welcome": "Willkommen auf meiner Autorenseite! Ich bin eine leidenschaftliche Schriftstellerin, die Geschichten und Ideen mit der Welt teilt.",
+  "aboutMe": "Ich schreibe Belletristik und Sachbücher, die Leser überall inspirieren, unterhalten und informieren.",
+  "headshot": "/sampleheadshot.webp",
+  "books": [
+    {
+      "title": "Die Reise Beginnt",
+      "description": "Eine inspirierende Geschichte über Abenteuer und Selbstfindung.",
+      "url": "https://www.example.com/book1",
+      "cover": "/covers/TheJoyOfCookingCover.jpg"
+    },
+    {
+      "title": "Reflexionen",
+      "description": "Eine Sammlung von Essays und Gedanken über das Leben und die Kreativität.",
+      "url": "https://www.example.com/book2",
+      "cover": "/covers/TheJoyOfCookingCover.jpg"
+    },
+    {
+      "title": "Jeden Tag Lernen",
+      "description": "Praktische Ratschläge für lebenslange Lernende und neugierige Köpfe.",
+      "url": "https://www.example.com/book3",
+      "cover": "/covers/TheJoyOfCookingCover.jpg"
+    }
+  ],
+  "copyright": "© 2025 Julia Jung. Alle Rechte vorbehalten.",
+  "social": [
+    { "name": "Facebook", "url": "https://facebook.com" },
+    { "name": "Twitter", "url": "https://twitter.com" },
+    { "name": "Instagram", "url": "https://instagram.com" },
+    { "name": "LinkedIn", "url": "https://linkedin.com" },
+    { "name": "YouTube", "url": "https://youtube.com" },
+    { "name": "TikTok", "url": "https://tiktok.com" },
+    { "name": "Substack", "url": "https://monicasalmon.substack.com" }
+  ],
+  "email": "julia.jung@example.com"
+}

@@ -1,0 +1,37 @@
+{
+  "name": "Jimena Jiménez",
+  "welcome": "¡Bienvenida a mi página de autora! Soy una escritora apasionada que comparte historias e ideas con el mundo.",
+  "aboutMe": "Escribo libros de ficción y no ficción que inspiran, entretienen e informan a lectores de todas partes.",
+  "headshot": "/sampleheadshot.webp",
+  "books": [
+    {
+      "title": "El Viaje Comienza",
+      "description": "Una inspiradora historia de aventura y autodescubrimiento.",
+      "url": "https://www.example.com/book1",
+      "cover": "/covers/TheJoyOfCookingCover.jpg"
+    },
+    {
+      "title": "Reflexiones",
+      "description": "Una colección de ensayos y pensamientos sobre la vida y la creatividad.",
+      "url": "https://www.example.com/book2",
+      "cover": "/covers/TheJoyOfCookingCover.jpg"
+    },
+    {
+      "title": "Aprendiendo Cada Día",
+      "description": "Consejos prácticos para aprendices de por vida y mentes curiosas.",
+      "url": "https://www.example.com/book3",
+      "cover": "/covers/TheJoyOfCookingCover.jpg"
+    }
+  ],
+  "copyright": "© 2025 Jimena Jiménez. Todos los derechos reservados.",
+  "social": [
+    { "name": "Facebook", "url": "https://www.facebook.com/13Mokanita" },
+    { "name": "Twitter", "url": "https://x.com/monicasalmon_" },
+    { "name": "Instagram", "url": "https://www.instagram.com/monicasalmon_" },
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/m%C3%B3nica-salm%C3%B3n-9917414b" },
+    { "name": "YouTube", "url": "https://www.youtube.com/c/Caf%C3%A9SinEgo" },
+    { "name": "Threads", "url": "https://www.threads.com/@monicasalmon_" },
+    { "name": "Substack", "url": "https://monicasalmon.substack.com" }
+  ],
+  "email": "jimena.jimenez@example.com"
+}

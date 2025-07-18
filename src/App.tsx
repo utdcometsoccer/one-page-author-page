@@ -1,7 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
-import MenuIcon from '@mui/icons-material/Menu'
-import CloseIcon from '@mui/icons-material/Close'
+
 import CircularProgress from '@mui/material/CircularProgress'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import TwitterIcon from '@mui/icons-material/Twitter'
@@ -11,70 +10,21 @@ import YouTubeIcon from '@mui/icons-material/YouTube'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import ThreadsIcon from './assets/threads.svg'
 import SubstackIcon from './assets/substack.png'
-import TikTokIcon from '@mui/icons-material/MusicNote'; // Use MusicNote as a TikTok icon substitute
+import TikTokIcon from '@mui/icons-material/MusicNote'
 import type { JSX } from 'react/jsx-runtime'
 
-type Book = {
-  title: string
-  description: string
-  url?: string
-  cover?: string // Add cover property
-}
+import NavBar from './NavBar'
+import WelcomeSection from './WelcomeSection'
+import AboutMeSection from './AboutMeSection'
+import BooksSection from './BooksSection'
+import ContactSection from './ContactSection'
+import Footer from './Footer'
 
-type SocialLink = {
-  name: string
-  url: string
-}
-
-type AuthorData = {
-  name: string
-  welcome: string
-  aboutMe: string
-  headshot: string
-  books: Book[]
-  copyright: string
-  social?: SocialLink[]
-  email?: string // Optional email field
-}
-
-type LocaleHeaders = {
-  welcome: string
-  aboutMe: string
-  myBooks: string
-  loading?: string
-  emailPrompt?: string
-  contactMe?: string
-  emailLinkText?: string
-  noEmail?: string
-  switchToLight?: string
-  switchToDark?: string
-}
-
-function getLocale(): string {
-  return navigator.language?.toLowerCase() || 'en-us'
-}
-
-function getLocaleFile(): string {
-  const locale = getLocale()
-  const base = import.meta.env.VITE_LOCALE_BASE || '/locales'
-  return `${base}/${locale}.json`
-}
-
-function getAuthorDataFile(): string {
-  const locale = getLocale()
-  const base = import.meta.env.VITE_AUTHOR_DATA_BASE || ''
-  return `${base}/author-data-${locale}.json`
-}
-
-function getDefaultAuthorDataFile(): string {
-  const base = import.meta.env.VITE_AUTHOR_DATA_BASE || ''
-  return `${base}/data.json`
-}
-
-function getDefaultLocaleFile(): string {
-  const base = import.meta.env.VITE_LOCALE_BASE || '/locales'
-  return `${base}/en-us.json`
-}
+import type { AuthorData, LocaleHeaders } from './types'
+import { getLocaleFile, type LocaleBase } from './utilities/getLocaleFile'
+import { getAuthorDataFile, type HostProvider, type AuthorDataBaseConfig } from './utilities/getAuthorDataFile'
+import { getDefaultAuthorDataFile } from './utilities/getDefaultAuthorDataFile'
+import { getDefaultLocaleFile } from './utilities/getDefaultLocaleFile'
 
 const socialIcons: Record<string, JSX.Element> = {
   facebook: <FacebookIcon />,
@@ -106,35 +56,44 @@ function App() {
 
   // Fetch locale headers
   useEffect(() => {
-    const localeFile = getLocaleFile()
+    const localeBaseConfig: LocaleBase = {
+      getLocaleBase: () => import.meta.env.VITE_LOCALE_BASE || '/locales'
+    };
+    const localeFile = getLocaleFile(localeBaseConfig);
     fetch(localeFile)
       .then(res => {
-        if (!res.ok) throw new Error('Locale not found')
-        return res.json()
+        if (!res.ok) throw new Error('Locale not found');
+        return res.json();
       })
       .then(setHeaders)
       .catch(() => {
-        fetch(getDefaultLocaleFile())
+        fetch(getDefaultLocaleFile(localeBaseConfig))
           .then(res => res.json())
-          .then(setHeaders)
-      })
-  }, [])
+          .then(setHeaders);
+      });
+  }, []);
 
   // Fetch locale-specific author data
   useEffect(() => {
-    const authorDataFile = getAuthorDataFile()
+    const hostProvider: HostProvider = {
+      getHostname: () => window.location.hostname
+    };
+    const authorDataBaseConfig: AuthorDataBaseConfig = {
+      getAuthorDataBase: () => import.meta.env.VITE_AUTHOR_DATA_BASE ? `/${import.meta.env.VITE_AUTHOR_DATA_BASE}` : ''
+    };
+    const authorDataFile = getAuthorDataFile(hostProvider, authorDataBaseConfig);
     fetch(authorDataFile)
       .then(res => {
-        if (!res.ok) throw new Error('Author data not found')
-        return res.json()
+        if (!res.ok) throw new Error('Author data not found');
+        return res.json();
       })
       .then(setData)
       .catch(() => {
-        fetch(getDefaultAuthorDataFile())
+        fetch(getDefaultAuthorDataFile(authorDataBaseConfig))
           .then(res => res.json())
-          .then(setData)
-      })
-  }, [])
+          .then(setData);
+      });
+  }, []);
 
   const handleNav = (id: string) => {
     setMenuOpen(false)
@@ -154,148 +113,35 @@ function App() {
 
   return (
     <div className="main-container">
-      {/* Hamburger Menu */}
-      <nav className="nav-bar">
-        <button
-          className="menu-btn"
-          aria-label="Open navigation menu"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <CloseIcon /> : <MenuIcon />}
-        </button>
-        <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
-          <li>
-            <button onClick={() => handleNav('welcome')}>{headers.welcome}</button>
-          </li>
-          <li>
-            <button onClick={() => handleNav('about-me')}>{headers.aboutMe}</button>
-          </li>
-          <li>
-            <button onClick={() => handleNav('my-books')}>{headers.myBooks}</button>
-          </li>
-          <li>
-            <button onClick={() => handleNav('contact-me')}>{headers.contactMe || 'Contact Me'}</button>
-          </li>
-        </ul>
-      </nav>
-
-      <header className="welcome" id="welcome">
-        <h1>{headers.welcome}</h1>
-        <p>
-          {data.welcome}
-        </p>
-      </header>
-
-      <section className="about-me" id="about-me">
-        <div className="about-me-content">
-          <img
-            src={data.headshot}
-            alt="Author headshot"
-            className="about-me-headshot"
-          />
-          <div className="about-me-text">
-            <h2>{headers.aboutMe}</h2>
-            <p>
-              {data.aboutMe}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="my-books" id="my-books">
-        <h2>{headers.myBooks}</h2>
-        <div className="books-grid">
-          {data.books.map((book, idx) => (
-            <article className="book-card" key={idx}>
-              <div className="book-info-with-cover">
-                {book.cover && (
-                  <div className='book-cover'>
-                    <img
-                    src={book.cover}
-                    alt={`Cover of ${book.title}`}
-                    className="book-cover-thumb"
-                    />
-                  </div>
-                )}
-                <div className="book-info">
-                  {book.url ? (
-                    <a
-                      href={book.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ color: '#1a0dab', textDecoration: 'none', fontWeight: 600 }}
-                    >
-                      <h3>{book.title}</h3>
-                    </a>
-                  ) : (
-                    <h3>{book.title}</h3>
-                  )}
-                  <p>{book.description}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="contact-me" id="contact-me">
-        <h2>{headers.contactMe || 'Contact Me'}</h2>
-        <div className="contact-me-content">
-          <p>
-            {data.email ? (
-              <>
-                {headers.emailPrompt || 'Feel free to reach out:'}&nbsp;
-                <a
-                  href={`mailto:${data.email}`}
-                  className="contact-email-link"
-                  style={{
-                    color: 'var(--color-link)',
-                    textDecoration: 'underline',
-                    fontWeight: 500,
-                    wordBreak: 'break-all'
-                  }}
-                >
-                  {headers.emailLinkText || 'Email Me'}
-                </a>
-              </>
-            ) : (
-              <>{headers.noEmail || 'No contact email provided.'}</>
-            )}
-          </p>
-        </div>
-      </section>
-
-      <footer>
-        <p>{data?.copyright}</p>
-        {data?.social && (
-          <div className="social-links" style={{ marginTop: '0.5rem' }}>
-            {data.social.map((link) => {
-              const key = link.name.toLowerCase()
-              return (
-                <a
-                  key={key}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.name}
-                  style={{ margin: '0 0.5rem', color: 'inherit', fontSize: '1.7rem', verticalAlign: 'middle' }}
-                >
-                  {socialIcons[key] || link.name}
-                </a>
-              )
-            })}
-          </div>
-        )}
-        <button
-          className="theme-toggle-btn"
-          onClick={() => setDarkMode((prev) => !prev)}
-          aria-label="Toggle dark/light theme"
-        >
-          {darkMode
-            ? headers.switchToLight || 'Switch to Light Theme'
-            : headers.switchToDark || 'Switch to Dark Theme'}
-        </button>
-      </footer>
+      <NavBar
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+        headers={headers}
+        handleNav={handleNav}
+      />
+      <WelcomeSection header={headers.welcome} welcome={data.welcome} />
+      <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
+      {data.books && data.books.length > 0 && (
+        <BooksSection header={headers.myBooks} books={data.books} />
+      )}
+      {data.email && (
+        <ContactSection
+          header={headers.contactMe || 'Contact Me'}
+          email={data.email}
+          emailPrompt={headers.emailPrompt}
+          emailLinkText={headers.emailLinkText}
+          noEmail={headers.noEmail}
+        />
+      )}
+      <Footer
+        copyright={data.copyright}
+        social={data.social}
+        socialIcons={socialIcons}
+        darkMode={darkMode}
+        onToggleTheme={() => setDarkMode((prev) => !prev)}
+        switchToLight={headers.switchToLight}
+        switchToDark={headers.switchToDark}
+      />
     </div>
   )
 }
