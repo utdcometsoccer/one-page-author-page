@@ -21,32 +21,10 @@ import ContactSection from './ContactSection'
 import Footer from './Footer'
 
 import type { AuthorData, LocaleHeaders } from './types'
-
-function getLocale(): string {
-  return navigator.language?.toLowerCase() || 'en-us'
-}
-
-function getLocaleFile(): string {
-  const locale = getLocale()
-  const base = import.meta.env.VITE_LOCALE_BASE || '/locales'
-  return `${base}/${locale}.json`
-}
-
-function getAuthorDataFile(): string {
-  const locale = getLocale()
-  const base = import.meta.env.VITE_AUTHOR_DATA_BASE || ''
-  return `${base}/author-data-${locale}.json`
-}
-
-function getDefaultAuthorDataFile(): string {
-  const base = import.meta.env.VITE_AUTHOR_DATA_BASE || ''
-  return `${base}/data.json`
-}
-
-function getDefaultLocaleFile(): string {
-  const base = import.meta.env.VITE_LOCALE_BASE || '/locales'
-  return `${base}/en-us.json`
-}
+import { getLocaleFile, type LocaleBase } from './utilities/getLocaleFile'
+import { getAuthorDataFile, type HostProvider, type AuthorDataBaseConfig } from './utilities/getAuthorDataFile'
+import { getDefaultAuthorDataFile } from './utilities/getDefaultAuthorDataFile'
+import { getDefaultLocaleFile } from './utilities/getDefaultLocaleFile'
 
 const socialIcons: Record<string, JSX.Element> = {
   facebook: <FacebookIcon />,
@@ -78,35 +56,44 @@ function App() {
 
   // Fetch locale headers
   useEffect(() => {
-    const localeFile = getLocaleFile()
+    const localeBaseConfig: LocaleBase = {
+      getLocaleBase: () => import.meta.env.VITE_LOCALE_BASE || '/locales'
+    };
+    const localeFile = getLocaleFile(localeBaseConfig);
     fetch(localeFile)
       .then(res => {
-        if (!res.ok) throw new Error('Locale not found')
-        return res.json()
+        if (!res.ok) throw new Error('Locale not found');
+        return res.json();
       })
       .then(setHeaders)
       .catch(() => {
-        fetch(getDefaultLocaleFile())
+        fetch(getDefaultLocaleFile(localeBaseConfig))
           .then(res => res.json())
-          .then(setHeaders)
-      })
-  }, [])
+          .then(setHeaders);
+      });
+  }, []);
 
   // Fetch locale-specific author data
   useEffect(() => {
-    const authorDataFile = getAuthorDataFile()
+    const hostProvider: HostProvider = {
+      getHostname: () => window.location.hostname
+    };
+    const authorDataBaseConfig: AuthorDataBaseConfig = {
+      getAuthorDataBase: () => import.meta.env.VITE_AUTHOR_DATA_BASE ? `/${import.meta.env.VITE_AUTHOR_DATA_BASE}` : ''
+    };
+    const authorDataFile = getAuthorDataFile(hostProvider, authorDataBaseConfig);
     fetch(authorDataFile)
       .then(res => {
-        if (!res.ok) throw new Error('Author data not found')
-        return res.json()
+        if (!res.ok) throw new Error('Author data not found');
+        return res.json();
       })
       .then(setData)
       .catch(() => {
-        fetch(getDefaultAuthorDataFile())
+        fetch(getDefaultAuthorDataFile(authorDataBaseConfig))
           .then(res => res.json())
-          .then(setData)
-      })
-  }, [])
+          .then(setData);
+      });
+  }, []);
 
   const handleNav = (id: string) => {
     setMenuOpen(false)
