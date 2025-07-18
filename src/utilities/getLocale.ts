@@ -1,3 +1,5 @@
 export function getLocale(): string {
-  return navigator.language?.toLowerCase() || 'en-us'
+  const lang = navigator.language?.toLowerCase() || 'en-us';
+  if (lang === 'en') return 'en-us';
+  return lang;
 }
