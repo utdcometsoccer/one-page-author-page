@@ -452,6 +452,11 @@ body.light-theme .social-icon {
   box-sizing: border-box;
 }
 
+/* Center the articles section header */
+.articles-section h2 {
+  text-align: center;
+}
+
 @media (min-width: 900px) {
   .articles-section {
     width: auto;
