@@ -1,5 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
+import { AppInsightsProvider } from './utilities/AppInsightsProvider'
 
 import CircularProgress from '@mui/material/CircularProgress'
 import FacebookIcon from '@mui/icons-material/Facebook'
@@ -112,37 +113,39 @@ function App() {
   }
 
   return (
-    <div className="main-container">
-      <NavBar
-        menuOpen={menuOpen}
-        setMenuOpen={setMenuOpen}
-        headers={headers}
-        handleNav={handleNav}
-      />
-      <WelcomeSection header={headers.welcome} welcome={data.welcome} />
-      <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
-      {data.books && data.books.length > 0 && (
-        <BooksSection header={headers.myBooks} books={data.books} />
-      )}
-      {data.email && (
-        <ContactSection
-          header={headers.contactMe || 'Contact Me'}
-          email={data.email}
-          emailPrompt={headers.emailPrompt}
-          emailLinkText={headers.emailLinkText}
-          noEmail={headers.noEmail}
+    <AppInsightsProvider>
+      <div className="main-container">
+        <NavBar
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+          headers={headers}
+          handleNav={handleNav}
         />
-      )}
-      <Footer
-        copyright={data.copyright}
-        social={data.social}
-        socialIcons={socialIcons}
-        darkMode={darkMode}
-        onToggleTheme={() => setDarkMode((prev) => !prev)}
-        switchToLight={headers.switchToLight}
-        switchToDark={headers.switchToDark}
-      />
-    </div>
+        <WelcomeSection header={headers.welcome} welcome={data.welcome} />
+        <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
+        {data.books && data.books.length > 0 && (
+          <BooksSection header={headers.myBooks} books={data.books} />
+        )}
+        {data.email && (
+          <ContactSection
+            header={headers.contactMe || 'Contact Me'}
+            email={data.email}
+            emailPrompt={headers.emailPrompt}
+            emailLinkText={headers.emailLinkText}
+            noEmail={headers.noEmail}
+          />
+        )}
+        <Footer
+          copyright={data.copyright}
+          social={data.social}
+          socialIcons={socialIcons}
+          darkMode={darkMode}
+          onToggleTheme={() => setDarkMode((prev) => !prev)}
+          switchToLight={headers.switchToLight}
+          switchToDark={headers.switchToDark}
+        />
+      </div>
+    </AppInsightsProvider>
   )
 }
 
