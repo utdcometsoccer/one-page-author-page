@@ -6,25 +6,25 @@
   "books": [
     {
       "title": "Debajo de mi piel (Spanish Edition)",
-      "description": "Under My Skin",
+      "description": "Under My Skin: An endearing and supportive testimony that shows cancer is more a synonym for life than for death.",
       "url": "https://www.penguinlibros.com/us/tematicas/226997-ebook-debajo-de-mi-piel-9786073198110",
       "cover": "/covers/debajo-de-mi-piel.avif"
     },
     {
       "title": "Cuídame de ti (Spanish Edition)",
-      "description": "Protect Me from You",
+      "description": "Protect Me from You: Sofía's life changes when she meets Nadia, a 75-year-old governess who reveals secrets and wounds from the past.",
       "url": "https://www.penguinlibros.com/us/tematicas/44536-ebook-cuidame-de-ti-9786073177627",
       "cover": "/covers/cuidame-de-ti.avif"
     },
     {
       "title": "Olvidaré tu nombre (Spanish Edition)",
-      "description": "I Will Forget Your Name",
+      "description": "I Will Forget Your Name: Ofelia faces the challenge of heartbreak and the difficult task of letting go of someone she loves through a series of emails.",
       "url": "https://www.penguinlibros.com/us/tematicas/342701-audiolibro-olvidare-tu-nombre-9786073841443",
       "cover": "/covers/olvidare-tu-nombre.avif"
     },
     {
       "title": "Que quede entre nosotros (Spanish Edition)",
-      "description": "Let's Keep it Between Us",
+      "description": "Let's Keep it Between Us: A coming-of-age and courageous novel that explores femininity, eroticism, and women's resilience.",
       "url": "https://www.penguinlibros.com/us/tematicas/44750-audiolibro-que-quede-entre-nosotros-9786073180214",
       "cover": "/covers/que-quede-entre-nosotros.avif"
     },
