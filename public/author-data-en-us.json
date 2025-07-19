@@ -39,5 +39,13 @@
     { "name": "Threads", "url": "https://www.threads.com/@monicasalmon_" },
     { "name": "Substack", "url": "https://substack.com/@mokanita" }
   ],
-  "email": "psicologa.monicasalmon@gmail.com"
+  "email": "psicologa.monicasalmon@gmail.com",
+  "articles": [
+    {
+      "title": "¿Dónde está el amor?",
+      "url": "https://heraldodemexico.com.mx/opinion/2025/7/3/donde-esta-el-amor-712128.html",
+      "publication": "El Heraldo de México",
+      "date": "2020-05-18"
+    }
+  ]
 }
