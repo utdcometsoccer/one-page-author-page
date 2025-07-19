@@ -25,6 +25,9 @@ const NavBar: React.FC<NavBarProps> = ({ menuOpen, setMenuOpen, headers, handleN
         <button onClick={() => handleNav('about-me')}>{headers.aboutMe}</button>
       </li>
       <li>
+        <button onClick={() => handleNav('articles')}>{headers.articles || 'Articles'}</button>
+      </li>
+      <li>
         <button onClick={() => handleNav('my-books')}>{headers.myBooks}</button>
       </li>
       <li>
