@@ -1,5 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
+import { AppInsightsProvider } from './utilities/AppInsightsProvider'
 
 import CircularProgress from '@mui/material/CircularProgress'
 import FacebookIcon from '@mui/icons-material/Facebook'
@@ -113,40 +114,42 @@ function App() {
   }
 
   return (
-    <div className="main-container">
-      <NavBar
-        menuOpen={menuOpen}
-        setMenuOpen={setMenuOpen}
-        headers={headers}
-        handleNav={handleNav}
-      />
-      <WelcomeSection header={headers.welcome} welcome={data.welcome} />
-      <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
-      {data.articles && data.articles.length > 0 && (
+    <AppInsightsProvider>
+      <div className="main-container">
+        <NavBar
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+          headers={headers}
+          handleNav={handleNav}
+        />
+        <WelcomeSection header={headers.welcome} welcome={data.welcome} />
+        <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
+        {data.articles && data.articles.length > 0 && (
         <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
       )}
       {data.books && data.books.length > 0 && (
-        <BooksSection header={headers.myBooks} books={data.books} />
-      )}
-      {data.email && (
-        <ContactSection
-          header={headers.contactMe || 'Contact Me'}
-          email={data.email}
-          emailPrompt={headers.emailPrompt}
-          emailLinkText={headers.emailLinkText}
-          noEmail={headers.noEmail}
+          <BooksSection header={headers.myBooks} books={data.books} />
+        )}
+        {data.email && (
+          <ContactSection
+            header={headers.contactMe || 'Contact Me'}
+            email={data.email}
+            emailPrompt={headers.emailPrompt}
+            emailLinkText={headers.emailLinkText}
+            noEmail={headers.noEmail}
+          />
+        )}
+        <Footer
+          copyright={data.copyright}
+          social={data.social}
+          socialIcons={socialIcons}
+          darkMode={darkMode}
+          onToggleTheme={() => setDarkMode((prev) => !prev)}
+          switchToLight={headers.switchToLight}
+          switchToDark={headers.switchToDark}
         />
-      )}
-      <Footer
-        copyright={data.copyright}
-        social={data.social}
-        socialIcons={socialIcons}
-        darkMode={darkMode}
-        onToggleTheme={() => setDarkMode((prev) => !prev)}
-        switchToLight={headers.switchToLight}
-        switchToDark={headers.switchToDark}
-      />
-    </div>
+      </div>
+    </AppInsightsProvider>
   )
 }
 
