@@ -47,7 +47,8 @@ function App() {
     welcome: 'Welcome',
     aboutMe: 'About Me',
     myBooks: 'My Books',
-    loading: 'Loading...'
+    loading: 'Loading...',
+    articles: 'Articles'
   })
   const [darkMode, setDarkMode] = useState(true)
 
@@ -125,8 +126,8 @@ function App() {
         <WelcomeSection header={headers.welcome} welcome={data.welcome} />
         <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
         {data.articles && data.articles.length > 0 && (
-        <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
-      )}
+          <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
+        )}
       {data.books && data.books.length > 0 && (
           <BooksSection header={headers.myBooks} books={data.books} />
         )}
