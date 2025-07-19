@@ -440,3 +440,21 @@ body.light-theme .social-icon {
   border-radius: 2px;
   text-decoration: underline;
 }
+
+/* Make articles section the same width as other sections */
+.articles-section {
+  float: none;
+  width: auto;
+  clear: both;
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 900px) {
+  .articles-section {
+    width: auto;
+    margin-right: 0;
+  }
+}

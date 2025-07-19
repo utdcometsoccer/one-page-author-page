@@ -33,5 +33,25 @@
     { "name": "TikTok", "url": "https://tiktok.com" },
     { "name": "Substack", "url": "https://monicasalmon.substack.com" }
   ],
-  "email": "julia.jung@example.com"
+  "email": "julia.jung@example.com",
+  "articles": [
+    {
+      "title": "Beispielartikel Eins",
+      "url": "https://example.com/sample-article-1",
+      "publication": "Beispiel Zeitung",
+      "date": "2025-01-01"
+    },
+    {
+      "title": "Beispielartikel Zwei",
+      "url": "https://example.com/sample-article-2",
+      "publication": "Beispiel Tagblatt",
+      "date": "2025-02-15"
+    },
+    {
+      "title": "Beispielartikel Drei",
+      "url": "https://example.com/sample-article-3",
+      "publication": "Beispiel Journal",
+      "date": "2025-03-10"
+    }
+  ]
 }

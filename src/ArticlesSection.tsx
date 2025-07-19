@@ -11,17 +11,17 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({ header, articles }) =
   return (
     <section id="articles" className="articles-section">
       <h2>{header}</h2>
-      <ul>
+      <div className="articles-list" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {articles.map((article, idx) => (
-          <li key={idx}>
+          <div key={idx} className="article-item" style={{ marginBottom: '1rem' }}>
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               {article.title}
             </a>
             {article.publication && <span className="article-publication"> ({article.publication})</span>}
             {article.date && <span className="article-date"> - {article.date}</span>}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 };

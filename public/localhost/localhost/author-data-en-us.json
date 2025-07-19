@@ -33,5 +33,25 @@
     { "name": "Threads", "url": "https://www.threads.com/@monicasalmon_" },
     { "name": "Substack", "url": "https://monicasalmon.substack.com" }
   ],
-  "email": "jane.johnson@example.com"
+  "email": "jane.johnson@example.com",
+  "articles": [
+    {
+      "title": "Sample Article One",
+      "url": "https://example.com/sample-article-1",
+      "publication": "Sample Times",
+      "date": "2025-01-01"
+    },
+    {
+      "title": "Sample Article Two",
+      "url": "https://example.com/sample-article-2",
+      "publication": "Sample Daily",
+      "date": "2025-02-15"
+    },
+    {
+      "title": "Sample Article Three",
+      "url": "https://example.com/sample-article-3",
+      "publication": "Sample Journal",
+      "date": "2025-03-10"
+    }
+  ]
 }
