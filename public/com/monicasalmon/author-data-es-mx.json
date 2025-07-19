@@ -6,25 +6,25 @@
   "books": [
     {
       "title": "Debajo de mi piel (Edición en español)",
-      "description": "Bajo mi piel",
+      "description": "Un testimonio entrañable y solidario que muestra que el cáncer es más un sinónimo de vida que de muerte.",
       "url": "https://www.penguinlibros.com/us/tematicas/226997-ebook-debajo-de-mi-piel-9786073198110",
       "cover": "/covers/debajo-de-mi-piel.avif"
     },
     {
       "title": "Cuídame de ti (Edición en español)",
-      "description": "Protégeme de ti",
+      "description": "La vida de Sofía cambia al conocer a Nadia, una institutriz de 75 años que le revela secretos y heridas del pasado.",
       "url": "https://www.penguinlibros.com/us/tematicas/44536-ebook-cuidame-de-ti-9786073177627",
       "cover": "/covers/cuidame-de-ti.avif"
     },
     {
       "title": "Olvidaré tu nombre (Edición en español)",
-      "description": "Olvidaré tu nombre",
+      "description": "Ofelia enfrenta el desafío del desamor y la difícil tarea de dejar ir a quien ama a través de una serie de correos electrónicos.",
       "url": "https://www.penguinlibros.com/us/tematicas/342701-audiolibro-olvidare-tu-nombre-9786073841443",
       "cover": "/covers/olvidare-tu-nombre.avif"
     },
     {
       "title": "Que quede entre nosotros (Edición en español)",
-      "description": "Que quede entre nosotros",
+      "description": "Una novela de aprendizaje y valentía que explora la feminidad, el erotismo y la entereza de la mujer.",
       "url": "https://www.penguinlibros.com/us/tematicas/44750-audiolibro-que-quede-entre-nosotros-9786073180214",
       "cover": "/covers/que-quede-entre-nosotros.avif"
     }
