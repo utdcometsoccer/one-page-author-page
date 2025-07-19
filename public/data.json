@@ -40,22 +40,22 @@
   ],
   "articles": [
     {
-      "title": "¿Dónde está el amor?",
-      "url": "https://heraldodemexico.com.mx/opinion/2025/7/3/donde-esta-el-amor-712128.html",
-      "publication": "El Heraldo de México",
-      "date": "2020-05-18"
+      "title": "Sample Article One",
+      "url": "https://example.com/sample-article-1",
+      "publication": "Sample Times",
+      "date": "2025-01-01"
     },
     {
-      "title": "El poder de la resiliencia en la vida cotidiana",
-      "url": "https://heraldodemexico.com.mx/opinion/2021/3/8/el-poder-de-la-resiliencia-en-la-vida-cotidiana-270073.html",
-      "publication": "El Heraldo de México",
-      "date": "2021-03-08"
+      "title": "Sample Article Two",
+      "url": "https://example.com/sample-article-2",
+      "publication": "Sample Daily",
+      "date": "2025-02-15"
     },
     {
-      "title": "Cómo hablar de sexualidad con los hijos",
-      "url": "https://heraldodemexico.com.mx/opinion/2019/10/10/como-hablar-de-sexualidad-con-los-hijos-123456.html",
-      "publication": "El Heraldo de México",
-      "date": "2019-10-10"
+      "title": "Sample Article Three",
+      "url": "https://example.com/sample-article-3",
+      "publication": "Sample Journal",
+      "date": "2025-03-10"
     }
   ]
 }
