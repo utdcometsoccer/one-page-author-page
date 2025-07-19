@@ -37,5 +37,25 @@
     { "name": "LinkedIn", "url": "https://www.linkedin.com/in/m%C3%B3nica-salm%C3%B3n-9917414b" },
     { "name": "YouTube", "url": "https://www.youtube.com/c/Caf%C3%A9SinEgo" },
     { "name": "Threads", "url": "https://www.threads.com/@monicasalmon_" }
+  ],
+  "articles": [
+    {
+      "title": "¿Dónde está el amor?",
+      "url": "https://heraldodemexico.com.mx/opinion/2025/7/3/donde-esta-el-amor-712128.html",
+      "publication": "El Heraldo de México",
+      "date": "2020-05-18"
+    },
+    {
+      "title": "El poder de la resiliencia en la vida cotidiana",
+      "url": "https://heraldodemexico.com.mx/opinion/2021/3/8/el-poder-de-la-resiliencia-en-la-vida-cotidiana-270073.html",
+      "publication": "El Heraldo de México",
+      "date": "2021-03-08"
+    },
+    {
+      "title": "Cómo hablar de sexualidad con los hijos",
+      "url": "https://heraldodemexico.com.mx/opinion/2019/10/10/como-hablar-de-sexualidad-con-los-hijos-123456.html",
+      "publication": "El Heraldo de México",
+      "date": "2019-10-10"
+    }
   ]
 }

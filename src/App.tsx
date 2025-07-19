@@ -17,6 +17,7 @@ import NavBar from './NavBar'
 import WelcomeSection from './WelcomeSection'
 import AboutMeSection from './AboutMeSection'
 import BooksSection from './BooksSection'
+import ArticlesSection from './ArticlesSection'
 import ContactSection from './ContactSection'
 import Footer from './Footer'
 
@@ -121,6 +122,9 @@ function App() {
       />
       <WelcomeSection header={headers.welcome} welcome={data.welcome} />
       <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
+      {data.articles && data.articles.length > 0 && (
+        <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
+      )}
       {data.books && data.books.length > 0 && (
         <BooksSection header={headers.myBooks} books={data.books} />
       )}

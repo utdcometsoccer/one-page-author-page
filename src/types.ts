@@ -19,6 +19,7 @@ export type AuthorData = {
   copyright: string
   social?: SocialLink[]
   email?: string
+  articles?: Article[]
 }
 
 export type LocaleHeaders = {
@@ -32,4 +33,12 @@ export type LocaleHeaders = {
   noEmail?: string
   switchToLight?: string
   switchToDark?: string
+  articles?: string
+}
+
+export type Article = {
+  title: string
+  url: string
+  publication?: string
+  date?: string
 }
