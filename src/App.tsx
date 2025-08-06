@@ -84,7 +84,7 @@ function App() {
     const authorDataBaseConfig: AuthorDataBaseConfig = {
       getAuthorDataBase: () => import.meta.env.VITE_AUTHOR_DATA_BASE ? `/${import.meta.env.VITE_AUTHOR_DATA_BASE}` : ''
     };
-    const authorDataFile = getAuthorDataFile(hostProvider, authorDataBaseConfig);
+    const authorDataFile = getAuthorDataFile(hostProvider, authorDataBaseConfig, (import.meta.env.VITE_AUTHOR_DATA_FILE_EXTENSION));
     fetch(authorDataFile)
       .then(res => {
         if (!res.ok) throw new Error('Author data not found');
