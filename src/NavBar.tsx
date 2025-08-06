@@ -1,4 +1,5 @@
 
+
 import type { LocaleHeaders } from './types'
 
 interface NavBarProps {
@@ -6,9 +7,12 @@ interface NavBarProps {
   setMenuOpen: (open: boolean) => void
   headers: LocaleHeaders
   handleNav: (id: string) => void
+  articlesExist: boolean
+  booksExist: boolean
+  contactExist: boolean
 }
 
-const NavBar: React.FC<NavBarProps> = ({ menuOpen, setMenuOpen, headers, handleNav }) => (
+const NavBar: React.FC<NavBarProps> = ({ menuOpen, setMenuOpen, headers, handleNav, articlesExist, booksExist, contactExist }) => (
   <nav className="nav-bar">
     <button
       className="menu-btn"
@@ -24,15 +28,21 @@ const NavBar: React.FC<NavBarProps> = ({ menuOpen, setMenuOpen, headers, handleN
       <li>
         <button onClick={() => handleNav('about-me')}>{headers.aboutMe}</button>
       </li>
-      <li>
-        <button onClick={() => handleNav('articles')}>{headers.articles || 'Articles'}</button>
-      </li>
-      <li>
-        <button onClick={() => handleNav('my-books')}>{headers.myBooks}</button>
-      </li>
-      <li>
-        <button onClick={() => handleNav('contact-me')}>{headers.contactMe || 'Contact Me'}</button>
-      </li>
+      {articlesExist && (
+        <li>
+          <button onClick={() => handleNav('articles')}>{headers.articles || 'Articles'}</button>
+        </li>
+      )}
+      {booksExist && (
+        <li>
+          <button onClick={() => handleNav('my-books')}>{headers.myBooks}</button>
+        </li>
+      )}
+      {contactExist && (
+        <li>
+          <button onClick={() => handleNav('contact-me')}>{headers.contactMe || 'Contact Me'}</button>
+        </li>
+      )}
     </ul>
   </nav>
 )
