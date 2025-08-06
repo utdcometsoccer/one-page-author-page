@@ -32,6 +32,6 @@ export function getAuthorDataFile(hostProvider: HostProvider, config: AuthorData
   }
 
   // Try /topleveldomain/hostname/author-data-${locale}.{fileExtension}
-  const path = `${base}/${tld}/${hostKey}/author-data-${locale}.${fileExtension}`;
+  const path = `${base}/${tld}/${hostKey}/author-data-${locale}${fileExtension}`;
   return path;
 }
