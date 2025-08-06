@@ -122,6 +122,9 @@ function App() {
           setMenuOpen={setMenuOpen}
           headers={headers}
           handleNav={handleNav}
+          articlesExist={!!(data.articles && data.articles.length > 0)}
+          booksExist={!!(data.books && data.books.length > 0)}
+          contactExist={!!data.email}
         />
         <WelcomeSection header={headers.welcome} welcome={data.welcome} />
         <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
