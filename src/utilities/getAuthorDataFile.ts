@@ -8,7 +8,7 @@ export interface AuthorDataBaseConfig {
   getAuthorDataBase: () => string;
 }
 
-export function getAuthorDataFile(hostProvider: HostProvider, config: AuthorDataBaseConfig): string {
+export function getAuthorDataFile(hostProvider: HostProvider, config: AuthorDataBaseConfig, fileExtension: string): string {
   const locale = getLocale();
   const base = config.getAuthorDataBase();
   const hostname = hostProvider.getHostname();
@@ -31,7 +31,7 @@ export function getAuthorDataFile(hostProvider: HostProvider, config: AuthorData
     hostKey = parts.slice(0, -1).join('.');
   }
 
-  // Try /topleveldomain/hostname/author-data-${locale}.json
-  const path = `${base}/${tld}/${hostKey}/author-data-${locale}.json`;
+  // Try /topleveldomain/hostname/author-data-${locale}.{fileExtension}
+  const path = `${base}/${tld}/${hostKey}/author-data-${locale}.${fileExtension}`;
   return path;
 }
