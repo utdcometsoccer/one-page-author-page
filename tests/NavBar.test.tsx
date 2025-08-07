@@ -12,7 +12,7 @@ const headers = {
 describe('NavBar', () => {
   it('renders all navigation buttons', () => {
     render(
-      <NavBar menuOpen={true} setMenuOpen={() => {}} headers={headers} handleNav={() => {}} />
+      <NavBar menuOpen={true} setMenuOpen={() => { } } headers={headers} handleNav={() => { } } articlesExist={true} booksExist={true} contactExist={true} />
     )
     expect(screen.getByText('Welcome')).toBeInTheDocument()
     expect(screen.getByText('About Me')).toBeInTheDocument()
@@ -23,7 +23,7 @@ describe('NavBar', () => {
   it('calls handleNav when a nav button is clicked', () => {
     const handleNav = vi.fn()
     render(
-      <NavBar menuOpen={true} setMenuOpen={() => {}} headers={headers} handleNav={handleNav} />
+      <NavBar menuOpen={true} setMenuOpen={() => { } } headers={headers} handleNav={handleNav} articlesExist={true} booksExist={true} contactExist={true} />
     )
     fireEvent.click(screen.getByText('About Me'))
     expect(handleNav).toHaveBeenCalled()

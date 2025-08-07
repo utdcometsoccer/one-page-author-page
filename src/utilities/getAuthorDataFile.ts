@@ -25,10 +25,11 @@ export function getAuthorDataFile(hostProvider: HostProvider, config: AuthorData
     tld = 'localhost';
     hostKey = 'localhost';
   } else if (domainRegex.test(hostname)) {
-    // e.g. sub.example.com => tld: com, hostKey: sub.example
+    // e.g. sub.example.com => tld: com, hostKey: example
     const parts = hostname.split('.');
     tld = parts[parts.length - 1];
-    hostKey = parts.slice(0, -1).join('.');
+    // hostKey is the domain (second-to-last part), ignore subdomains
+    hostKey = parts.length > 1 ? parts[parts.length - 2] : hostname;
   }
 
   // Try /topleveldomain/hostname/author-data-${locale}.{fileExtension}
