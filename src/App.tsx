@@ -42,36 +42,33 @@ const socialIcons: Record<string, JSX.Element> = {
 function App() {
   const browserHistory = createBrowserHistory();
   var reactPlugin = new ReactPlugin();
-  // *** Add the Click Analytics plug-in. ***
-  /* var clickPluginInstance = new ClickAnalyticsPlugin();
-     var clickPluginConfig = {
-       autoCapture: true
-  }; */
   var appInsights = new ApplicationInsights({
     config: {
       connectionString: import.meta.env.VITE_APPINSIGHTS_CONNECTION_STRING,
-      // *** If you're adding the Click Analytics plug-in, delete the next line. ***
       extensions: [reactPlugin],
-      // *** Add the Click Analytics plug-in. ***
-      // extensions: [reactPlugin, clickPluginInstance],
       extensionConfig: {
         [reactPlugin.identifier]: { history: browserHistory }
-        // *** Add the Click Analytics plug-in. ***
-        // [clickPluginInstance.identifier]: clickPluginConfig
       }
     }
   });
   appInsights.loadAppInsights();
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [data, setData] = useState<AuthorData | null>(null)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [data, setData] = useState<AuthorData | null>(null);
+  const handleAuthorData = (newData?: AuthorData) => {
+    newData ? (() => {
+      setData(newData);
+      document.title = newData.name || document.title;
+    })() : (() => setData(null))();
+  };
   const [headers, setHeaders] = useState<LocaleHeaders>({
     welcome: 'Welcome',
     aboutMe: 'About Me',
     myBooks: 'My Books',
     loading: 'Loading...',
     articles: 'Articles'
-  })
-  const [darkMode, setDarkMode] = useState(true)
+  });
+  const [darkMode, setDarkMode] = useState(true);
+
 
   useEffect(() => {
     document.body.classList.toggle('dark-theme', darkMode)
@@ -111,11 +108,11 @@ function App() {
         if (!res.ok) throw new Error('Author data not found');
         return res.json();
       })
-      .then(setData)
+      .then(handleAuthorData)
       .catch(() => {
         fetch(getDefaultAuthorDataFile(authorDataBaseConfig))
           .then(res => res.json())
-          .then(setData);
+          .then(handleAuthorData);
       });
   }, []);
 
@@ -142,38 +139,38 @@ function App() {
           menuOpen={menuOpen}
           setMenuOpen={setMenuOpen}
           headers={headers}
-        handleNav={handleNav}
-        articlesExist={!!(data.articles && data.articles.length > 0)}
-        booksExist={!!(data.books && data.books.length > 0)}
-        contactExist={!!data.email}
-      />
-      <WelcomeSection header={headers.welcome} welcome={data.welcome} />
-      <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
-      {data.articles && data.articles.length > 0 && (
-        <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
-      )}
-      {data.books && data.books.length > 0 && (
-        <BooksSection header={headers.myBooks} books={data.books} />
-      )}
-      {data.email && (
-        <ContactSection
-          header={headers.contactMe || 'Contact Me'}
-          email={data.email}
-          emailPrompt={headers.emailPrompt}
-          emailLinkText={headers.emailLinkText}
-          noEmail={headers.noEmail}
+          handleNav={handleNav}
+          articlesExist={!!(data.articles && data.articles.length > 0)}
+          booksExist={!!(data.books && data.books.length > 0)}
+          contactExist={!!data.email}
         />
-      )}
-      <Footer
-        copyright={data.copyright}
-        social={data.social}
-        socialIcons={socialIcons}
-        darkMode={darkMode}
-        onToggleTheme={() => setDarkMode((prev) => !prev)}
-        switchToLight={headers.switchToLight}
-        switchToDark={headers.switchToDark}
-      />
-    </div>
+        <WelcomeSection header={headers.welcome} welcome={data.welcome} />
+        <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
+        {data.articles && data.articles.length > 0 && (
+          <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
+        )}
+        {data.books && data.books.length > 0 && (
+          <BooksSection header={headers.myBooks} books={data.books} />
+        )}
+        {data.email && (
+          <ContactSection
+            header={headers.contactMe || 'Contact Me'}
+            email={data.email}
+            emailPrompt={headers.emailPrompt}
+            emailLinkText={headers.emailLinkText}
+            noEmail={headers.noEmail}
+          />
+        )}
+        <Footer
+          copyright={data.copyright}
+          social={data.social}
+          socialIcons={socialIcons}
+          darkMode={darkMode}
+          onToggleTheme={() => setDarkMode((prev) => !prev)}
+          switchToLight={headers.switchToLight}
+          switchToDark={headers.switchToDark}
+        />
+      </div>
     </AppInsightsErrorBoundary>
   )
 }
