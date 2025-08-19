@@ -1,10 +1,10 @@
 /* Align Substack icon with other social icons */
 .social-icon-substack {
-  height: 1.7rem;
-  width: 1.7rem;
-  display: inline-block;
-  vertical-align: middle;
-  margin-bottom: 0.35rem; /* Adjust as needed for perfect alignment */
+  height: 1.5rem !important;
+    width: 1.3rem !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    margin: 0 0.22rem 0.55rem 0.22rem !important;
 }
 /* Theme variables */
 :root {
@@ -398,7 +398,7 @@ a:focus {
   
 }
 .social-icon-threads{
-  margin-top: -0.5rem;
+  margin: -0.5rem 0 0 0.1rem;
 }
 .social-icon-container{
   margin: '0 0.5rem';
