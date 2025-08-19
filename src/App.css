@@ -400,6 +400,12 @@ a:focus {
 .social-icon-threads{
   margin-top: -0.5rem;
 }
+.social-icon-container{
+  margin: '0 0.5rem';
+  color: 'inherit'; 
+  font-size: '1.7rem'; 
+  vertical-align: 'middle';
+}
 
 body.dark-theme .social-icon {
   /* Material UI icons in dark mode are usually #f3f3f3 or #fff */

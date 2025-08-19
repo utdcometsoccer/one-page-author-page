@@ -19,12 +19,6 @@ const ContactSection: React.FC<ContactSectionProps> = ({ header, email, emailPro
             <a
               href={`mailto:${email}`}
               className="contact-email-link"
-              style={{
-                color: 'var(--color-link)',
-                textDecoration: 'underline',
-                fontWeight: 500,
-                wordBreak: 'break-all'
-              }}
             >
               {emailLinkText || 'Email Me'}
             </a>

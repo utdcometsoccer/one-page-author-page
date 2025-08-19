@@ -108,7 +108,7 @@ function App() {
 
   if (!data) {
     return (
-      <div className="main-container" style={{ textAlign: 'center', marginTop: '4rem' }}>
+      <div className="main-container loading-container">
         <CircularProgress aria-label={headers.loading || 'Loading...'} />
       </div>
     )

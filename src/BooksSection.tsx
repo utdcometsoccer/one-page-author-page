@@ -29,7 +29,7 @@ const BooksSection: React.FC<BooksSectionProps> = ({ header, books }) => (
                   href={book.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: '#1a0dab', textDecoration: 'none', fontWeight: 600 }}
+                  className="book-link"
                 >
                   <h3>{book.title}</h3>
                 </a>
