@@ -11,9 +11,9 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({ header, articles }) =
   return (
     <section id="articles" className="articles-section">
       <h2>{header}</h2>
-      <div className="articles-list" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+      <div className="articles-list">
         {articles.map((article, idx) => (
-          <div key={idx} className="article-item" style={{ marginBottom: '1rem' }}>
+          <div key={idx} className="article-item article-item-margin">
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               {article.title}
             </a>

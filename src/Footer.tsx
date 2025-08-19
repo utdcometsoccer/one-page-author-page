@@ -26,18 +26,11 @@ const Footer: React.FC<FooterProps> = ({
   <footer>
     <p>{copyright}</p>
     {social && (
-      <div className="social-links" style={{ marginTop: '0.5rem' }}>
+      <div className="social-links">
         {social.map((link) => {
           const key = link.name.toLowerCase()
           return (
-            <a
-              key={key}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={link.name}
-              style={{ margin: '0 0.5rem', color: 'inherit', fontSize: '1.7rem', verticalAlign: 'middle' }}
-            >
+            <a key={key} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name} className='social-icon-container'>
               {socialIcons[key] || link.name}
             </a>
           )
