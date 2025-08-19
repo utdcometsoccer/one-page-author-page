@@ -22,40 +22,6 @@ jobs:
           echo "Ref: ${{ github.ref }}"
           echo "VITE_AUTHOR_DATA_FILE_EXTENSION: ${{ vars.VITE_AUTHOR_DATA_FILE_EXTENSION }}"
           echo "VITE_LOCALE_BASE: ${{ vars.VITE_LOCALE_BASE }}"
-
-  build_job:
-    runs-on: ubuntu-latest
-    name: Build Job
-    steps:      
-      - uses: actions/checkout@v3
-        env:
-          VITE_AUTHOR_DATA_BASE: ${{ secrets.VITE_AUTHOR_DATA_BASE }}
-          VITE_APPINSIGHTS_INSTRUMENTATION_KEY: ${{ secrets.VITE_APPINSIGHTS_CONNECTION_STRING}}
-          VITE_LOCALE_BASE: ${{ secrets.VITE_LOCALE_BASE }}
-        with:
-          submodules: true
-          lfs: false
-      - name: Install Dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
-
-  test_job:
-    runs-on: ubuntu-latest
-    name: Test Job
-    steps:
-      - uses: actions/checkout@v3
-        env:
-          VITE_AUTHOR_DATA_BASE: ${{ secrets.VITE_AUTHOR_DATA_BASE }}
-          VITE_APPINSIGHTS_INSTRUMENTATION_KEY: ${{ secrets.VITE_APPINSIGHTS_CONNECTION_STRING}}
-          VITE_LOCALE_BASE: ${{ secrets.VITE_LOCALE_BASE }}
-        with:
-          submodules: true
-          lfs: false
-      - name: Install Dependencies
-        run: npm ci
-      - name: Run Tests
-        run: npm test
   build_and_deploy_job:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
