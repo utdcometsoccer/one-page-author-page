@@ -1,32 +1,31 @@
-import './App.css'
-import { useState, useEffect } from 'react'
-import { AppInsightsProvider } from './utilities/AppInsightsProvider'
-
-import CircularProgress from '@mui/material/CircularProgress'
+import { AppInsightsErrorBoundary, ReactPlugin } from '@microsoft/applicationinsights-react-js'
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 import FacebookIcon from '@mui/icons-material/Facebook'
-import TwitterIcon from '@mui/icons-material/Twitter'
+import GitHubIcon from '@mui/icons-material/GitHub'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
-import YouTubeIcon from '@mui/icons-material/YouTube'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import ThreadsIcon from './assets/threads.svg'
-import SubstackIcon from './assets/substack.png'
 import TikTokIcon from '@mui/icons-material/MusicNote'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import YouTubeIcon from '@mui/icons-material/YouTube'
+import CircularProgress from '@mui/material/CircularProgress'
+import { createBrowserHistory } from "history"
+import { useEffect, useState } from 'react'
 import type { JSX } from 'react/jsx-runtime'
-
-import NavBar from './NavBar'
-import WelcomeSection from './WelcomeSection'
 import AboutMeSection from './AboutMeSection'
-import BooksSection from './BooksSection'
+import './App.css'
 import ArticlesSection from './ArticlesSection'
+import SubstackIcon from './assets/substack.png'
+import ThreadsIcon from './assets/threads.svg'
+import BooksSection from './BooksSection'
 import ContactSection from './ContactSection'
 import Footer from './Footer'
-
+import NavBar from './NavBar'
 import type { AuthorData, LocaleHeaders } from './types'
-import { getLocaleFile, type LocaleBase } from './utilities/getLocaleFile'
-import { getAuthorDataFile, type HostProvider, type AuthorDataBaseConfig } from './utilities/getAuthorDataFile'
+import { getAuthorDataFile, type AuthorDataBaseConfig, type HostProvider } from './utilities/getAuthorDataFile'
 import { getDefaultAuthorDataFile } from './utilities/getDefaultAuthorDataFile'
 import { getDefaultLocaleFile } from './utilities/getDefaultLocaleFile'
+import { getLocaleFile, type LocaleBase } from './utilities/getLocaleFile'
+import WelcomeSection from './WelcomeSection'
 
 const socialIcons: Record<string, JSX.Element> = {
   facebook: <FacebookIcon />,
@@ -41,6 +40,28 @@ const socialIcons: Record<string, JSX.Element> = {
 }
 
 function App() {
+  const browserHistory = createBrowserHistory();
+  var reactPlugin = new ReactPlugin();
+  // *** Add the Click Analytics plug-in. ***
+  /* var clickPluginInstance = new ClickAnalyticsPlugin();
+     var clickPluginConfig = {
+       autoCapture: true
+  }; */
+  var appInsights = new ApplicationInsights({
+    config: {
+      connectionString: import.meta.env.VITE_APPINSIGHTS_CONNECTION_STRING,
+      // *** If you're adding the Click Analytics plug-in, delete the next line. ***
+      extensions: [reactPlugin],
+      // *** Add the Click Analytics plug-in. ***
+      // extensions: [reactPlugin, clickPluginInstance],
+      extensionConfig: {
+        [reactPlugin.identifier]: { history: browserHistory }
+        // *** Add the Click Analytics plug-in. ***
+        // [clickPluginInstance.identifier]: clickPluginConfig
+      }
+    }
+  });
+  appInsights.loadAppInsights();
   const [menuOpen, setMenuOpen] = useState(false)
   const [data, setData] = useState<AuthorData | null>(null)
   const [headers, setHeaders] = useState<LocaleHeaders>({
@@ -115,45 +136,45 @@ function App() {
   }
 
   return (
-    <AppInsightsProvider>
+    <AppInsightsErrorBoundary onError={() => <><h1>Error occurred</h1></>} appInsights={reactPlugin}>
       <div className="main-container">
         <NavBar
           menuOpen={menuOpen}
           setMenuOpen={setMenuOpen}
           headers={headers}
-          handleNav={handleNav}
-          articlesExist={!!(data.articles && data.articles.length > 0)}
-          booksExist={!!(data.books && data.books.length > 0)}
-          contactExist={!!data.email}
-        />
-        <WelcomeSection header={headers.welcome} welcome={data.welcome} />
-        <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
-        {data.articles && data.articles.length > 0 && (
-          <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
-        )}
+        handleNav={handleNav}
+        articlesExist={!!(data.articles && data.articles.length > 0)}
+        booksExist={!!(data.books && data.books.length > 0)}
+        contactExist={!!data.email}
+      />
+      <WelcomeSection header={headers.welcome} welcome={data.welcome} />
+      <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
+      {data.articles && data.articles.length > 0 && (
+        <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
+      )}
       {data.books && data.books.length > 0 && (
-          <BooksSection header={headers.myBooks} books={data.books} />
-        )}
-        {data.email && (
-          <ContactSection
-            header={headers.contactMe || 'Contact Me'}
-            email={data.email}
-            emailPrompt={headers.emailPrompt}
-            emailLinkText={headers.emailLinkText}
-            noEmail={headers.noEmail}
-          />
-        )}
-        <Footer
-          copyright={data.copyright}
-          social={data.social}
-          socialIcons={socialIcons}
-          darkMode={darkMode}
-          onToggleTheme={() => setDarkMode((prev) => !prev)}
-          switchToLight={headers.switchToLight}
-          switchToDark={headers.switchToDark}
+        <BooksSection header={headers.myBooks} books={data.books} />
+      )}
+      {data.email && (
+        <ContactSection
+          header={headers.contactMe || 'Contact Me'}
+          email={data.email}
+          emailPrompt={headers.emailPrompt}
+          emailLinkText={headers.emailLinkText}
+          noEmail={headers.noEmail}
         />
-      </div>
-    </AppInsightsProvider>
+      )}
+      <Footer
+        copyright={data.copyright}
+        social={data.social}
+        socialIcons={socialIcons}
+        darkMode={darkMode}
+        onToggleTheme={() => setDarkMode((prev) => !prev)}
+        switchToLight={headers.switchToLight}
+        switchToDark={headers.switchToDark}
+      />
+    </div>
+    </AppInsightsErrorBoundary>
   )
 }
 
