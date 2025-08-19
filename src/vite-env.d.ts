@@ -8,7 +8,7 @@ interface ViteTypeOptions {
 interface ImportMetaEnv {
   readonly VITE_LOCALE_BASE: string;
   readonly VITE_AUTHOR_DATA_BASE: string;
-  readonly VITE_APPINSIGHTS_INSTRUMENTATION_KEY: string;
+  readonly VITE_APPINSIGHTS_CONNECTION_STRING: string;
 }
 
 interface ImportMeta {
