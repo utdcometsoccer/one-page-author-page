@@ -40,6 +40,15 @@ const socialIcons: Record<string, JSX.Element> = {
 }
 
 function App() {
+  const trackAuthorLoadEvent = (authorName: string, domain: string) => {
+    appInsights.trackEvent({
+      name: 'AuthorLoadEvent', // Replace with your event name
+      properties: {
+        authorName: authorName,
+        domain: domain,
+      },
+    });
+  };
   const browserHistory = createBrowserHistory();
   var reactPlugin = new ReactPlugin();
   var appInsights = new ApplicationInsights({
@@ -58,6 +67,7 @@ function App() {
     newData ? (() => {
       setData(newData);
       document.title = newData.name || document.title;
+      trackAuthorLoadEvent(newData.name || 'Unknown Author', window.location.hostname);
     })() : (() => setData(null))();
   };
   const [headers, setHeaders] = useState<LocaleHeaders>({
