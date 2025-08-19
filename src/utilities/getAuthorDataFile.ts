@@ -1,4 +1,3 @@
-import { getLocale } from './getLocale'
 
 export interface HostProvider {
   getHostname: () => string;
@@ -8,12 +7,12 @@ export interface AuthorDataBaseConfig {
   getAuthorDataBase: () => string;
 }
 
-export function getAuthorDataFile(hostProvider: HostProvider, config: AuthorDataBaseConfig, fileExtension: string): string {
-  const locale = getLocale();
+export function getAuthorDataFile(hostProvider: HostProvider, config: AuthorDataBaseConfig, fileExtension: string, locale: string): string {
+  let tld = 'com'; // Default TLD
+  let sld = 'localhost';
   const base = config.getAuthorDataBase();
-  const hostname = hostProvider.getHostname();
-  let tld = 'localhost';
-  let hostKey = hostname;
+  const hostname = hostProvider.getHostname().toLowerCase();
+  
   // Regex for IPv4
   const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
   // Regex for localhost
@@ -23,16 +22,31 @@ export function getAuthorDataFile(hostProvider: HostProvider, config: AuthorData
 
   if (ipv4Regex.test(hostname) || localhostRegex.test(hostname)) {
     tld = 'localhost';
-    hostKey = 'localhost';
+    sld = 'localhost';
   } else if (domainRegex.test(hostname)) {
-    // e.g. sub.example.com => tld: com, hostKey: example
+    // e.g. sub.example.com => tld: com, sld: example
     const parts = hostname.split('.');
     tld = parts[parts.length - 1];
-    // hostKey is the domain (second-to-last part), ignore subdomains
-    hostKey = parts.length > 1 ? parts[parts.length - 2] : hostname;
+    sld = parts.length > 1 ? parts[parts.length - 2] : hostname;
   }
 
-  // Try /topleveldomain/hostname/author-data-${locale}.{fileExtension}
-  const path = `${base}/${tld}/${hostKey}/author-data-${locale}${fileExtension}`;
+  // Parse language and region from locale
+  let language = '';
+  let region = '';
+  const localeStr = locale.toLowerCase();
+  if (localeStr.includes('-')) {
+    const localeParts = localeStr.split('-');
+    language = localeParts[0];
+    region = localeParts[1];
+  } else {
+    language = localeStr;
+  }
+
+  // Build path: {base}/{tld}/{sld}/{language}/{region?}{fileExtension}
+  let path = `${base}/${tld}/${sld}/${language}`;
+  if (region) {
+    path += `/${region}`;
+  }
+  path += `${fileExtension}`;
   return path;
 }

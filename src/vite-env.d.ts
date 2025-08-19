@@ -9,6 +9,13 @@ interface ImportMetaEnv {
   readonly VITE_LOCALE_BASE: string;
   readonly VITE_AUTHOR_DATA_BASE: string;
   readonly VITE_APPINSIGHTS_CONNECTION_STRING: string;
+  readonly VITE_AUTHOR_DATA_FILE_EXTENSION: string;
+  readonly VITE_LOCAL_AUTHOR_DATA_BASE: string;
+  readonly VITE_LOCAL_TLD: string;
+  readonly VITE_LOCAL_SLD: string;
+  readonly VITE_LOCAL_LANG: string;
+  readonly VITE_LOCAL_REGION: string;
+  readonly VITE_LOCAL_AUTHOR_DATA_FILE_EXTENSION: string;
 }
 
 interface ImportMeta {

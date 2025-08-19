@@ -1,3 +1,9 @@
+/* Error container styles for App error state */
+.error-container {
+  text-align: center;
+  margin-top: 4rem;
+  color: red;
+}
 /* Align Substack icon with other social icons */
 .social-icon-substack {
   height: 1.5rem !important;
