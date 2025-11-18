@@ -1,3 +1,4 @@
+[![Azure Static Web Apps CI/CD](https://github.com/utdcometsoccer/one-page-author-page/actions/workflows/azure-static-web-apps-wonderful-moss-050caf31e.yml/badge.svg)](https://github.com/utdcometsoccer/one-page-author-page/actions/workflows/azure-static-web-apps-wonderful-moss-050caf31e.yml)
 # One Page Author Page
 
 A responsive, single-page React + TypeScript + Vite application for authors. This project features:
