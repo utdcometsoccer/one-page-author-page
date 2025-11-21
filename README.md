@@ -25,6 +25,20 @@ The app automatically detects the user's browser language and loads the appropri
 2. Add a new author data file in `public/` (e.g., `author-data-it-it.json`)
 3. Translate the content as needed
 
+## UI/UX Analysis
+
+A comprehensive UI/UX analysis has been conducted following industry best practices from [BrowserStack](https://www.browserstack.com/guide/website-ui-ux-checklist) and [Figma](https://www.figma.com/community/file/1299121594620623551/ui-ux-design-checklist).
+
+📊 **[View Full UI/UX Analysis Report](./UI-UX-ANALYSIS.md)** - Detailed 30KB analysis covering all aspects of the application
+
+✅ **[View Quick Reference Checklist](./UI-UX-CHECKLIST.md)** - Actionable items and quick wins
+
+**Key Findings:**
+- ✅ Strong responsive design foundation
+- ❌ Critical accessibility issues need addressing (WCAG AA compliance)
+- ⚠️ Missing design system and component consistency
+- 💡 Opportunities for enhanced CTAs and user feedback
+
 ## Development
 
 This project uses Vite for fast development and HMR. To run locally:
