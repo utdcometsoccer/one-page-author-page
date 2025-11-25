@@ -1,7 +1,7 @@
 import { AppInsightsErrorBoundary, ReactPlugin } from '@microsoft/applicationinsights-react-js';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { createBrowserHistory } from "history";
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState, useCallback, useMemo } from 'react';
 import type { JSX } from 'react/jsx-runtime';
 import './App.css';
 import NavBar from './NavBar';
@@ -16,6 +16,7 @@ import { localeBaseConfig } from './utilities/localeBaseConfig';
 import { getLocalHostProvider, getWindowHostProvider } from './utilities/hostProvider';
 import ErrorContainer from './ErrorContainer';
 import LoadingContainer from './LoadingContainer';
+import { BackToTop, ScrollProgress, ShareButtons, AddToHomeScreenBanner, useSwipeGesture } from './components';
 
 // Lazy load below-fold sections for code splitting
 const AboutMeSection = lazy(() => import('./AboutMeSection'));
@@ -114,9 +115,11 @@ function App() {
     loadSocialIcons().then(setSocialIcons);
   }, []);
 
+  // Section IDs for navigation - memoized to prevent unnecessary re-renders
+  const sectionIds = useMemo(() => ['welcome', 'about-me', 'articles', 'my-books', 'contact-me'], []);
+
   // Scroll spy effect
   useEffect(() => {
-    const sectionIds = ['welcome', 'about-me', 'articles', 'my-books', 'contact-me'];
     const NAVBAR_HEIGHT_OFFSET = 100; // Matches navbar height plus buffer
     
     const handleScroll = () => {
@@ -135,7 +138,40 @@ function App() {
     handleScroll(); // Initial check
     
     return () => window.removeEventListener('scroll', handleScroll);
+  }, [sectionIds]);
+
+  // Navigate to section by ID
+  const navigateToSection = useCallback((sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
   }, []);
+
+  // Swipe gesture for section navigation
+  const navigateToNextSection = useCallback(() => {
+    const currentIndex = sectionIds.indexOf(activeSection);
+    if (currentIndex < sectionIds.length - 1) {
+      const nextSection = sectionIds[currentIndex + 1];
+      navigateToSection(nextSection);
+    }
+  }, [activeSection, sectionIds, navigateToSection]);
+
+  const navigateToPrevSection = useCallback(() => {
+    const currentIndex = sectionIds.indexOf(activeSection);
+    if (currentIndex > 0) {
+      const prevSection = sectionIds[currentIndex - 1];
+      navigateToSection(prevSection);
+    }
+  }, [activeSection, sectionIds, navigateToSection]);
+
+  // Touch gesture support for swipe between sections
+  useSwipeGesture({
+    onSwipeUp: navigateToNextSection,
+    onSwipeDown: navigateToPrevSection,
+    threshold: 100,
+    enabled: true
+  });
 
 
   useEffect(() => {
@@ -220,51 +256,60 @@ function App() {
 
   return (
     <AppInsightsErrorBoundary onError={() => <><h1>Error occurred</h1></>} appInsights={reactPlugin}>
-      <div className="main-container">
-        <a href="#main-content" className="skip-link">Skip to main content</a>
-        <NavBar
-          menuOpen={menuOpen}
-          setMenuOpen={setMenuOpen}
-          headers={headers}
-          handleNav={handleNav}
-          articlesExist={!!(data.articles && data.articles.length > 0)}
-          booksExist={!!(data.books && data.books.length > 0)}
-          contactExist={!!data.email}
-          activeSection={activeSection}
-        />
-        <main id="main-content">
-          <WelcomeSection header={headers.welcome} welcome={data.welcome} />
-          <Suspense fallback={<SectionFallback />}>
-            <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} authorName={data.name} />
-            {data.articles && data.articles.length > 0 && (
-              <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
-            )}
-            {data.books && data.books.length > 0 && (
-              <BooksSection header={headers.myBooks} books={data.books} />
-            )}
-            {data.email && (
-              <ContactSection
-                header={headers.contactMe || 'Contact Me'}
-                email={data.email}
-                emailPrompt={headers.emailPrompt}
-                emailLinkText={headers.emailLinkText}
-                noEmail={headers.noEmail}
-              />
-            )}
-          </Suspense>
-        </main>
-        <Suspense fallback={<SectionFallback />}>
-          <Footer
-            copyright={data.copyright}
-            social={data.social}
-            socialIcons={socialIcons}
-            darkMode={darkMode}
-            onToggleTheme={() => setDarkMode((prev) => !prev)}
-            switchToLight={headers.switchToLight}
-            switchToDark={headers.switchToDark}
+      <>
+        <ScrollProgress />
+        <div className="main-container">
+          <a href="#main-content" className="skip-link">Skip to main content</a>
+          <NavBar
+            menuOpen={menuOpen}
+            setMenuOpen={setMenuOpen}
+            headers={headers}
+            handleNav={handleNav}
+            articlesExist={!!(data.articles && data.articles.length > 0)}
+            booksExist={!!(data.books && data.books.length > 0)}
+            contactExist={!!data.email}
+            activeSection={activeSection}
           />
-        </Suspense>
-      </div>
+          <main id="main-content">
+            <WelcomeSection header={headers.welcome} welcome={data.welcome} />
+            <Suspense fallback={<SectionFallback />}>
+              <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} authorName={data.name} />
+              {data.articles && data.articles.length > 0 && (
+                <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
+              )}
+              {data.books && data.books.length > 0 && (
+                <BooksSection header={headers.myBooks} books={data.books} />
+              )}
+              {data.email && (
+                <ContactSection
+                  header={headers.contactMe || 'Contact Me'}
+                  email={data.email}
+                  emailPrompt={headers.emailPrompt}
+                  emailLinkText={headers.emailLinkText}
+                  noEmail={headers.noEmail}
+                />
+              )}
+              <ShareButtons title={data.name} />
+            </Suspense>
+          </main>
+          <Suspense fallback={<SectionFallback />}>
+            <Footer
+              copyright={data.copyright}
+              social={data.social}
+              socialIcons={socialIcons}
+              darkMode={darkMode}
+              onToggleTheme={() => setDarkMode((prev) => !prev)}
+              switchToLight={headers.switchToLight}
+              switchToDark={headers.switchToDark}
+            />
+          </Suspense>
+          <BackToTop ariaLabel={headers.backToTop || 'Back to top'} />
+          <AddToHomeScreenBanner 
+            installText={headers.installApp || 'Install this app on your device'}
+            dismissText={headers.notNow || 'Not now'}
+          />
+        </div>
+      </>
     </AppInsightsErrorBoundary>
   )
 }
