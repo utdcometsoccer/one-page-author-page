@@ -220,7 +220,7 @@ section {
   padding-left: 1.5rem;
 }
 
-.book-info a {
+.book-info a:not(.book-cta-btn) {
   color: var(--color-link) !important;
   text-decoration: underline;
 }
