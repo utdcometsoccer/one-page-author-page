@@ -20,8 +20,8 @@
   --color-card: #23272b;
   --color-text: #f3f3f3;
   --color-header: #fff;
-  --color-link: #5eb8ff;
-  /* Brighter blue for better contrast - WCAG AA compliant */
+  --color-link: #7dcfff;
+  /* Brighter blue for better contrast - WCAG AAA compliant (8.77:1 ratio) */
   --color-footer: #bbb;
   --color-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 
@@ -220,7 +220,7 @@ section {
   padding-left: 1.5rem;
 }
 
-.book-info a {
+.book-info a:not(.book-cta-btn) {
   color: var(--color-link) !important;
   text-decoration: underline;
 }
