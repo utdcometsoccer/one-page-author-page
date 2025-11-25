@@ -40,10 +40,21 @@ This document outlines the design system for the One-Page Author Page applicatio
 
 ## Typography
 
+### Font Families
+
+| Font | Type | Usage |
+|------|------|-------|
+| **Inter** | Sans-serif | Body text, UI elements, navigation |
+| **Playfair Display** | Serif | Headings (h1, h2, h3) |
+
 ### Font Stack
 
 ```css
-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+/* Body text */
+--font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+/* Headings */
+--font-family-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
 ```
 
 ### Type Scale
@@ -178,6 +189,39 @@ import { Link } from './components'
 
 <Link href="/about">About Us</Link>
 <Link href="https://example.com">External Site ↗</Link>
+```
+
+### Toast
+
+Notification system for user feedback.
+
+#### Types
+
+| Type | Border Color | Usage |
+|------|--------------|-------|
+| `success` | `#22c55e` | Successful actions |
+| `error` | `#ef4444` | Error messages |
+| `info` | `--color-link` | Information, updates |
+
+#### Usage
+
+```tsx
+import { Toast, useToast } from './components'
+
+function MyComponent() {
+  const { messages, removeToast, success, error, info } = useToast()
+
+  const handleAction = () => {
+    success('Action completed successfully!')
+  }
+
+  return (
+    <>
+      <button onClick={handleAction}>Do Action</button>
+      <Toast messages={messages} onRemove={removeToast} />
+    </>
+  )
+}
 ```
 
 ---

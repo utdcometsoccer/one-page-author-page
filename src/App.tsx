@@ -1,24 +1,11 @@
 import { AppInsightsErrorBoundary, ReactPlugin } from '@microsoft/applicationinsights-react-js';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TikTokIcon from '@mui/icons-material/MusicNote';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import YouTubeIcon from '@mui/icons-material/YouTube';
 import { createBrowserHistory } from "history";
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import type { JSX } from 'react/jsx-runtime';
-import AboutMeSection from './AboutMeSection';
 import './App.css';
-import ArticlesSection from './ArticlesSection';
-import SubstackIcon from './assets/substack.png';
-import ThreadsIcon from './assets/threads.svg';
-import BooksSection from './BooksSection';
-import ContactSection from './ContactSection';
-import Footer from './Footer';
 import NavBar from './NavBar';
+import WelcomeSection from './WelcomeSection';
 import type { AuthorData, LocaleHeaders } from './types';
 import { getAuthorDataFile } from './utilities/getAuthorDataFile';
 import { getLocale } from './utilities/getLocale';
@@ -26,48 +13,82 @@ import { getRemoteAuthorDataBaseConfig, getLocalAuthorDataBaseConfig } from './u
 import { getDefaultLocaleFile } from './utilities/getDefaultLocaleFile';
 import { getLocaleFile } from './utilities/getLocaleFile';
 import { localeBaseConfig } from './utilities/localeBaseConfig';
-import WelcomeSection from './WelcomeSection';
 import { getLocalHostProvider, getWindowHostProvider } from './utilities/hostProvider';
 import ErrorContainer from './ErrorContainer';
 import LoadingContainer from './LoadingContainer';
 
-const socialIcons: Record<string, JSX.Element> = {
-  facebook: <FacebookIcon />,
-  twitter: <TwitterIcon />,
-  instagram: <InstagramIcon />,
-  linkedin: <LinkedInIcon />,
-  youtube: <YouTubeIcon />,
-  github: <GitHubIcon />,
-  threads: <img src={ThreadsIcon} alt='Threads icon' className='social-icon social-icon-threads' />,
-  tiktok: <TikTokIcon />, // Add TikTok icon (using MusicNote as a substitute)
-  substack: <img src={SubstackIcon} alt='Substack icon' className='social-icon social-icon-substack' />,
+// Lazy load below-fold sections for code splitting
+const AboutMeSection = lazy(() => import('./AboutMeSection'));
+const ArticlesSection = lazy(() => import('./ArticlesSection'));
+const BooksSection = lazy(() => import('./BooksSection'));
+const ContactSection = lazy(() => import('./ContactSection'));
+const Footer = lazy(() => import('./Footer'));
+
+// Dynamic imports for social icons
+const loadSocialIcons = async (): Promise<Record<string, JSX.Element>> => {
+  const [
+    { default: FacebookIcon },
+    { default: TwitterIcon },
+    { default: InstagramIcon },
+    { default: LinkedInIcon },
+    { default: YouTubeIcon },
+    { default: GitHubIcon },
+    { default: TikTokIcon },
+    { default: SubstackIcon },
+    { default: ThreadsIcon }
+  ] = await Promise.all([
+    import('@mui/icons-material/Facebook'),
+    import('@mui/icons-material/Twitter'),
+    import('@mui/icons-material/Instagram'),
+    import('@mui/icons-material/LinkedIn'),
+    import('@mui/icons-material/YouTube'),
+    import('@mui/icons-material/GitHub'),
+    import('@mui/icons-material/MusicNote'),
+    import('./assets/substack.png'),
+    import('./assets/threads.svg')
+  ]);
+
+  return {
+    facebook: <FacebookIcon />,
+    twitter: <TwitterIcon />,
+    instagram: <InstagramIcon />,
+    linkedin: <LinkedInIcon />,
+    youtube: <YouTubeIcon />,
+    github: <GitHubIcon />,
+    threads: <img src={ThreadsIcon} alt='Threads icon' className='social-icon social-icon-threads' />,
+    tiktok: <TikTokIcon />,
+    substack: <img src={SubstackIcon} alt='Substack icon' className='social-icon social-icon-substack' />,
+  };
 };
+
+// Initialize Application Insights outside component to prevent re-instantiation
+const browserHistory = createBrowserHistory();
+const reactPlugin = new ReactPlugin();
+const appInsights = new ApplicationInsights({
+  config: {
+    connectionString: import.meta.env.VITE_APPINSIGHTS_CONNECTION_STRING,
+    extensions: [reactPlugin],
+    extensionConfig: {
+      [reactPlugin.identifier]: { history: browserHistory }
+    }
+  }
+});
+appInsights.loadAppInsights();
 
 function App() {
   const trackAuthorLoadEvent = (authorName: string, domain: string) => {
     appInsights.trackEvent({
-      name: 'AuthorLoadEvent', // Replace with your event name
+      name: 'AuthorLoadEvent',
       properties: {
         authorName: authorName,
         domain: domain,
       },
     });
   };
-  const browserHistory = createBrowserHistory();
-  var reactPlugin = new ReactPlugin();
-  var appInsights = new ApplicationInsights({
-    config: {
-      connectionString: import.meta.env.VITE_APPINSIGHTS_CONNECTION_STRING,
-      extensions: [reactPlugin],
-      extensionConfig: {
-        [reactPlugin.identifier]: { history: browserHistory }
-      }
-    }
-  });
-  appInsights.loadAppInsights();
   const [menuOpen, setMenuOpen] = useState(false);
   const [data, setData] = useState<AuthorData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [socialIcons, setSocialIcons] = useState<Record<string, JSX.Element>>({});
   const handleAuthorData = (newData?: AuthorData) => {
     if (newData) {
       setData(newData);
@@ -87,6 +108,11 @@ function App() {
   });
   const [darkMode, setDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState<string>('welcome');
+
+  // Load social icons dynamically
+  useEffect(() => {
+    loadSocialIcons().then(setSocialIcons);
+  }, []);
 
   // Scroll spy effect
   useEffect(() => {
@@ -185,6 +211,13 @@ function App() {
     return <LoadingContainer label={headers.loading} />;
   }
 
+  // Section loading fallback
+  const SectionFallback = () => (
+    <div className="section-loading" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text)' }}>
+      Loading...
+    </div>
+  );
+
   return (
     <AppInsightsErrorBoundary onError={() => <><h1>Error occurred</h1></>} appInsights={reactPlugin}>
       <div className="main-container">
@@ -201,32 +234,36 @@ function App() {
         />
         <main id="main-content">
           <WelcomeSection header={headers.welcome} welcome={data.welcome} />
-          <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} authorName={data.name} />
-          {data.articles && data.articles.length > 0 && (
-            <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
-          )}
-          {data.books && data.books.length > 0 && (
-            <BooksSection header={headers.myBooks} books={data.books} />
-          )}
-          {data.email && (
-            <ContactSection
-              header={headers.contactMe || 'Contact Me'}
-              email={data.email}
-              emailPrompt={headers.emailPrompt}
-              emailLinkText={headers.emailLinkText}
-              noEmail={headers.noEmail}
-            />
-          )}
+          <Suspense fallback={<SectionFallback />}>
+            <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} authorName={data.name} />
+            {data.articles && data.articles.length > 0 && (
+              <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
+            )}
+            {data.books && data.books.length > 0 && (
+              <BooksSection header={headers.myBooks} books={data.books} />
+            )}
+            {data.email && (
+              <ContactSection
+                header={headers.contactMe || 'Contact Me'}
+                email={data.email}
+                emailPrompt={headers.emailPrompt}
+                emailLinkText={headers.emailLinkText}
+                noEmail={headers.noEmail}
+              />
+            )}
+          </Suspense>
         </main>
-        <Footer
-          copyright={data.copyright}
-          social={data.social}
-          socialIcons={socialIcons}
-          darkMode={darkMode}
-          onToggleTheme={() => setDarkMode((prev) => !prev)}
-          switchToLight={headers.switchToLight}
-          switchToDark={headers.switchToDark}
-        />
+        <Suspense fallback={<SectionFallback />}>
+          <Footer
+            copyright={data.copyright}
+            social={data.social}
+            socialIcons={socialIcons}
+            darkMode={darkMode}
+            onToggleTheme={() => setDarkMode((prev) => !prev)}
+            switchToLight={headers.switchToLight}
+            switchToDark={headers.switchToDark}
+          />
+        </Suspense>
       </div>
     </AppInsightsErrorBoundary>
   )
