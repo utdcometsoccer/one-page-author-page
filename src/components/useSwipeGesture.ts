@@ -29,6 +29,7 @@ export const useSwipeGesture = (options: SwipeOptions = {}) => {
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
     if (!enabled) return
+    if (!e.targetTouches || e.targetTouches.length === 0) return
     touchStartRef.current = {
       x: e.targetTouches[0].clientX,
       y: e.targetTouches[0].clientY
@@ -38,6 +39,7 @@ export const useSwipeGesture = (options: SwipeOptions = {}) => {
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
     if (!enabled) return
+    if (!e.targetTouches || e.targetTouches.length === 0) return
     touchEndRef.current = {
       x: e.targetTouches[0].clientX,
       y: e.targetTouches[0].clientY

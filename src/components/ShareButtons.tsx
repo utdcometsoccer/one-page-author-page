@@ -11,7 +11,7 @@ export interface ShareButtonsProps {
 
 const ShareButtons: React.FC<ShareButtonsProps> = ({
   url,
-  title = document.title,
+  title: titleProp,
   copyLabel = 'Copy Link',
   copiedLabel = 'Copied!',
   shareLabel = 'Share',
@@ -19,14 +19,20 @@ const ShareButtons: React.FC<ShareButtonsProps> = ({
 }) => {
   const [copied, setCopied] = useState(false)
   const shareUrl = url || (typeof window !== 'undefined' ? window.location.href : '')
+  const title = titleProp || (typeof document !== 'undefined' ? document.title : '')
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(shareUrl)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      // Check if clipboard API is available
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(shareUrl)
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2000)
+        return
+      }
+      throw new Error('Clipboard API not available')
     } catch {
-      // Fallback for older browsers
+      // Fallback for older browsers or non-HTTPS contexts
       const textArea = document.createElement('textarea')
       textArea.value = shareUrl
       textArea.style.position = 'fixed'
