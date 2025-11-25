@@ -51,8 +51,8 @@ npm run preview
 │   └── types.ts          # TypeScript type definitions
 ├── tests/                # Test files (*.test.tsx, *.test.ts)
 ├── public/
-│   ├── locales/          # Locale header files (en-us.json, fr-fr.json, etc.)
-│   └── data.json         # Author data files
+│   ├── locales/          # Locale header files (e.g., locales/en/us/index.json)
+│   └── com/              # Author data files (e.g., com/{author}/en/us/author-data.json)
 ├── .github/
 │   └── workflows/        # GitHub Actions workflows
 └── DESIGN-SYSTEM.md      # Design system documentation
@@ -91,14 +91,18 @@ npm run preview
 
 The app supports multiple languages:
 
-- English (en-us) - default
-- French (fr-fr)
-- German (de-de)
-- Mexican Spanish (es-mx)
+- English (en/us) - default
+- French (fr/fr)
+- German (de/de)
+- Mexican Spanish (es/mx)
+
+**File Structure:**
+- Locale header files: `public/locales/{lang}/{region}/index.json` (e.g., `locales/en/us/index.json`)
+- Author data files: `public/com/{author}/{lang}/{region}/author-data.json`
 
 When adding new features that involve user-facing text:
 
-1. Add strings to locale files in `public/locales/`
+1. Add strings to locale files following the directory structure in `public/locales/`
 2. Use the locale loading utilities in `src/utilities/`
 3. Ensure fallback to English when locale is not available
 
