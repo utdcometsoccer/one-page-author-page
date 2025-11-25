@@ -91,9 +91,10 @@ function App() {
   // Scroll spy effect
   useEffect(() => {
     const sectionIds = ['welcome', 'about-me', 'articles', 'my-books', 'contact-me'];
+    const NAVBAR_HEIGHT_OFFSET = 100; // Matches navbar height plus buffer
     
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 100; // Offset for navbar height
+      const scrollPosition = window.scrollY + NAVBAR_HEIGHT_OFFSET;
       
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const section = document.getElementById(sectionIds[i]);

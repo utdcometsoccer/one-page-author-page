@@ -13,7 +13,7 @@ const Link: React.FC<LinkProps> = ({
   className = '',
   ...props
 }) => {
-  const isExternal = external || (href && (href.startsWith('http://') || href.startsWith('https://')))
+  const isExternal = external || href.startsWith('http://') || href.startsWith('https://')
 
   return (
     <a
