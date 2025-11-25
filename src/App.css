@@ -829,3 +829,325 @@ section.section-active {
     transform: translateX(0);
   }
 }
+
+/* =========================== */
+/* Back to Top Button Styles   */
+/* =========================== */
+.back-to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 99;
+  width: 48px;
+  height: 48px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--color-link);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px);
+  background: var(--color-text);
+}
+
+.back-to-top:focus-visible {
+  outline: 3px solid var(--color-link);
+  outline-offset: 2px;
+}
+
+.back-to-top-icon {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* =========================== */
+/* Scroll Progress Bar Styles  */
+/* =========================== */
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  z-index: 101;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-link), #9d4edd);
+  transition: width 0.1s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress-bar {
+    transition: none;
+  }
+}
+
+/* =========================== */
+/* Share Buttons Styles        */
+/* =========================== */
+.share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-footer);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-section);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  transition: all 0.2s ease;
+  gap: var(--space-2);
+}
+
+.share-btn:hover,
+.share-btn:focus {
+  background: var(--color-link);
+  color: #fff;
+  border-color: var(--color-link);
+}
+
+.share-btn:focus-visible {
+  outline: 3px solid var(--color-link);
+  outline-offset: 2px;
+}
+
+.share-btn-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.share-btn-copy {
+  flex: 1 1 auto;
+  max-width: 150px;
+}
+
+.share-btn-twitter,
+.share-btn-facebook,
+.share-btn-linkedin {
+  padding: var(--space-2);
+}
+
+.share-btn-twitter .share-btn-icon {
+  font-weight: 700;
+}
+
+.share-btn-facebook .share-btn-icon {
+  font-weight: 700;
+  font-family: Georgia, serif;
+}
+
+.share-btn-linkedin .share-btn-icon {
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: lowercase;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .share-btn {
+    transition: none;
+  }
+}
+
+/* =========================== */
+/* Add to Home Screen Banner   */
+/* =========================== */
+.add-to-homescreen-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg-section);
+  color: var(--color-text);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  animation: slideUpBanner 0.3s ease-out;
+}
+
+.add-to-homescreen-text {
+  flex: 1;
+  font-size: var(--font-size-sm);
+}
+
+.add-to-homescreen-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.add-to-homescreen-btn {
+  min-width: 44px;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.add-to-homescreen-install {
+  background: var(--color-link);
+  color: #fff;
+}
+
+.add-to-homescreen-install:hover {
+  background: transparent;
+  color: var(--color-link);
+  outline: 2px solid var(--color-link);
+}
+
+.add-to-homescreen-dismiss {
+  background: transparent;
+  color: var(--color-footer);
+  padding: var(--space-2);
+}
+
+.add-to-homescreen-dismiss:hover {
+  color: var(--color-text);
+}
+
+@keyframes slideUpBanner {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .add-to-homescreen-banner {
+    animation: none;
+  }
+  .add-to-homescreen-btn {
+    transition: none;
+  }
+}
+
+/* =========================== */
+/* Touch Target Enhancements   */
+/* =========================== */
+/* Ensure minimum 44x44px touch targets for mobile */
+.nav-links li a,
+.menu-btn,
+.theme-toggle-btn,
+.toast-close,
+.book-cta-btn {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Social links in footer */
+.social-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: var(--space-2);
+}
+
+/* =========================== */
+/* Micro-interactions          */
+/* =========================== */
+/* Subtle scale effect on interactive elements */
+.btn:active,
+.share-btn:active,
+.back-to-top:active,
+.nav-links li a:active {
+  transform: scale(0.97);
+}
+
+/* Smooth hover transitions for cards */
+.book-card,
+.card-component {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-card:hover,
+.card-component:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover effects for social icons */
+.social-icon-container:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:active,
+  .share-btn:active,
+  .back-to-top:active,
+  .nav-links li a:active {
+    transform: none;
+  }
+  
+  .book-card,
+  .card-component {
+    transition: none;
+  }
+  
+  .book-card:hover,
+  .card-component:hover {
+    transform: none;
+  }
+  
+  .social-icon-container:hover {
+    transform: none;
+    transition: none;
+  }
+}

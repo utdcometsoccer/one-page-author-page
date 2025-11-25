@@ -34,6 +34,9 @@ export type LocaleHeaders = {
   switchToLight?: string
   switchToDark?: string
   articles?: string
+  backToTop?: string
+  installApp?: string
+  notNow?: string
 }
 
 export type Article = {
