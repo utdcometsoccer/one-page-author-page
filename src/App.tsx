@@ -164,6 +164,7 @@ function App() {
   return (
     <AppInsightsErrorBoundary onError={() => <><h1>Error occurred</h1></>} appInsights={reactPlugin}>
       <div className="main-container">
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <NavBar
           menuOpen={menuOpen}
           setMenuOpen={setMenuOpen}
@@ -173,23 +174,25 @@ function App() {
           booksExist={!!(data.books && data.books.length > 0)}
           contactExist={!!data.email}
         />
-        <WelcomeSection header={headers.welcome} welcome={data.welcome} />
-        <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
-        {data.articles && data.articles.length > 0 && (
-          <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
-        )}
-        {data.books && data.books.length > 0 && (
-          <BooksSection header={headers.myBooks} books={data.books} />
-        )}
-        {data.email && (
-          <ContactSection
-            header={headers.contactMe || 'Contact Me'}
-            email={data.email}
-            emailPrompt={headers.emailPrompt}
-            emailLinkText={headers.emailLinkText}
-            noEmail={headers.noEmail}
-          />
-        )}
+        <main id="main-content">
+          <WelcomeSection header={headers.welcome} welcome={data.welcome} />
+          <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
+          {data.articles && data.articles.length > 0 && (
+            <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
+          )}
+          {data.books && data.books.length > 0 && (
+            <BooksSection header={headers.myBooks} books={data.books} />
+          )}
+          {data.email && (
+            <ContactSection
+              header={headers.contactMe || 'Contact Me'}
+              email={data.email}
+              emailPrompt={headers.emailPrompt}
+              emailLinkText={headers.emailLinkText}
+              noEmail={headers.noEmail}
+            />
+          )}
+        </main>
         <Footer
           copyright={data.copyright}
           social={data.social}

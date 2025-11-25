@@ -19,8 +19,8 @@
   --color-card: #23272b;
   --color-text: #f3f3f3;
   --color-header: #fff;
-  --color-link: #4ea8ff;
-  /* Brighter blue for better contrast */
+  --color-link: #5eb8ff;
+  /* Brighter blue for better contrast - WCAG AA compliant */
   --color-footer: #bbb;
   --color-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
@@ -34,6 +34,30 @@ body.light-theme {
   --color-link: #1a0dab;
   --color-footer: #555;
   --color-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Focus visible styles for keyboard accessibility */
+*:focus-visible {
+  outline: 3px solid var(--color-link);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link for screen reader accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-bg-section);
+  color: var(--color-link);
+  padding: 8px 16px;
+  z-index: 200;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
 }
 
 body {
@@ -246,7 +270,7 @@ footer {
   display: flex;
 }
 
-.nav-links li button {
+.nav-links li a {
   background: none;
   border: none;
   font-size: 1.1rem;
@@ -256,6 +280,14 @@ footer {
   padding: 0.5rem 1.5rem;
   text-align: left;
   width: 100%;
+  text-decoration: none;
+  display: block;
+}
+
+.nav-links li a:hover,
+.nav-links li a:focus {
+  color: var(--color-nav-text, #222);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 a,
@@ -267,7 +299,7 @@ a:visited {
 a:hover,
 a:focus {
   color: #fff;
-  background: #4ea8ff;
+  background: var(--color-link);
   text-decoration: underline;
   border-radius: 2px;
   transition: background 0.2s, color 0.2s;
@@ -299,7 +331,7 @@ a:focus {
     width: auto;
   }
 
-  .nav-links li button {
+  .nav-links li a {
     padding: 0.5rem 1rem;
     font-size: 1rem;
   }
