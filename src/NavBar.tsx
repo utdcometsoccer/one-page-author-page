@@ -12,39 +12,47 @@ interface NavBarProps {
   contactExist: boolean
 }
 
-const NavBar: React.FC<NavBarProps> = ({ menuOpen, setMenuOpen, headers, handleNav, articlesExist, booksExist, contactExist }) => (
-  <nav className="nav-bar">
-    <button
-      className="menu-btn"
-      aria-label="Open navigation menu"
-      onClick={() => setMenuOpen(!menuOpen)}
-    >
-      {menuOpen ? <span>&#x2715;</span> : <span>&#9776;</span>}
-    </button>
-    <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
-      <li>
-        <button onClick={() => handleNav('welcome')}>{headers.welcome}</button>
-      </li>
-      <li>
-        <button onClick={() => handleNav('about-me')}>{headers.aboutMe}</button>
-      </li>
-      {articlesExist && (
+const NavBar: React.FC<NavBarProps> = ({ menuOpen, setMenuOpen, headers, handleNav, articlesExist, booksExist, contactExist }) => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    handleNav(id);
+  };
+
+  return (
+    <nav className="nav-bar" aria-label="Main navigation">
+      <button
+        className="menu-btn"
+        aria-label="Open navigation menu"
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        {menuOpen ? <span>&#x2715;</span> : <span>&#9776;</span>}
+      </button>
+      <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
         <li>
-          <button onClick={() => handleNav('articles')}>{headers.articles || 'Articles'}</button>
+          <a href="#welcome" onClick={(e) => handleLinkClick(e, 'welcome')}>{headers.welcome}</a>
         </li>
-      )}
-      {booksExist && (
         <li>
-          <button onClick={() => handleNav('my-books')}>{headers.myBooks}</button>
+          <a href="#about-me" onClick={(e) => handleLinkClick(e, 'about-me')}>{headers.aboutMe}</a>
         </li>
-      )}
-      {contactExist && (
-        <li>
-          <button onClick={() => handleNav('contact-me')}>{headers.contactMe || 'Contact Me'}</button>
-        </li>
-      )}
-    </ul>
-  </nav>
-)
+        {articlesExist && (
+          <li>
+            <a href="#articles" onClick={(e) => handleLinkClick(e, 'articles')}>{headers.articles || 'Articles'}</a>
+          </li>
+        )}
+        {booksExist && (
+          <li>
+            <a href="#my-books" onClick={(e) => handleLinkClick(e, 'my-books')}>{headers.myBooks}</a>
+          </li>
+        )}
+        {contactExist && (
+          <li>
+            <a href="#contact-me" onClick={(e) => handleLinkClick(e, 'contact-me')}>{headers.contactMe || 'Contact Me'}</a>
+          </li>
+        )}
+      </ul>
+    </nav>
+  );
+}
 
 export default NavBar
