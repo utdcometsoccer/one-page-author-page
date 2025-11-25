@@ -378,6 +378,8 @@ a:focus {
     background: none;
     padding: 0;
     width: auto;
+    opacity: 1;
+    transform: none;
   }
 
   .nav-links li a {
@@ -1078,7 +1080,6 @@ section.section-active {
 /* =========================== */
 /* Ensure minimum 44x44px touch targets for mobile */
 .nav-links li a,
-.menu-btn,
 .theme-toggle-btn,
 .toast-close,
 .book-cta-btn {
@@ -1087,6 +1088,17 @@ section.section-active {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Menu button touch targets only on mobile (below 768px) */
+@media (max-width: 767px) {
+  .menu-btn {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 /* Social links in footer */
