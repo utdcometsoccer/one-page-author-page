@@ -10,40 +10,244 @@ A responsive, single-page React + TypeScript + Vite application for authors. Thi
 - Social media links with Material UI icons
 - Locale support for multiple languages (English, French, German, Mexican Spanish)
 - All content (text, images, links) is loaded from locale-specific JSON files in the `public` folder
+- Dark and light theme support with user toggle
+- Code splitting and lazy loading for optimal performance
+- Swipe gesture navigation between sections (mobile)
+- Scroll progress indicator
+- Back to top button
+- Share buttons for social sharing
+- Add to Home Screen (PWA) banner
+- Application Insights telemetry integration
+- Accessibility features (skip navigation, WCAG AA compliant)
 
-## Locales
+## Requirements
 
-The app automatically detects the user's browser language and loads the appropriate locale files for UI headers and author data. If a locale is not found, it falls back to English (`en-us`).
-
-- Locale header files are stored in `public/locales/` (e.g., `en-us.json`, `fr-fr.json`, `de-de.json`, `es-mx.json`)
-- Author data files are stored in `public/` (e.g., `data.json`, `author-data-fr-fr.json`, `author-data-de-de.json`, `author-data-es-mx.json`)
-- All sample data files use the same headshot path: `/sampleheadshot.webp`
-
-## Adding a New Locale
-
-1. Add a new header file in `public/locales/` (e.g., `it-it.json`)
-2. Add a new author data file in `public/` (e.g., `author-data-it-it.json`)
-3. Translate the content as needed
-
-## UI/UX Analysis
-
-A comprehensive UI/UX analysis has been conducted following industry best practices from [BrowserStack](https://www.browserstack.com/guide/website-ui-ux-checklist) and [Figma](https://www.figma.com/community/file/1299121594620623551/ui-ux-design-checklist).
-
-📊 **[View Full UI/UX Analysis Report](./UI-UX-ANALYSIS.md)** - Detailed 30KB analysis covering all aspects of the application
-
-✅ **[View Quick Reference Checklist](./UI-UX-CHECKLIST.md)** - Actionable items and quick wins
-
-**Key Findings:**
-- ✅ Strong responsive design foundation
-- ❌ Critical accessibility issues need addressing (WCAG AA compliance)
-- ⚠️ Missing design system and component consistency
-- 💡 Opportunities for enhanced CTAs and user feedback
+- Node.js >=22.0.0
+- npm >=10.0.0
 
 ## Development
 
-This project uses Vite for fast development and HMR. To run locally:
+This project uses Vite for fast development and HMR.
 
 ```sh
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Run linting
+npm run lint
+
+# Run tests
+npm run test
+
+# Preview production build
+npm run preview
 ```
+
+## Project Structure
+
+```
+├── src/
+│   ├── components/          # Reusable UI components and hooks
+│   │   ├── Button.tsx       # Versatile button with variants (primary, secondary, outline)
+│   │   ├── Card.tsx         # Container component for content grouping
+│   │   ├── Link.tsx         # Enhanced link with external link detection
+│   │   ├── Toast.tsx        # Notification system for user feedback
+│   │   ├── BackToTop.tsx    # Scroll-to-top button
+│   │   ├── ScrollProgress.tsx   # Page scroll progress indicator
+│   │   ├── ShareButtons.tsx     # Social sharing buttons
+│   │   ├── AddToHomeScreenBanner.tsx  # PWA install prompt
+│   │   ├── useToast.ts      # Hook: Toast notification management
+│   │   ├── useSwipeGesture.ts   # Hook: Touch swipe navigation
+│   │   └── useAddToHomeScreen.ts # Hook: PWA install detection
+│   ├── utilities/           # Utility functions
+│   │   ├── getLocale.ts     # Browser locale detection
+│   │   ├── getLocaleFile.ts # Locale file path resolution
+│   │   ├── getAuthorDataFile.ts  # Author data file path resolution
+│   │   ├── hostProvider.ts  # Host/domain configuration
+│   │   └── TelemetryService.ts   # Application Insights wrapper
+│   ├── App.tsx              # Main application component
+│   ├── App.css              # Global styles and design tokens
+│   ├── index.css            # Base styles
+│   └── types.ts             # TypeScript type definitions
+├── tests/                   # Test files (*.test.tsx, *.test.ts)
+├── public/
+│   ├── locales/             # Locale header files
+│   │   └── {lang}/{region}/index.json
+│   └── com/                 # Author data files
+│       └── {author}/{lang}/{region}/author-data.json
+├── DESIGN-SYSTEM.md         # Design system documentation
+├── UI-UX-ANALYSIS.md        # UI/UX analysis report
+└── UI-UX-CHECKLIST.md       # UI/UX quick reference checklist
+```
+
+## Locales
+
+The app automatically detects the user's browser language and loads the appropriate locale files for UI headers and author data. If a locale is not found, it falls back to English (`en/us`).
+
+### File Structure
+
+- **Locale header files**: `public/locales/{lang}/{region}/index.json`
+  - Example: `public/locales/en/us/index.json`, `public/locales/fr/fr/index.json`
+- **Author data files**: `public/com/{author}/{lang}/{region}/author-data.json`
+  - Example: `public/com/edokpayi/en/us/author-data.json`
+
+### Supported Locales
+
+| Language | Code | Locale Path |
+|----------|------|-------------|
+| English (US) | `en/us` | `public/locales/en/us/` |
+| French | `fr/fr` | `public/locales/fr/fr/` |
+| German | `de/de` | `public/locales/de/de/` |
+| Mexican Spanish | `es/mx` | `public/locales/es/mx/` |
+
+### Locale Header File Format
+
+```json
+{
+  "welcome": "Welcome",
+  "aboutMe": "About Me",
+  "myBooks": "My Books",
+  "loading": "Loading...",
+  "emailPrompt": "Feel free to reach out:",
+  "contactMe": "Contact Me",
+  "emailLinkText": "Email Me",
+  "noEmail": "No contact email provided.",
+  "switchToLight": "Switch to Light Theme",
+  "switchToDark": "Switch to Dark Theme",
+  "articles": "Articles",
+  "backToTop": "Back to top",
+  "installApp": "Install this app on your device",
+  "notNow": "Not now"
+}
+```
+
+### Author Data File Format
+
+```json
+{
+  "name": "Author Name",
+  "welcome": "Welcome message text",
+  "aboutMe": "About me description",
+  "headshot": "/path/to/headshot.webp",
+  "copyright": "© 2025 Author Name. All rights reserved.",
+  "email": "author@example.com",
+  "social": [
+    { "name": "LinkedIn", "url": "https://linkedin.com/in/author" },
+    { "name": "Instagram", "url": "https://instagram.com/author" }
+  ],
+  "books": [
+    {
+      "title": "Book Title",
+      "description": "Book description",
+      "url": "https://amazon.com/book",
+      "cover": "/covers/book.webp"
+    }
+  ],
+  "articles": [
+    {
+      "title": "Article Title",
+      "url": "https://example.com/article",
+      "publication": "Publication Name",
+      "date": "2025-01-01"
+    }
+  ]
+}
+```
+
+## Adding a New Locale
+
+1. Create a new directory structure in `public/locales/{lang}/{region}/`
+2. Add an `index.json` file with translated headers
+3. Create author data files in `public/com/{author}/{lang}/{region}/author-data.json`
+4. Translate the content as needed
+
+## Environment Variables
+
+The application uses the following environment variables (configured in `.env`):
+
+| Variable | Description |
+|----------|-------------|
+| `VITE_APPINSIGHTS_CONNECTION_STRING` | Azure Application Insights connection string |
+| `VITE_AUTHOR_DATA_BASE` | Remote API base URL for author data |
+| `VITE_AUTHOR_DATA_FILE_EXTENSION` | File extension for remote author data |
+| `VITE_LOCAL_AUTHOR_DATA_BASE` | Local fallback path for author data |
+| `VITE_LOCAL_AUTHOR_DATA_FILE_EXTENSION` | File extension for local author data |
+| `VITE_LOCAL_LANG` | Default language code |
+| `VITE_LOCAL_REGION` | Default region code |
+| `VITE_LOCAL_HOST` | Local development hostname |
+| `VITE_ERROR_TITLE` | Custom error page title |
+
+## Features
+
+### Theme Support
+
+The app supports dark and light themes. Users can toggle between themes using the footer button. Theme preference respects system settings and persists across sessions.
+
+### Responsive Design
+
+The app uses CSS custom properties and media queries with breakpoints at:
+- 600px (mobile)
+- 768px (tablet)
+- 992px (desktop)
+- 1200px (large screens)
+
+### Navigation
+
+- Hamburger menu for all screen sizes
+- Scroll spy highlighting active section
+- Smooth scroll navigation
+- Swipe gestures on mobile for section navigation
+- Skip to main content link for accessibility
+
+### Performance
+
+- Code splitting with React lazy loading for below-fold sections
+- Dynamic import of social media icons
+- Optimized images (WebP/AVIF formats)
+
+### Accessibility
+
+- WCAG AA compliant color contrast
+- Visible focus indicators
+- Skip navigation link
+- Semantic HTML structure
+- Reduced motion support (`prefers-reduced-motion`)
+
+## Design System
+
+See **[DESIGN-SYSTEM.md](./DESIGN-SYSTEM.md)** for comprehensive documentation on:
+- Brand colors and theme tokens
+- Typography scale and font families
+- Spacing system
+- Component specifications (Button, Card, Link, Toast)
+- Accessibility guidelines
+
+## UI/UX Analysis
+
+📊 **[View Full UI/UX Analysis Report](./UI-UX-ANALYSIS.md)** - Detailed analysis covering all aspects of the application
+
+✅ **[View Quick Reference Checklist](./UI-UX-CHECKLIST.md)** - Actionable items and quick wins
+
+## Testing
+
+Tests are written using Vitest and Testing Library. Run tests with:
+
+```sh
+npm run test
+```
+
+Test files are located in the `tests/` directory with `.test.tsx` or `.test.ts` suffixes.
+
+## Deployment
+
+The app is configured for deployment to Azure Static Web Apps. CI/CD is handled through GitHub Actions.
+
+## License
+
+See [LICENSE](./LICENSE) for details.
