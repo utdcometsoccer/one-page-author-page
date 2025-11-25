@@ -7,6 +7,10 @@ interface BooksSectionProps {
   books: Book[]
 }
 
+// Book cover image dimensions - matches design system
+const BOOK_COVER_WIDTH = 133
+const BOOK_COVER_HEIGHT = 200
+
 const BooksSection: React.FC<BooksSectionProps> = ({ header, books }) => (
   <section className="my-books" id="my-books">
     <h2>{header}</h2>
@@ -20,23 +24,25 @@ const BooksSection: React.FC<BooksSectionProps> = ({ header, books }) => (
                   src={book.cover}
                   alt={`Cover of ${book.title}`}
                   className="book-cover-thumb"
+                  loading="lazy"
+                  width={BOOK_COVER_WIDTH}
+                  height={BOOK_COVER_HEIGHT}
                 />
               </div>
             )}
             <div className="book-info">
-              {book.url ? (
+              <h3>{book.title}</h3>
+              <p>{book.description}</p>
+              {book.url && (
                 <a
                   href={book.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="book-link"
+                  className="book-cta-btn"
                 >
-                  <h3>{book.title}</h3>
+                  Learn More <span aria-hidden="true">↗</span>
                 </a>
-              ) : (
-                <h3>{book.title}</h3>
               )}
-              <p>{book.description}</p>
             </div>
           </div>
         </article>

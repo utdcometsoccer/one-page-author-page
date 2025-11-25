@@ -15,7 +15,7 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({ header, articles }) =
         {articles.map((article, idx) => (
           <div key={idx} className="article-item article-item-margin">
             <a href={article.url} target="_blank" rel="noopener noreferrer">
-              {article.title}
+              {article.title} <span aria-hidden="true">↗</span>
             </a>
             {article.publication && <span className="article-publication"> ({article.publication})</span>}
             {article.date && <span className="article-date"> - {article.date}</span>}
