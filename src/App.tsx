@@ -86,6 +86,29 @@ function App() {
     articles: 'Articles'
   });
   const [darkMode, setDarkMode] = useState(true);
+  const [activeSection, setActiveSection] = useState<string>('welcome');
+
+  // Scroll spy effect
+  useEffect(() => {
+    const sectionIds = ['welcome', 'about-me', 'articles', 'my-books', 'contact-me'];
+    
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 100; // Offset for navbar height
+      
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sectionIds[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sectionIds[i]);
+          break;
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
 
   useEffect(() => {
@@ -173,10 +196,11 @@ function App() {
           articlesExist={!!(data.articles && data.articles.length > 0)}
           booksExist={!!(data.books && data.books.length > 0)}
           contactExist={!!data.email}
+          activeSection={activeSection}
         />
         <main id="main-content">
           <WelcomeSection header={headers.welcome} welcome={data.welcome} />
-          <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} />
+          <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} authorName={data.name} />
           {data.articles && data.articles.length > 0 && (
             <ArticlesSection header={headers.articles || 'Articles'} articles={data.articles} />
           )}
