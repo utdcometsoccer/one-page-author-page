@@ -157,6 +157,7 @@ header.welcome {
   border-radius: 8px;
   margin-bottom: 2rem;
   color: var(--color-header);
+  scroll-margin-top: 4.5rem;
 }
 
 /* Headings use custom heading font */
@@ -171,6 +172,7 @@ section {
   background: var(--color-bg-section);
   box-shadow: var(--color-shadow);
   color: var(--color-text);
+  scroll-margin-top: 4.5rem;
 }
 
 .books-grid {
