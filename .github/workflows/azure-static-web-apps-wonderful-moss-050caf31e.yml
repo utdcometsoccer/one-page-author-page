@@ -38,6 +38,7 @@ jobs:
           VITE_AUTHOR_DATA_BASE: ${{ secrets.VITE_AUTHOR_DATA_BASE }}
           VITE_APPINSIGHTS_INSTRUMENTATION_KEY: ${{ secrets.VITE_APPINSIGHTS_CONNECTION_STRING}}
           VITE_LOCALE_BASE: ${{ secrets.VITE_LOCALE_BASE }}
+          VITE_APPINSIGHTS_CONNECTION_STRING: ${{ secrets.VITE_APPINSIGHTS_CONNECTION_STRING }}
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_MOSS_050CAF31E }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)

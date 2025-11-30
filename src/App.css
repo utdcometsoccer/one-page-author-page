@@ -727,6 +727,12 @@ section.section-active {
   animation: highlightSection 0.8s ease-out;
 }
 
+.section-loading{
+  padding: '2rem';
+  text-align: 'center'; 
+  color: 'var(--color-text)';
+}
+
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   section {
