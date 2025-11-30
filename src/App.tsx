@@ -249,7 +249,7 @@ function App() {
 
   // Section loading fallback
   const SectionFallback = () => (
-    <div className="section-loading" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text)' }}>
+    <div className="section-loading" role="status" aria-live="polite">
       Loading...
     </div>
   );
