@@ -1,6 +1,7 @@
 import React from 'react'
 
 import type { LocaleHeaders } from './types'
+import { telemetryService } from './utilities/TelemetryService'
 
 interface NavBarProps {
   menuOpen: boolean
@@ -16,7 +17,14 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({ menuOpen, setMenuOpen, headers, handleNav, articlesExist, booksExist, contactExist, activeSection }) => {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+    telemetryService.trackNavClick(id);
     handleNav(id);
+  };
+
+  const handleMenuToggle = () => {
+    const newState = !menuOpen;
+    telemetryService.trackMenuToggle(newState);
+    setMenuOpen(newState);
   };
 
   const getLinkClassName = (sectionId: string) => {
@@ -29,7 +37,7 @@ const NavBar: React.FC<NavBarProps> = ({ menuOpen, setMenuOpen, headers, handleN
         className="menu-btn"
         aria-label="Open navigation menu"
         aria-expanded={menuOpen}
-        onClick={() => setMenuOpen(!menuOpen)}
+        onClick={handleMenuToggle}
       >
         {menuOpen ? <span>&#x2715;</span> : <span>&#9776;</span>}
       </button>

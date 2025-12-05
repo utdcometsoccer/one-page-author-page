@@ -1,6 +1,4 @@
-import { AppInsightsErrorBoundary, ReactPlugin } from '@microsoft/applicationinsights-react-js';
-import { ApplicationInsights } from '@microsoft/applicationinsights-web';
-import { createBrowserHistory } from "history";
+import { AppInsightsErrorBoundary } from '@microsoft/applicationinsights-react-js';
 import { lazy, Suspense, useEffect, useState, useCallback, useMemo } from 'react';
 import type { JSX } from 'react/jsx-runtime';
 import './App.css';
@@ -17,6 +15,7 @@ import { getLocalHostProvider, getWindowHostProvider } from './utilities/hostPro
 import ErrorContainer from './ErrorContainer';
 import LoadingContainer from './LoadingContainer';
 import { BackToTop, ScrollProgress, ShareButtons, AddToHomeScreenBanner, useSwipeGesture } from './components';
+import TelemetryService from './utilities/TelemetryService';
 
 // Lazy load below-fold sections for code splitting
 const AboutMeSection = lazy(() => import('./AboutMeSection'));
@@ -63,29 +62,11 @@ const loadSocialIcons = async (): Promise<Record<string, JSX.Element>> => {
 };
 
 // Initialize Application Insights outside component to prevent re-instantiation
-const browserHistory = createBrowserHistory();
-const reactPlugin = new ReactPlugin();
-const appInsights = new ApplicationInsights({
-  config: {
-    connectionString: import.meta.env.VITE_APPINSIGHTS_CONNECTION_STRING,
-    extensions: [reactPlugin],
-    extensionConfig: {
-      [reactPlugin.identifier]: { history: browserHistory }
-    }
-  }
-});
-appInsights.loadAppInsights();
+const telemetryService = TelemetryService.getInstance();
+telemetryService.initialize(import.meta.env.VITE_APPINSIGHTS_CONNECTION_STRING);
+const reactPlugin = telemetryService.getReactPlugin()!
 
 function App() {
-  const trackAuthorLoadEvent = (authorName: string, domain: string) => {
-    appInsights.trackEvent({
-      name: 'AuthorLoadEvent',
-      properties: {
-        authorName: authorName,
-        domain: domain,
-      },
-    });
-  };
   const [menuOpen, setMenuOpen] = useState(false);
   const [data, setData] = useState<AuthorData | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -95,7 +76,7 @@ function App() {
       setData(newData);
       setError(null);
       document.title = newData.name || document.title;
-      trackAuthorLoadEvent(newData.name || 'Unknown Author', window.location.hostname);
+      telemetryService.trackAuthorLoad(newData.name || 'Unknown Author', window.location.hostname);
     } else {
       setData(null);
     }
@@ -117,6 +98,13 @@ function App() {
 
   // Section IDs for navigation - memoized to prevent unnecessary re-renders
   const sectionIds = useMemo(() => ['welcome', 'about-me', 'articles', 'my-books', 'contact-me'], []);
+
+  // Track section view when active section changes
+  useEffect(() => {
+    if (activeSection) {
+      telemetryService.trackSectionView(activeSection);
+    }
+  }, [activeSection]);
 
   // Scroll spy effect
   useEffect(() => {
@@ -298,7 +286,13 @@ function App() {
               social={data.social}
               socialIcons={socialIcons}
               darkMode={darkMode}
-              onToggleTheme={() => setDarkMode((prev) => !prev)}
+              onToggleTheme={() => {
+                setDarkMode((prev) => {
+                  const newMode = !prev;
+                  telemetryService.trackThemeToggle(newMode ? 'dark' : 'light');
+                  return newMode;
+                });
+              }}
               switchToLight={headers.switchToLight}
               switchToDark={headers.switchToDark}
             />
