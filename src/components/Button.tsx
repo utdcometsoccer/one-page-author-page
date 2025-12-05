@@ -24,9 +24,16 @@ const Button: React.FC<ButtonProps> = ({
   const sizeClass = `btn-${size}`
   const widthClass = fullWidth ? 'btn-full-width' : ''
 
+  // Extract text from children for tracking name
+  const getButtonName = (): string => {
+    if (trackingName) return trackingName
+    if (typeof children === 'string') return children
+    // For non-string children, use aria-label, class name, or generic 'button'
+    return props['aria-label'] || className || 'button'
+  }
+
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const buttonName = trackingName || (typeof children === 'string' ? children : 'button')
-    telemetryService.trackButtonClick(buttonName, variant)
+    telemetryService.trackButtonClick(getButtonName(), variant)
     onClick?.(e)
   }
 
