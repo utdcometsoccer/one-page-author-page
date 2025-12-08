@@ -93,7 +93,7 @@ The template provides the following outputs:
 
 ### Notes
 
-- The deployment uses the `azure/arm-deploy@v1` GitHub Action for Bicep template deployment
-- The workflow logs in to Azure using the `azure/login@v1` action
+- The deployment uses the `azure/arm-deploy@v2` GitHub Action for Bicep template deployment
+- The workflow logs in to Azure using the `azure/login@v2` action
 - After deployment, the workflow logs out of Azure for security
 - The `build_and_deploy_job` depends on the `deploy_infrastructure` job to ensure infrastructure is ready before deployment

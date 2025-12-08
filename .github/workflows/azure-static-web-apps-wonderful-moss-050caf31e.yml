@@ -90,8 +90,8 @@ jobs:
           template: ./infrastructure/static-web-app.bicep
           parameters: >
             staticWebAppName=${{ secrets.AZURE_STATIC_WEB_APP_NAME }}
-            location=${{ secrets.AZURE_LOCATION && secrets.AZURE_LOCATION || 'eastus2' }}
-            sku=${{ secrets.AZURE_STATIC_WEB_APP_SKU && secrets.AZURE_STATIC_WEB_APP_SKU || 'Free' }}
+            location=${{ secrets.AZURE_LOCATION || 'eastus2' }}
+            sku=${{ secrets.AZURE_STATIC_WEB_APP_SKU || 'Free' }}
             repositoryUrl=${{ github.server_url }}/${{ github.repository }}
             repositoryBranch=main
             appLocation=/
