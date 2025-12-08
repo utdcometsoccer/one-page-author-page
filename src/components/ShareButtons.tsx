@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { telemetryService } from '../utilities/TelemetryService'
 
 export interface ShareButtonsProps {
   url?: string
@@ -22,6 +23,7 @@ const ShareButtons: React.FC<ShareButtonsProps> = ({
   const title = titleProp || (typeof document !== 'undefined' ? document.title : '')
 
   const copyToClipboard = async () => {
+    telemetryService.trackShareClick('copy', shareUrl)
     try {
       // Check if clipboard API is available
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -51,6 +53,7 @@ const ShareButtons: React.FC<ShareButtonsProps> = ({
   }
 
   const shareNative = async () => {
+    telemetryService.trackShareClick('native', shareUrl)
     if (navigator.share) {
       try {
         await navigator.share({
@@ -64,16 +67,19 @@ const ShareButtons: React.FC<ShareButtonsProps> = ({
   }
 
   const shareTwitter = () => {
+    telemetryService.trackShareClick('twitter', shareUrl)
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(shareUrl)}`
     window.open(twitterUrl, '_blank', 'noopener,noreferrer,width=600,height=400')
   }
 
   const shareFacebook = () => {
+    telemetryService.trackShareClick('facebook', shareUrl)
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
     window.open(facebookUrl, '_blank', 'noopener,noreferrer,width=600,height=400')
   }
 
   const shareLinkedIn = () => {
+    telemetryService.trackShareClick('linkedin', shareUrl)
     const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(title)}`
     window.open(linkedInUrl, '_blank', 'noopener,noreferrer,width=600,height=400')
   }

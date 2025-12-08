@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { telemetryService } from '../utilities/TelemetryService'
 
 export interface BackToTopProps {
   threshold?: number
@@ -23,6 +24,7 @@ const BackToTop: React.FC<BackToTopProps> = ({
   }, [threshold])
 
   const scrollToTop = () => {
+    telemetryService.trackBackToTop()
     window.scrollTo({
       top: 0,
       behavior: 'smooth'

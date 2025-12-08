@@ -1,4 +1,5 @@
 import React from 'react'
+import { telemetryService } from '../utilities/TelemetryService'
 
 export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string
@@ -11,15 +12,23 @@ const Link: React.FC<LinkProps> = ({
   external = false,
   children,
   className = '',
+  onClick,
   ...props
 }) => {
   const isExternal = external || href.startsWith('http://') || href.startsWith('https://')
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const linkText = typeof children === 'string' ? children : undefined
+    telemetryService.trackLinkClick(href, linkText, isExternal)
+    onClick?.(e)
+  }
 
   return (
     <a
       href={href}
       className={`link ${isExternal ? 'link-external' : ''} ${className}`.trim()}
       {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      onClick={handleClick}
       {...props}
     >
       {children}
