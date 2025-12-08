@@ -29,7 +29,7 @@ Added a new `deploy_infrastructure` job that:
 
 #### Step 2: Azure Login
 - Only runs if secrets are present
-- Uses the `azure/login@v1` action with service principal credentials
+- Uses the `azure/login@v2` action with service principal credentials
 
 #### Step 3: Check if Static Web App Exists
 - Uses Azure CLI to check if the Static Web App already exists
@@ -40,7 +40,7 @@ Added a new `deploy_infrastructure` job that:
 - Only runs if:
   - Required secrets are present (`deployment_needed == true`)
   - Static Web App doesn't exist (`exists == false`)
-- Uses `azure/arm-deploy@v1` action to deploy the Bicep template
+- Uses `azure/arm-deploy@v2` action to deploy the Bicep template
 - Configurable parameters from secrets:
   - `AZURE_LOCATION` (defaults to `eastus2`)
   - `AZURE_STATIC_WEB_APP_SKU` (defaults to `Free`)
