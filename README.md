@@ -81,9 +81,12 @@ npm run preview
 │   │   └── {lang}/{region}/index.json
 │   └── com/                 # Author data files
 │       └── {author}/{lang}/{region}/author-data.json
-├── DESIGN-SYSTEM.md         # Design system documentation
-├── UI-UX-ANALYSIS.md        # UI/UX analysis report
-└── UI-UX-CHECKLIST.md       # UI/UX quick reference checklist
+└── docs/                    # Documentation files
+    ├── DESIGN-SYSTEM.md     # Design system documentation
+    ├── UI-UX-ANALYSIS.md    # UI/UX analysis report
+    ├── UI-UX-CHECKLIST.md   # UI/UX quick reference checklist
+    ├── DEPLOYMENT.md        # Deployment documentation
+    └── TELEMETRY.md         # Telemetry events reference
 ```
 
 ## Locales
@@ -221,7 +224,7 @@ The app uses CSS custom properties and media queries with breakpoints at:
 
 ## Design System
 
-See **[DESIGN-SYSTEM.md](./DESIGN-SYSTEM.md)** for comprehensive documentation on:
+See **[DESIGN-SYSTEM.md](./docs/DESIGN-SYSTEM.md)** for comprehensive documentation on:
 - Brand colors and theme tokens
 - Typography scale and font families
 - Spacing system
@@ -236,9 +239,19 @@ The app integrates with Azure Application Insights to track user interactions an
 
 ## UI/UX Analysis
 
-📊 **[View Full UI/UX Analysis Report](./UI-UX-ANALYSIS.md)** - Detailed analysis covering all aspects of the application
+📊 **[View Full UI/UX Analysis Report](./docs/UI-UX-ANALYSIS.md)** - Detailed analysis covering all aspects of the application
 
-✅ **[View Quick Reference Checklist](./UI-UX-CHECKLIST.md)** - Actionable items and quick wins
+✅ **[View Quick Reference Checklist](./docs/UI-UX-CHECKLIST.md)** - Actionable items and quick wins
+
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| [DESIGN-SYSTEM.md](./docs/DESIGN-SYSTEM.md) | Comprehensive design system documentation covering brand colors, typography, spacing, and component specifications |
+| [UI-UX-ANALYSIS.md](./docs/UI-UX-ANALYSIS.md) | Detailed UI/UX analysis report covering all aspects of the application |
+| [UI-UX-CHECKLIST.md](./docs/UI-UX-CHECKLIST.md) | Quick reference checklist with actionable items and quick wins |
+| [TELEMETRY.md](./docs/TELEMETRY.md) | Complete reference for all Application Insights events tracked in the application |
+| [DEPLOYMENT.md](./docs/DEPLOYMENT.md) | Deployment configuration and guidelines for Azure Static Web Apps |
 
 ## Testing
 
