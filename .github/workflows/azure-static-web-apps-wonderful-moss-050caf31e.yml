@@ -53,7 +53,7 @@ jobs:
 
       - name: Azure Login
         if: steps.check_secrets.outputs.deployment_needed == 'true'
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
@@ -78,15 +78,15 @@ jobs:
 
       - name: Deploy Bicep Template
         if: steps.check_secrets.outputs.deployment_needed == 'true' && steps.check_webapp.outputs.exists == 'false'
-        uses: azure/arm-deploy@v1
+        uses: azure/arm-deploy@v2
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: ${{ secrets.AZURE_RESOURCE_GROUP }}
           template: ./infrastructure/static-web-app.bicep
           parameters: >
             staticWebAppName=${{ secrets.AZURE_STATIC_WEB_APP_NAME }}
-            location=${{ secrets.AZURE_LOCATION || 'eastus2' }}
-            sku=${{ secrets.AZURE_STATIC_WEB_APP_SKU || 'Free' }}
+            location=${{ secrets.AZURE_LOCATION && secrets.AZURE_LOCATION || 'eastus2' }}
+            sku=${{ secrets.AZURE_STATIC_WEB_APP_SKU && secrets.AZURE_STATIC_WEB_APP_SKU || 'Free' }}
             repositoryUrl=${{ github.server_url }}/${{ github.repository }}
             repositoryBranch=main
             appLocation=/
