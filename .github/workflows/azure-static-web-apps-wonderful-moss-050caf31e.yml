@@ -9,6 +9,8 @@ jobs:
   debug_job:
     runs-on: ubuntu-latest
     name: Debug Job
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v3
         with:
@@ -27,6 +29,9 @@ jobs:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     name: Deploy Infrastructure
+    permissions:
+      contents: read
+      id-token: write
     outputs:
       deployment_needed: ${{ steps.check_secrets.outputs.deployment_needed }}
       web_app_exists: ${{ steps.check_webapp.outputs.exists }}
@@ -104,6 +109,9 @@ jobs:
     needs: deploy_infrastructure
     runs-on: ubuntu-latest
     name: Build and Deploy Job
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v3
         with:
