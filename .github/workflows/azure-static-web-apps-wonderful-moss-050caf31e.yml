@@ -22,8 +22,86 @@ jobs:
           echo "Ref: ${{ github.ref }}"
           echo "VITE_AUTHOR_DATA_FILE_EXTENSION: ${{ vars.VITE_AUTHOR_DATA_FILE_EXTENSION }}"
           echo "VITE_LOCALE_BASE: ${{ vars.VITE_LOCALE_BASE }}"
+
+  deploy_infrastructure:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    name: Deploy Infrastructure
+    outputs:
+      deployment_needed: ${{ steps.check_secrets.outputs.deployment_needed }}
+      web_app_exists: ${{ steps.check_webapp.outputs.exists }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          lfs: false
+
+      - name: Check Required Secrets
+        id: check_secrets
+        run: |
+          if [[ -n "${{ secrets.AZURE_SUBSCRIPTION_ID }}" ]] && \
+             [[ -n "${{ secrets.AZURE_RESOURCE_GROUP }}" ]] && \
+             [[ -n "${{ secrets.AZURE_STATIC_WEB_APP_NAME }}" ]] && \
+             [[ -n "${{ secrets.AZURE_CREDENTIALS }}" ]]; then
+            echo "deployment_needed=true" >> $GITHUB_OUTPUT
+            echo "All required secrets are present"
+          else
+            echo "deployment_needed=false" >> $GITHUB_OUTPUT
+            echo "Missing required secrets. Skipping infrastructure deployment."
+            echo "Required secrets: AZURE_SUBSCRIPTION_ID, AZURE_RESOURCE_GROUP, AZURE_STATIC_WEB_APP_NAME, AZURE_CREDENTIALS"
+          fi
+
+      - name: Azure Login
+        if: steps.check_secrets.outputs.deployment_needed == 'true'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Check if Static Web App Exists
+        if: steps.check_secrets.outputs.deployment_needed == 'true'
+        id: check_webapp
+        run: |
+          set +e
+          az staticwebapp show \
+            --name ${{ secrets.AZURE_STATIC_WEB_APP_NAME }} \
+            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+            --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }} \
+            --output none
+
+          if [ $? -eq 0 ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Static Web App already exists. Skipping deployment."
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "Static Web App does not exist. Proceeding with deployment."
+          fi
+
+      - name: Deploy Bicep Template
+        if: steps.check_secrets.outputs.deployment_needed == 'true' && steps.check_webapp.outputs.exists == 'false'
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          resourceGroupName: ${{ secrets.AZURE_RESOURCE_GROUP }}
+          template: ./infrastructure/static-web-app.bicep
+          parameters: >
+            staticWebAppName=${{ secrets.AZURE_STATIC_WEB_APP_NAME }}
+            location=${{ secrets.AZURE_LOCATION || 'eastus2' }}
+            sku=${{ secrets.AZURE_STATIC_WEB_APP_SKU || 'Free' }}
+            repositoryUrl=${{ github.server_url }}/${{ github.repository }}
+            repositoryBranch=main
+            appLocation=/
+            apiLocation=
+            outputLocation=dist
+          failOnStdErr: false
+
+      - name: Azure Logout
+        if: always() && steps.check_secrets.outputs.deployment_needed == 'true'
+        run: |
+          az logout
+
   build_and_deploy_job:
     if: github.event_name == 'push'
+    needs: deploy_infrastructure
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
