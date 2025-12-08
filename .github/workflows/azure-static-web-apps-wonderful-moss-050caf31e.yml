@@ -92,7 +92,7 @@ jobs:
             repositoryUrl=${{ github.server_url }}/${{ github.repository }}
             repositoryBranch=main
             appLocation=/
-            apiLocation=
+            apiLocation=''
             outputLocation=dist
           failOnStdErr: false
 
