@@ -230,7 +230,7 @@ See **[DESIGN-SYSTEM.md](./DESIGN-SYSTEM.md)** for comprehensive documentation o
 
 ## Telemetry and Analytics
 
-📈 **[View Telemetry Events Documentation](./TELEMETRY.md)** - Complete reference for all Application Insights events tracked in the application
+📈 **[View Telemetry Events Documentation](./docs/TELEMETRY.md)** - Complete reference for all Application Insights events tracked in the application
 
 The app integrates with Azure Application Insights to track user interactions and behavior. All events include detailed properties for analytics and insights.
 
