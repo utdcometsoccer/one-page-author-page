@@ -228,6 +228,12 @@ See **[DESIGN-SYSTEM.md](./DESIGN-SYSTEM.md)** for comprehensive documentation o
 - Component specifications (Button, Card, Link, Toast)
 - Accessibility guidelines
 
+## Telemetry and Analytics
+
+📈 **[View Telemetry Events Documentation](./TELEMETRY.md)** - Complete reference for all Application Insights events tracked in the application
+
+The app integrates with Azure Application Insights to track user interactions and behavior. All events include detailed properties for analytics and insights.
+
 ## UI/UX Analysis
 
 📊 **[View Full UI/UX Analysis Report](./UI-UX-ANALYSIS.md)** - Detailed analysis covering all aspects of the application
