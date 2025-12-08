@@ -55,7 +55,8 @@ npm run preview
 │   └── com/              # Author data files (e.g., com/{author}/en/us/author-data.json)
 ├── .github/
 │   └── workflows/        # GitHub Actions workflows
-└── DESIGN-SYSTEM.md      # Design system documentation
+└── docs/
+    └── DESIGN-SYSTEM.md  # Design system documentation
 ```
 
 ## Code Style and Conventions
@@ -76,7 +77,7 @@ npm run preview
 ### CSS
 
 - Use CSS custom properties defined in `App.css` for colors, spacing, and typography
-- Follow the design tokens documented in `DESIGN-SYSTEM.md`
+- Follow the design tokens documented in `docs/DESIGN-SYSTEM.md`
 - Support both light and dark themes using CSS variables
 - Use responsive breakpoints: 600px, 768px, 992px, 1200px
 
@@ -110,7 +111,7 @@ When adding new features that involve user-facing text:
 
 1. **Accessibility:** All interactive elements must be keyboard accessible with visible focus indicators
 2. **Responsive Design:** Test changes at all breakpoints
-3. **Design System:** Use existing design tokens and components from `DESIGN-SYSTEM.md`
+3. **Design System:** Use existing design tokens and components from `docs/DESIGN-SYSTEM.md`
 4. **Testing:** Add tests for new functionality, run `npm run test` before committing
 5. **Linting:** Run `npm run lint` and fix any errors before committing
 6. **Build Verification:** Ensure `npm run build` succeeds without errors
