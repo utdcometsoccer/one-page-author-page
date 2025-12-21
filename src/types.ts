@@ -10,6 +10,15 @@ export type SocialLink = {
   url: string
 }
 
+export type SEOMetadata = {
+  title?: string
+  description?: string
+  keywords?: string[]
+  image?: string
+  canonicalUrl?: string
+  type?: string
+}
+
 export type AuthorData = {
   name: string
   welcome: string
@@ -20,6 +29,7 @@ export type AuthorData = {
   social?: SocialLink[]
   email?: string
   articles?: Article[]
+  seo?: SEOMetadata
 }
 
 export type LocaleHeaders = {

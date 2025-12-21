@@ -19,6 +19,12 @@ A responsive, single-page React + TypeScript + Vite application for authors. Thi
 - Add to Home Screen (PWA) banner
 - Application Insights telemetry integration
 - Accessibility features (skip navigation, WCAG AA compliant)
+- **SEO & AI Optimization:**
+  - Dynamic meta tags (Open Graph, Twitter Cards)
+  - JSON-LD structured data (schema.org)
+  - Robots.txt and sitemap.xml
+  - AI crawler support (GPTBot, Claude-Web, etc.)
+  - Customizable SEO metadata via Author API
 
 ## Requirements
 
@@ -159,9 +165,19 @@ The app automatically detects the user's browser language and loads the appropri
       "publication": "Publication Name",
       "date": "2025-01-01"
     }
-  ]
+  ],
+  "seo": {
+    "title": "Author Name - Award-Winning Author",
+    "description": "Custom meta description for search engines and social sharing",
+    "keywords": ["keyword1", "keyword2", "keyword3"],
+    "image": "/path/to/og-image.jpg",
+    "canonicalUrl": "https://authorname.com",
+    "type": "profile"
+  }
 }
 ```
+
+**Note:** The `seo` field is optional. If not provided, SEO metadata will be automatically generated from other fields.
 
 ## Adding a New Locale
 
@@ -222,6 +238,32 @@ The app uses CSS custom properties and media queries with breakpoints at:
 - Semantic HTML structure
 - Reduced motion support (`prefers-reduced-motion`)
 
+### SEO & AI Optimization
+
+The application includes comprehensive SEO and AI optimization features to maximize discoverability by search engines and AI systems:
+
+**Dynamic Meta Tags:**
+- Open Graph tags for social sharing (Facebook, LinkedIn)
+- Twitter Card tags for enhanced Twitter previews
+- Standard SEO meta tags (description, keywords, author)
+- Canonical URLs to prevent duplicate content issues
+
+**Structured Data:**
+- JSON-LD schema.org markup for authors (Person schema)
+- Book schema for each published work
+- Article schema for published articles
+- Helps search engines and AI systems understand content relationships
+
+**AI Crawler Support:**
+- Explicit support for GPTBot (OpenAI)
+- Claude-Web (Anthropic)
+- Google-Extended
+- Other AI crawlers
+- Configured via robots.txt
+
+**Customization:**
+Authors can provide custom SEO metadata in their author data JSON files, or the system will intelligently generate it from existing data. See [SEO-GUIDE.md](./docs/SEO-GUIDE.md) for complete implementation details.
+
 ## Design System
 
 See **[DESIGN-SYSTEM.md](./docs/DESIGN-SYSTEM.md)** for comprehensive documentation on:
@@ -252,6 +294,18 @@ The app integrates with Azure Application Insights to track user interactions an
 | [UI-UX-CHECKLIST.md](./docs/UI-UX-CHECKLIST.md) | Quick reference checklist with actionable items and quick wins |
 | [TELEMETRY.md](./docs/TELEMETRY.md) | Complete reference for all Application Insights events tracked in the application |
 | [DEPLOYMENT.md](./docs/DEPLOYMENT.md) | Deployment configuration and guidelines for Azure Static Web Apps |
+| [SEO-GUIDE.md](./docs/SEO-GUIDE.md) | Complete SEO and AI optimization implementation guide |
+| [DOCUMENTATION-STANDARDS.md](./docs/DOCUMENTATION-STANDARDS.md) | Repository documentation standards and guidelines |
+
+### Marketing Documentation
+
+| Document | Description |
+|----------|-------------|
+| [SOCIAL-MEDIA.md](./docs/MARKETING/SOCIAL-MEDIA.md) | Comprehensive social media marketing strategy for authors |
+| [EMAIL-CAMPAIGNS.md](./docs/MARKETING/EMAIL-CAMPAIGNS.md) | Email marketing campaign plan with templates and best practices |
+| [BLOGGER-OUTREACH.md](./docs/MARKETING/BLOGGER-OUTREACH.md) | Book blogger outreach strategy and relationship building |
+| [MEDIA-OUTREACH.md](./docs/MARKETING/MEDIA-OUTREACH.md) | Podcast, YouTube, TV, radio, and print media outreach guide |
+| [OPPORTUNITIES.md](./docs/MARKETING/OPPORTUNITIES.md) | Additional author promotion opportunities and creative strategies |
 
 ## Testing
 
