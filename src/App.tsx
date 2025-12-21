@@ -243,7 +243,7 @@ function App() {
   const seoMetadata: SEOMetadata = {
     title: data.seo?.title || `${data.name} - Author`,
     description: data.seo?.description || data.aboutMe,
-    keywords: data.seo?.keywords || ['author', 'books', 'articles', 'writer', data.name],
+    keywords: data.seo?.keywords || ['author', 'books', 'articles', 'writer'],
     image: data.seo?.image || data.headshot,
     canonicalUrl: data.seo?.canonicalUrl || window.location.href.split('?')[0].split('#')[0],
     type: data.seo?.type || 'profile',

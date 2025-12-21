@@ -27,10 +27,8 @@ export function generateAuthorSchema(data: AuthorData): object {
     schema.sameAs = data.social.map(s => s.url);
   }
   
-  // Add job title if it can be inferred from aboutMe
-  if (data.aboutMe) {
-    schema.jobTitle = 'Author';
-  }
+  // Always set jobTitle for authors
+  schema.jobTitle = 'Author';
   
   return schema;
 }

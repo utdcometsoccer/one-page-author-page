@@ -113,6 +113,12 @@ Located at `/public/sitemap.xml`, provides:
 - Change frequency hints
 - Page priority indicators
 
+**Note:** The default sitemap is a template. For production deployment:
+- Update the URL to match your actual domain
+- Update the `lastmod` date to reflect content changes
+- Consider generating the sitemap dynamically based on author data
+- Update the robots.txt sitemap URL to match your domain
+
 ## AI Optimization Features
 
 ### AI Crawler Support

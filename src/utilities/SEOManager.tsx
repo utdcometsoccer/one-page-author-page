@@ -97,7 +97,11 @@ export function SEOManager({ metadata, authorName }: SEOManagerProps) {
     // Language attribute on html tag
     const htmlElement = document.documentElement;
     const locale = htmlElement.getAttribute('lang') || 'en';
-    setMetaTag('meta[property="og:locale"]', locale.replace('/', '_'));
+    // Convert locale format from 'en' or 'en-US' to 'en_US' for Open Graph
+    const ogLocale = locale.includes('-') 
+      ? locale.replace('-', '_') 
+      : locale;
+    setMetaTag('meta[property="og:locale"]', ogLocale);
     
   }, [metadata, authorName]);
   
