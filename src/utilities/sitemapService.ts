@@ -44,7 +44,7 @@ async function fetchDynamicSitemap(apiUrl: string): Promise<string> {
     const sitemapXml = await response.text();
     
     // Basic validation that we received XML content
-    if (!sitemapXml.includes('<?xml') && !sitemapXml.includes('<urlset')) {
+    if (!sitemapXml.trim().startsWith('<?xml') && !sitemapXml.includes('<urlset')) {
       throw new Error('Invalid sitemap format received from API');
     }
     
@@ -125,11 +125,13 @@ export function isDynamicSitemapEnabled(): boolean {
  * Inject sitemap into the page
  * 
  * This function creates a link element in the page head pointing to the sitemap.
- * For dynamic sitemaps, it could also create a data URL with the sitemap content.
+ * For static sitemaps, it points directly to /sitemap.xml.
+ * Note: Dynamic sitemaps use the static sitemap as well since the sitemap
+ * is primarily for search engine crawlers that fetch it via URL.
  * 
- * @param sitemapContent - The sitemap XML content (optional)
+ * @param _sitemapContent - The sitemap XML content (unused, reserved for future use)
  */
-export function injectSitemapLink(sitemapContent?: string): void {
+export function injectSitemapLink(_sitemapContent?: string): void {
   // Remove any existing sitemap link
   const existingLink = document.querySelector('link[rel="sitemap"]');
   if (existingLink) {
@@ -140,17 +142,8 @@ export function injectSitemapLink(sitemapContent?: string): void {
   const link = document.createElement('link');
   link.rel = 'sitemap';
   link.type = 'application/xml';
-  
-  if (sitemapContent && isDynamicSitemapEnabled()) {
-    // For dynamic sitemap, create a data URL
-    const blob = new Blob([sitemapContent], { type: 'application/xml' });
-    link.href = URL.createObjectURL(blob);
-    link.title = 'Sitemap (Dynamic)';
-  } else {
-    // For static sitemap, point to the static file
-    link.href = '/sitemap.xml';
-    link.title = 'Sitemap';
-  }
+  link.href = '/sitemap.xml';
+  link.title = isDynamicSitemapEnabled() ? 'Sitemap (Dynamic)' : 'Sitemap';
   
   document.head.appendChild(link);
 }
