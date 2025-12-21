@@ -201,6 +201,8 @@ The application uses the following environment variables (configured in `.env`):
 | `VITE_LOCAL_REGION` | Default region code |
 | `VITE_LOCAL_HOST` | Local development hostname |
 | `VITE_ERROR_TITLE` | Custom error page title |
+| `VITE_DYNAMIC_SITEMAP_ENABLED` | Enable/disable dynamic sitemap feature (default: `false`) |
+| `VITE_SITEMAP_API_URL` | API endpoint for dynamic sitemap |
 
 ## Features
 
@@ -295,6 +297,7 @@ The app integrates with Azure Application Insights to track user interactions an
 | [TELEMETRY.md](./docs/TELEMETRY.md) | Complete reference for all Application Insights events tracked in the application |
 | [DEPLOYMENT.md](./docs/DEPLOYMENT.md) | Deployment configuration and guidelines for Azure Static Web Apps |
 | [SEO-GUIDE.md](./docs/SEO-GUIDE.md) | Complete SEO and AI optimization implementation guide |
+| [DYNAMIC-SITEMAP.md](./docs/DYNAMIC-SITEMAP.md) | Dynamic sitemap feature with API integration and fallback support |
 | [DOCUMENTATION-STANDARDS.md](./docs/DOCUMENTATION-STANDARDS.md) | Repository documentation standards and guidelines |
 
 ### Marketing Documentation
