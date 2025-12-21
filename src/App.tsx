@@ -4,7 +4,7 @@ import type { JSX } from 'react/jsx-runtime';
 import './App.css';
 import NavBar from './NavBar';
 import WelcomeSection from './WelcomeSection';
-import type { AuthorData, LocaleHeaders } from './types';
+import type { AuthorData, LocaleHeaders, SEOMetadata } from './types';
 import { getAuthorDataFile } from './utilities/getAuthorDataFile';
 import { getLocale } from './utilities/getLocale';
 import { getRemoteAuthorDataBaseConfig, getLocalAuthorDataBaseConfig } from './utilities/authorDataBaseConfig';
@@ -16,6 +16,8 @@ import ErrorContainer from './ErrorContainer';
 import LoadingContainer from './LoadingContainer';
 import { BackToTop, ScrollProgress, ShareButtons, AddToHomeScreenBanner, useSwipeGesture } from './components';
 import TelemetryService from './utilities/TelemetryService';
+import SEOManager from './utilities/SEOManager';
+import { injectStructuredData } from './utilities/structuredData';
 
 // Lazy load below-fold sections for code splitting
 const AboutMeSection = lazy(() => import('./AboutMeSection'));
@@ -77,6 +79,8 @@ function App() {
       setError(null);
       document.title = newData.name || document.title;
       telemetryService.trackAuthorLoad(newData.name || 'Unknown Author', window.location.hostname);
+      // Inject structured data for SEO/AI optimization
+      injectStructuredData(newData);
     } else {
       setData(null);
     }
@@ -235,6 +239,16 @@ function App() {
     return <LoadingContainer label={headers.loading} />;
   }
 
+  // Generate SEO metadata from author data
+  const seoMetadata: SEOMetadata = {
+    title: data.seo?.title || `${data.name} - Author`,
+    description: data.seo?.description || data.aboutMe,
+    keywords: data.seo?.keywords || ['author', 'books', 'articles', 'writer', data.name],
+    image: data.seo?.image || data.headshot,
+    canonicalUrl: data.seo?.canonicalUrl || window.location.href.split('?')[0].split('#')[0],
+    type: data.seo?.type || 'profile',
+  };
+
   // Section loading fallback
   const SectionFallback = () => (
     <div className="section-loading" role="status" aria-live="polite">
@@ -245,6 +259,7 @@ function App() {
   return (
     <AppInsightsErrorBoundary onError={() => <><h1>Error occurred</h1></>} appInsights={reactPlugin}>
       <>
+        <SEOManager metadata={seoMetadata} authorName={data.name} />
         <ScrollProgress />
         <div className="main-container">
           <a href="#main-content" className="skip-link">Skip to main content</a>
