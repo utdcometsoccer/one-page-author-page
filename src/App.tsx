@@ -18,6 +18,7 @@ import { BackToTop, ScrollProgress, ShareButtons, AddToHomeScreenBanner, useSwip
 import TelemetryService from './utilities/TelemetryService';
 import SEOManager from './utilities/SEOManager';
 import { injectStructuredData } from './utilities/structuredData';
+import { getSitemap, injectSitemapLink } from './utilities/sitemapService';
 
 // Lazy load below-fold sections for code splitting
 const AboutMeSection = lazy(() => import('./AboutMeSection'));
@@ -220,6 +221,22 @@ function App() {
             setError('Unable to load author data from remote or local sources.');
             handleAuthorData();
           });
+      });
+  }, []);
+
+  // Initialize sitemap (dynamic or static based on configuration)
+  useEffect(() => {
+    getSitemap()
+      .then(sitemapContent => {
+        if (sitemapContent) {
+          injectSitemapLink(sitemapContent);
+          console.log('Sitemap initialized successfully');
+        } else {
+          console.warn('Failed to load sitemap');
+        }
+      })
+      .catch(error => {
+        console.error('Error initializing sitemap:', error);
       });
   }, []);
 

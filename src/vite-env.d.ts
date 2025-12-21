@@ -16,6 +16,8 @@ interface ImportMetaEnv {
   readonly VITE_LOCAL_LANG: string;
   readonly VITE_LOCAL_REGION: string;
   readonly VITE_LOCAL_AUTHOR_DATA_FILE_EXTENSION: string;
+  readonly VITE_DYNAMIC_SITEMAP_ENABLED: string;
+  readonly VITE_SITEMAP_API_URL: string;
 }
 
 interface ImportMeta {
