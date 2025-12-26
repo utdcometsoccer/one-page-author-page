@@ -289,6 +289,15 @@ The app integrates with Azure Application Insights to track user interactions an
 
 ## Documentation
 
+### Project Planning
+
+| Document | Description |
+|----------|-------------|
+| [ROADMAP.md](./docs/ROADMAP.md) | 🗺️ **Product roadmap** with strategic goals, feature prioritization, and implementation timeline for 2026 |
+| [TODO.md](./docs/TODO.md) | ✅ **Detailed todo list** with actionable items, estimates, and progress tracking |
+
+### Technical Documentation
+
 | Document | Description |
 |----------|-------------|
 | [DESIGN-SYSTEM.md](./docs/DESIGN-SYSTEM.md) | Comprehensive design system documentation covering brand colors, typography, spacing, and component specifications |
