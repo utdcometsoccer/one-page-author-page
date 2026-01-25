@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import type { SEOMetadata } from '../types';
+import { getLocale } from './getLocale';
 
 interface SEOManagerProps {
   metadata: SEOMetadata;
@@ -94,13 +95,22 @@ export function SEOManager({ metadata, authorName }: SEOManagerProps) {
       setCanonicalUrl(currentUrl.split('?')[0].split('#')[0]);
     }
     
-    // Language attribute on html tag
+    // Update HTML lang attribute and Open Graph locale using existing getLocale utility
     const htmlElement = document.documentElement;
-    const locale = htmlElement.getAttribute('lang') || 'en';
-    // Convert locale format from 'en' or 'en-US' to 'en_US' for Open Graph
-    const ogLocale = locale.includes('-') 
-      ? locale.replace('-', '_') 
-      : locale;
+    const locale = getLocale(); // Returns format like 'en-us'
+    
+    // Set HTML lang attribute (format: en-US)
+    if (locale.includes('-')) {
+      const [lang, region] = locale.split('-');
+      htmlElement.setAttribute('lang', `${lang}-${region.toUpperCase()}`);
+    } else {
+      htmlElement.setAttribute('lang', locale);
+    }
+    
+    // Set Open Graph locale (format: en_US)
+    const ogLocale = locale.replace('-', '_').split('_').map((part, idx) => 
+      idx === 1 ? part.toUpperCase() : part
+    ).join('_');
     setMetaTag('meta[property="og:locale"]', ogLocale);
     
   }, [metadata, authorName]);

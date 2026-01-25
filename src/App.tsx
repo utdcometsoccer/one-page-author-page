@@ -18,6 +18,7 @@ import { BackToTop, ScrollProgress, ShareButtons, AddToHomeScreenBanner, useSwip
 import TelemetryService from './utilities/TelemetryService';
 import SEOManager from './utilities/SEOManager';
 import { injectStructuredData } from './utilities/structuredData';
+import { injectAdditionalStructuredData } from './utilities/additionalSchemas';
 import { getSitemap, injectSitemapLink } from './utilities/sitemapService';
 
 // Lazy load below-fold sections for code splitting
@@ -82,6 +83,8 @@ function App() {
       telemetryService.trackAuthorLoad(newData.name || 'Unknown Author', window.location.hostname);
       // Inject structured data for SEO/AI optimization
       injectStructuredData(newData);
+      // Inject additional schemas (Breadcrumb, FAQ)
+      injectAdditionalStructuredData(newData.name, newData.aboutMe, newData.email);
     } else {
       setData(null);
     }
