@@ -2,6 +2,33 @@
 
 This directory contains Bicep templates for deploying Azure resources.
 
+## Performance Optimization for Mexico
+
+📊 **See [PERFORMANCE-MEXICO.md](../docs/PERFORMANCE-MEXICO.md) for comprehensive performance optimization guide**
+
+### Quick Summary
+
+The application has been optimized for mobile performance in Mexico with:
+
+**Code Optimizations:**
+- ✅ Vite build optimizations (code splitting, esbuild minification)
+- ✅ Manual chunk splitting for better browser caching
+- ✅ CSS code splitting
+- ✅ Modern image formats (WebP, AVIF) with lazy loading
+- ✅ Font preconnect optimization
+- ✅ HTTP caching headers configured
+
+**Expected Performance Improvements:**
+- 20-30% bundle size reduction
+- 40-60% faster initial page load
+- Better caching for repeat visitors
+
+**Infrastructure Recommendations:**
+- Deploy Azure Static Web App to **South Central US** (closest to Mexico)
+- Implement Azure Front Door for geographic redundancy
+- Enable CDN for static assets
+- See [PERFORMANCE-MEXICO.md](../docs/PERFORMANCE-MEXICO.md) for detailed implementation guide
+
 ## Azure Static Web App Deployment
 
 The `static-web-app.bicep` template deploys an Azure Static Web App resource.

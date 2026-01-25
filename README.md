@@ -228,9 +228,25 @@ The app uses CSS custom properties and media queries with breakpoints at:
 
 ### Performance
 
+**Build Optimizations:**
 - Code splitting with React lazy loading for below-fold sections
+- Manual chunk splitting (react-vendor, mui-icons, insights)
+- esbuild minification for faster builds
+- CSS code splitting
+- Source maps disabled in production
+- Optimized images (WebP/AVIF formats with lazy loading)
 - Dynamic import of social media icons
-- Optimized images (WebP/AVIF formats)
+- HTTP caching headers for static assets
+
+**Mobile Performance (Mexico):**
+- ~20-30% bundle size reduction through optimization
+- Font preconnect for faster rendering
+- es/mx locale support with efficient loading
+- See [PERFORMANCE-MEXICO.md](./docs/PERFORMANCE-MEXICO.md) for comprehensive optimization guide including:
+  - Geographic redundancy recommendations
+  - CDN configuration for Latin America
+  - Infrastructure best practices
+  - Monitoring and analytics
 
 ### Accessibility
 
