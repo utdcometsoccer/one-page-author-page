@@ -11,11 +11,19 @@ export default defineConfig({
     // Optimize chunk splitting for better caching
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Separate vendor chunks for better caching
-          'react-vendor': ['react', 'react-dom'],
-          'mui-icons': ['@mui/icons-material/Facebook', '@mui/icons-material/Twitter', '@mui/icons-material/Instagram', '@mui/icons-material/LinkedIn', '@mui/icons-material/YouTube', '@mui/icons-material/GitHub', '@mui/icons-material/MusicNote'],
-          'insights': ['@microsoft/applicationinsights-react-js', '@microsoft/applicationinsights-web']
+        manualChunks(id: string) {
+          // React core libraries
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+            return 'react-vendor';
+          }
+          // Material UI icons
+          if (id.includes('@mui/icons-material/')) {
+            return 'mui-icons';
+          }
+          // Application Insights
+          if (id.includes('@microsoft/applicationinsights')) {
+            return 'insights';
+          }
         }
       }
     },

@@ -236,10 +236,10 @@ The app uses CSS custom properties and media queries with breakpoints at:
 - Source maps disabled in production
 - Optimized images (WebP/AVIF formats with lazy loading)
 - Dynamic import of social media icons
-- HTTP caching headers for static assets
+- HTTP caching headers for static assets (Cache-Control for assets, images, JS/CSS)
 
 **Mobile Performance (Mexico):**
-- ~20-30% bundle size reduction through optimization
+- ~65% bundle size reduction through optimization (473KB → 165KB gzipped)
 - Font preconnect for faster rendering
 - es/mx locale support with efficient loading
 - See [PERFORMANCE-MEXICO.md](./docs/PERFORMANCE-MEXICO.md) for comprehensive optimization guide including:

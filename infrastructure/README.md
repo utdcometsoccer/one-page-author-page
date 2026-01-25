@@ -19,7 +19,7 @@ The application has been optimized for mobile performance in Mexico with:
 - ✅ HTTP caching headers configured
 
 **Expected Performance Improvements:**
-- 20-30% bundle size reduction
+- 65% bundle size reduction (473KB → 165KB gzipped)
 - 40-60% faster initial page load
 - Better caching for repeat visitors
 

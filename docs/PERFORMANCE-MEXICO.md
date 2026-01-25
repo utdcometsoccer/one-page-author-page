@@ -44,10 +44,16 @@ build: {
   minify: 'esbuild',
   rollupOptions: {
     output: {
-      manualChunks: {
-        'react-vendor': ['react', 'react-dom'],
-        'mui-icons': ['@mui/icons-material/*'],
-        'insights': ['@microsoft/applicationinsights-*']
+      manualChunks(id) {
+        if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+          return 'react-vendor';
+        }
+        if (id.includes('@mui/icons-material/')) {
+          return 'mui-icons';
+        }
+        if (id.includes('@microsoft/applicationinsights')) {
+          return 'insights';
+        }
       }
     }
   },
@@ -557,6 +563,8 @@ self.addEventListener('install', (event) => {
 **Implementation:**
 ```typescript
 // Add to TelemetryService.ts
+import { getCLS, getFID, getLCP } from 'web-vitals';
+
 trackPerformanceMetrics() {
   const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
   
@@ -566,11 +574,26 @@ trackPerformanceMetrics() {
   });
 
   // Core Web Vitals
-  if ('web-vital' in performance) {
-    getCLS(metric => this.appInsights?.trackMetric({ name: 'CLS', average: metric.value }));
-    getFID(metric => this.appInsights?.trackMetric({ name: 'FID', average: metric.value }));
-    getLCP(metric => this.appInsights?.trackMetric({ name: 'LCP', average: metric.value }));
-  }
+  getCLS(metric => 
+    this.appInsights?.trackMetric({ 
+      name: 'CLS', 
+      average: metric.value 
+    })
+  );
+  
+  getFID(metric => 
+    this.appInsights?.trackMetric({ 
+      name: 'FID', 
+      average: metric.value 
+    })
+  );
+  
+  getLCP(metric => 
+    this.appInsights?.trackMetric({ 
+      name: 'LCP', 
+      average: metric.value 
+    })
+  );
 }
 ```
 
