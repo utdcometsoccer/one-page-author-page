@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import type { SEOMetadata } from '../types';
+import { getLocale } from './getLocale';
 
 interface SEOManagerProps {
   metadata: SEOMetadata;
@@ -60,16 +61,6 @@ export function SEOManager({ metadata, authorName }: SEOManagerProps) {
     
     setMetaTag('meta[name="author"]', authorName || '');
     
-    // Additional meta tags for better SEO
-    if (metadata.type === 'profile' && authorName) {
-      setMetaTag('meta[property="profile:username"]', authorName.toLowerCase().replace(/\s+/g, ''));
-    }
-    
-    // Publication time for freshness signals
-    const publishedTime = new Date().toISOString();
-    setMetaTag('meta[property="article:published_time"]', publishedTime);
-    setMetaTag('meta[property="article:modified_time"]', publishedTime);
-    
     // Open Graph meta tags for social sharing
     setMetaTag('meta[property="og:title"]', metadata.title || authorName || '');
     setMetaTag('meta[property="og:description"]', metadata.description || '');
@@ -104,23 +95,20 @@ export function SEOManager({ metadata, authorName }: SEOManagerProps) {
       setCanonicalUrl(currentUrl.split('?')[0].split('#')[0]);
     }
     
-    // Update HTML lang attribute and Open Graph locale
+    // Update HTML lang attribute and Open Graph locale using existing getLocale utility
     const htmlElement = document.documentElement;
-    
-    // Get locale from browser - getLocale returns format like 'en-us'
-    const browserLocale = navigator.language?.toLowerCase() || 'en-us';
-    const normalizedLocale = browserLocale === 'en' ? 'en-us' : browserLocale;
+    const locale = getLocale(); // Returns format like 'en-us'
     
     // Set HTML lang attribute (format: en-US)
-    if (normalizedLocale.includes('-')) {
-      const [lang, region] = normalizedLocale.split('-');
+    if (locale.includes('-')) {
+      const [lang, region] = locale.split('-');
       htmlElement.setAttribute('lang', `${lang}-${region.toUpperCase()}`);
     } else {
-      htmlElement.setAttribute('lang', normalizedLocale);
+      htmlElement.setAttribute('lang', locale);
     }
     
     // Set Open Graph locale (format: en_US)
-    const ogLocale = normalizedLocale.replace('-', '_').split('_').map((part, idx) => 
+    const ogLocale = locale.replace('-', '_').split('_').map((part, idx) => 
       idx === 1 ? part.toUpperCase() : part
     ).join('_');
     setMetaTag('meta[property="og:locale"]', ogLocale);
