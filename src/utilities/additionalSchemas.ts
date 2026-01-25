@@ -53,38 +53,40 @@ export function generateFAQSchema(authorName: string, aboutMe: string, email?: s
 }
 
 /**
+ * Helper function to inject structured data script into the document head
+ * Removes existing script with the same ID and appends new one
+ */
+function injectStructuredDataScript(id: string, schema: object): void {
+  // Remove existing script if present
+  const existingScript = document.getElementById(id);
+  if (existingScript) {
+    existingScript.remove();
+  }
+  
+  // Create and inject new script
+  const script = document.createElement('script');
+  script.id = id;
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+/**
  * Injects breadcrumb and FAQ structured data into the document
+ * This function is idempotent and can be called multiple times safely
  */
 export function injectAdditionalStructuredData(
   authorName: string, 
   aboutMe: string, 
   email?: string
 ): void {
-  // Inject breadcrumb schema
-  const breadcrumbScript = document.createElement('script');
-  breadcrumbScript.id = 'breadcrumb-schema';
-  breadcrumbScript.type = 'application/ld+json';
-  breadcrumbScript.textContent = JSON.stringify(generateBreadcrumbSchema());
+  // Generate and inject breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema();
+  injectStructuredDataScript('breadcrumb-schema', breadcrumbSchema);
   
-  // Remove existing breadcrumb script if present
-  const existingBreadcrumb = document.getElementById('breadcrumb-schema');
-  if (existingBreadcrumb) {
-    existingBreadcrumb.remove();
-  }
-  document.head.appendChild(breadcrumbScript);
-  
-  // Inject FAQ schema
-  const faqScript = document.createElement('script');
-  faqScript.id = 'faq-schema';
-  faqScript.type = 'application/ld+json';
-  faqScript.textContent = JSON.stringify(generateFAQSchema(authorName, aboutMe, email));
-  
-  // Remove existing FAQ script if present
-  const existingFAQ = document.getElementById('faq-schema');
-  if (existingFAQ) {
-    existingFAQ.remove();
-  }
-  document.head.appendChild(faqScript);
+  // Generate and inject FAQ schema
+  const faqSchema = generateFAQSchema(authorName, aboutMe, email);
+  injectStructuredDataScript('faq-schema', faqSchema);
 }
 
 export default {

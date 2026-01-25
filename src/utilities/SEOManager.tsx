@@ -22,13 +22,6 @@ export function SEOManager({ metadata, authorName }: SEOManagerProps) {
       document.title = `${authorName} - Author`;
     }
     
-    // Update HTML lang attribute based on current locale
-    const htmlElement = document.documentElement;
-    const currentLocale = window.location.pathname.match(/\/(en|fr|de|es)\/([a-z]{2})\//);
-    if (currentLocale) {
-      htmlElement.setAttribute('lang', `${currentLocale[1]}-${currentLocale[2].toUpperCase()}`);
-    }
-    
     // Helper function to set meta tag
     const setMetaTag = (selector: string, content: string) => {
       if (!content) return;
@@ -111,12 +104,25 @@ export function SEOManager({ metadata, authorName }: SEOManagerProps) {
       setCanonicalUrl(currentUrl.split('?')[0].split('#')[0]);
     }
     
-    // Open Graph locale - reuse htmlElement from above
-    const locale = htmlElement.getAttribute('lang') || 'en';
-    // Convert locale format from 'en' or 'en-US' to 'en_US' for Open Graph
-    const ogLocale = locale.includes('-') 
-      ? locale.replace('-', '_') 
-      : locale;
+    // Update HTML lang attribute and Open Graph locale
+    const htmlElement = document.documentElement;
+    
+    // Get locale from browser - getLocale returns format like 'en-us'
+    const browserLocale = navigator.language?.toLowerCase() || 'en-us';
+    const normalizedLocale = browserLocale === 'en' ? 'en-us' : browserLocale;
+    
+    // Set HTML lang attribute (format: en-US)
+    if (normalizedLocale.includes('-')) {
+      const [lang, region] = normalizedLocale.split('-');
+      htmlElement.setAttribute('lang', `${lang}-${region.toUpperCase()}`);
+    } else {
+      htmlElement.setAttribute('lang', normalizedLocale);
+    }
+    
+    // Set Open Graph locale (format: en_US)
+    const ogLocale = normalizedLocale.replace('-', '_').split('_').map((part, idx) => 
+      idx === 1 ? part.toUpperCase() : part
+    ).join('_');
     setMetaTag('meta[property="og:locale"]', ogLocale);
     
   }, [metadata, authorName]);
