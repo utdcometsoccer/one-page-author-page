@@ -244,6 +244,11 @@ The app uses CSS custom properties and media queries with breakpoints at:
 
 The application includes comprehensive SEO and AI optimization features to maximize discoverability by search engines and AI systems:
 
+**Quick Reference Guides:**
+- 📋 **[SEO-AIO-CHECKLIST.md](./docs/SEO-AIO-CHECKLIST.md)** - Comprehensive checklist with implementation status and actionable items
+- 🤖 **[AIO-BEST-PRACTICES.md](./docs/AIO-BEST-PRACTICES.md)** - AI optimization strategies for ChatGPT, Claude, Perplexity, and other LLMs
+- ⚡ **[PERFORMANCE-OPTIMIZATION.md](./docs/PERFORMANCE-OPTIMIZATION.md)** - Performance optimization guide for Core Web Vitals
+
 **Dynamic Meta Tags:**
 - Open Graph tags for social sharing (Facebook, LinkedIn)
 - Twitter Card tags for enhanced Twitter previews
@@ -254,6 +259,8 @@ The application includes comprehensive SEO and AI optimization features to maxim
 - JSON-LD schema.org markup for authors (Person schema)
 - Book schema for each published work
 - Article schema for published articles
+- Breadcrumb schema for navigation
+- FAQ schema for common questions
 - Helps search engines and AI systems understand content relationships
 
 **AI Crawler Support:**
@@ -306,6 +313,9 @@ The app integrates with Azure Application Insights to track user interactions an
 | [TELEMETRY.md](./docs/TELEMETRY.md) | Complete reference for all Application Insights events tracked in the application |
 | [DEPLOYMENT.md](./docs/DEPLOYMENT.md) | Deployment configuration and guidelines for Azure Static Web Apps |
 | [SEO-GUIDE.md](./docs/SEO-GUIDE.md) | Complete SEO and AI optimization implementation guide |
+| [SEO-AIO-CHECKLIST.md](./docs/SEO-AIO-CHECKLIST.md) | Comprehensive SEO/AIO checklist with actionable items |
+| [AIO-BEST-PRACTICES.md](./docs/AIO-BEST-PRACTICES.md) | AI optimization strategies for modern LLMs |
+| [PERFORMANCE-OPTIMIZATION.md](./docs/PERFORMANCE-OPTIMIZATION.md) | Performance optimization guide for Core Web Vitals |
 | [DYNAMIC-SITEMAP.md](./docs/DYNAMIC-SITEMAP.md) | Dynamic sitemap feature with API integration and fallback support |
 | [DOCUMENTATION-STANDARDS.md](./docs/DOCUMENTATION-STANDARDS.md) | Repository documentation standards and guidelines |
 

@@ -22,6 +22,13 @@ export function SEOManager({ metadata, authorName }: SEOManagerProps) {
       document.title = `${authorName} - Author`;
     }
     
+    // Update HTML lang attribute based on current locale
+    const htmlElement = document.documentElement;
+    const currentLocale = window.location.pathname.match(/\/(en|fr|de|es)\/([a-z]{2})\//);
+    if (currentLocale) {
+      htmlElement.setAttribute('lang', `${currentLocale[1]}-${currentLocale[2].toUpperCase()}`);
+    }
+    
     // Helper function to set meta tag
     const setMetaTag = (selector: string, content: string) => {
       if (!content) return;
@@ -60,6 +67,16 @@ export function SEOManager({ metadata, authorName }: SEOManagerProps) {
     
     setMetaTag('meta[name="author"]', authorName || '');
     
+    // Additional meta tags for better SEO
+    if (metadata.type === 'profile' && authorName) {
+      setMetaTag('meta[property="profile:username"]', authorName.toLowerCase().replace(/\s+/g, ''));
+    }
+    
+    // Publication time for freshness signals
+    const publishedTime = new Date().toISOString();
+    setMetaTag('meta[property="article:published_time"]', publishedTime);
+    setMetaTag('meta[property="article:modified_time"]', publishedTime);
+    
     // Open Graph meta tags for social sharing
     setMetaTag('meta[property="og:title"]', metadata.title || authorName || '');
     setMetaTag('meta[property="og:description"]', metadata.description || '');
@@ -94,8 +111,7 @@ export function SEOManager({ metadata, authorName }: SEOManagerProps) {
       setCanonicalUrl(currentUrl.split('?')[0].split('#')[0]);
     }
     
-    // Language attribute on html tag
-    const htmlElement = document.documentElement;
+    // Open Graph locale - reuse htmlElement from above
     const locale = htmlElement.getAttribute('lang') || 'en';
     // Convert locale format from 'en' or 'en-US' to 'en_US' for Open Graph
     const ogLocale = locale.includes('-') 
