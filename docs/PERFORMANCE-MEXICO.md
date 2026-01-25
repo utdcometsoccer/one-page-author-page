@@ -32,7 +32,7 @@ This document outlines performance optimization strategies for serving the One P
 - Minimal re-renders with proper state management
 
 ✅ **Build Optimizations** (as of this update)
-- Terser minification with console.log removal in production
+- esbuild minification (faster than terser)
 - Manual chunk splitting for vendor code
 - CSS code splitting enabled
 - Source maps disabled in production
@@ -41,7 +41,7 @@ This document outlines performance optimization strategies for serving the One P
 ```typescript
 // vite.config.ts optimizations
 build: {
-  minify: 'terser',
+  minify: 'esbuild',
   rollupOptions: {
     output: {
       manualChunks: {
