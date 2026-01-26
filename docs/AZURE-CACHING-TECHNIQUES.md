@@ -186,6 +186,7 @@ import { createClient } from 'redis';
 
 class CacheService {
   private client;
+  private connected = false;
   
   constructor() {
     this.client = createClient({
@@ -198,8 +199,16 @@ class CacheService {
     });
   }
 
+  async connect(): Promise<void> {
+    if (!this.connected) {
+      await this.client.connect();
+      this.connected = true;
+    }
+  }
+
   async get<T>(key: string): Promise<T | null> {
     try {
+      await this.connect();
       const cached = await this.client.get(key);
       return cached ? JSON.parse(cached) : null;
     } catch (error) {
@@ -210,6 +219,7 @@ class CacheService {
 
   async set(key: string, value: any, ttlSeconds: number = 900): Promise<void> {
     try {
+      await this.connect();
       await this.client.setEx(
         key,
         ttlSeconds,
@@ -217,6 +227,29 @@ class CacheService {
       );
     } catch (error) {
       console.error('Cache set error:', error);
+    }
+  }
+
+  async ttl(key: string): Promise<number> {
+    try {
+      await this.connect();
+      return await this.client.ttl(key);
+    } catch (error) {
+      console.error('Cache ttl error:', error);
+      return -1;
+    }
+  }
+
+  async deletePattern(pattern: string): Promise<void> {
+    try {
+      await this.connect();
+      // Scan for keys matching pattern and delete them
+      const keys = await this.client.keys(pattern);
+      if (keys.length > 0) {
+        await this.client.del(keys);
+      }
+    } catch (error) {
+      console.error('Cache deletePattern error:', error);
     }
   }
 
@@ -882,7 +915,9 @@ class CompressedCacheService {
     // Only compress if payload is large enough
     if (json.length > 1024) {
       const compressed = await gzipAsync(json);
-      await cacheService.set(`${key}:gz`, compressed, ttl);
+      // Store as base64 string so it can be properly stored/retrieved
+      const base64 = compressed.toString('base64');
+      await cacheService.set(`${key}:gz`, base64, ttl);
     } else {
       await cacheService.set(key, value, ttl);
     }
@@ -890,9 +925,10 @@ class CompressedCacheService {
   
   async get<T>(key: string): Promise<T | null> {
     // Try compressed version first
-    const compressed = await cacheService.get(`${key}:gz`);
-    if (compressed) {
-      const decompressed = await gunzipAsync(Buffer.from(compressed));
+    const compressedBase64 = await cacheService.get<string>(`${key}:gz`);
+    if (compressedBase64) {
+      const compressed = Buffer.from(compressedBase64, 'base64');
+      const decompressed = await gunzipAsync(compressed);
       return JSON.parse(decompressed.toString());
     }
     
@@ -1148,7 +1184,8 @@ app.use((req, res, next) => {
     }
   }
   
-  req.cacheableQuery = params.toString();
+  // Store the sanitized query string on res.locals for downstream handlers
+  res.locals.cacheableQuery = params.toString();
   next();
 });
 ```
