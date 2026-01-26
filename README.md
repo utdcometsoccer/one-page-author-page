@@ -332,6 +332,7 @@ The app integrates with Azure Application Insights to track user interactions an
 | [SEO-AIO-CHECKLIST.md](./docs/SEO-AIO-CHECKLIST.md) | Comprehensive SEO/AIO checklist with actionable items |
 | [AIO-BEST-PRACTICES.md](./docs/AIO-BEST-PRACTICES.md) | AI optimization strategies for modern LLMs |
 | [PERFORMANCE-OPTIMIZATION.md](./docs/PERFORMANCE-OPTIMIZATION.md) | Performance optimization guide for Core Web Vitals |
+| [AZURE-CACHING-TECHNIQUES.md](./docs/AZURE-CACHING-TECHNIQUES.md) | Comprehensive analysis of Azure caching techniques for North America API performance with Mexico optimization |
 | [DYNAMIC-SITEMAP.md](./docs/DYNAMIC-SITEMAP.md) | Dynamic sitemap feature with API integration and fallback support |
 | [DOCUMENTATION-STANDARDS.md](./docs/DOCUMENTATION-STANDARDS.md) | Repository documentation standards and guidelines |
 
