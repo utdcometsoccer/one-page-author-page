@@ -2,6 +2,9 @@
 
 **Focus: Optimizing Repetitive API Requests with Emphasis on Mexico**
 
+> **⚠️ IMPORTANT: This is an investigative analysis document.**  
+> The caching strategies described in this document have **not yet been implemented** in the codebase. This document serves as a comprehensive investigation and planning resource for future implementation. When implementing any caching solution, use feature flags that default to OFF to allow safe rollout and testing.
+
 This document provides a comprehensive analysis of Azure caching techniques and strategies to accelerate repetitive API requests in North America, with particular emphasis on performance optimization for users in Mexico.
 
 > **Related Documentation:** This document focuses on Azure-specific caching infrastructure. For code-level optimizations and build strategies, see [PERFORMANCE-MEXICO.md](./PERFORMANCE-MEXICO.md).
@@ -13,6 +16,10 @@ This document provides a comprehensive analysis of Azure caching techniques and 
 3. [Geographic Considerations for North America](#geographic-considerations-for-north-america)
 4. [Caching Architecture for Mexico Performance](#caching-architecture-for-mexico-performance)
 5. [Implementation Strategies](#implementation-strategies)
+   - [Feature Flag Configuration](#feature-flag-configuration)
+   - [Strategy 1: Basic Caching](#strategy-1-basic-caching-minimal-cost)
+   - [Strategy 2: Intermediate Caching](#strategy-2-intermediate-caching-balanced)
+   - [Strategy 3: Enterprise Caching](#strategy-3-enterprise-caching-maximum-performance)
 6. [Performance Optimization Techniques](#performance-optimization-techniques)
 7. [Cost Analysis](#cost-analysis)
 8. [Best Practices and Recommendations](#best-practices-and-recommendations)
@@ -669,6 +676,54 @@ app.get('/api/author/:id', async (req, res) => {
 
 ## Implementation Strategies
 
+> **🚀 Implementation Guidelines:**  
+> When implementing any of these caching strategies, always use **feature flags** to control rollout. Feature flags should:
+> - **Default to OFF** in production
+> - Allow gradual rollout to subset of users
+> - Enable quick rollback if issues arise
+> - Support A/B testing and performance comparison
+
+### Feature Flag Configuration
+
+Before implementing any caching strategy, set up feature flags in your environment configuration:
+
+```typescript
+// .env configuration
+VITE_ENABLE_REDIS_CACHE=false
+VITE_ENABLE_FRONT_DOOR_CACHE=false
+VITE_ENABLE_CDN_CACHE=false
+VITE_CACHE_ROLLOUT_PERCENTAGE=0  // 0-100, controls gradual rollout
+```
+
+```typescript
+// utilities/featureFlags.ts
+export const featureFlags = {
+  enableRedisCache: import.meta.env.VITE_ENABLE_REDIS_CACHE === 'true',
+  enableFrontDoorCache: import.meta.env.VITE_ENABLE_FRONT_DOOR_CACHE === 'true',
+  enableCDNCache: import.meta.env.VITE_ENABLE_CDN_CACHE === 'true',
+  cacheRolloutPercentage: parseInt(import.meta.env.VITE_CACHE_ROLLOUT_PERCENTAGE || '0', 10)
+};
+
+// Usage in cache service
+export async function getCachedData<T>(
+  key: string,
+  fetchFn: () => Promise<T>
+): Promise<T> {
+  // Feature flag check - default to no caching if disabled
+  if (!featureFlags.enableRedisCache) {
+    return await fetchFn();
+  }
+
+  // Check rollout percentage
+  if (Math.random() * 100 > featureFlags.cacheRolloutPercentage) {
+    return await fetchFn();
+  }
+
+  // Proceed with caching logic
+  return await cacheService.getOrFetch(key, fetchFn);
+}
+```
+
 ### Strategy 1: Basic Caching (Minimal Cost)
 
 **Target:** Small applications, limited budget  
@@ -1113,7 +1168,41 @@ app.get('/api/author/:id', async (req, res) => {
 | **User Session** | Redis only | 1 hour | Not cacheable at edge |
 | **Real-time Data** | No cache or 1 min | 1 min | Analytics, live status |
 
-### 2. Cache Invalidation Best Practices
+### 2. Feature Flag Management
+
+**Critical Implementation Requirement:**
+
+**Do:**
+- **Always use feature flags** for any caching implementation
+- **Default flags to OFF** in production environments
+- Enable gradual rollout (e.g., 1% → 10% → 50% → 100%)
+- Monitor metrics during each rollout phase
+- Keep rollback capability available at all times
+- Test thoroughly in staging before production rollout
+- Document feature flag configuration in deployment guides
+
+**Don't:**
+- Deploy caching changes without feature flags
+- Enable caching for 100% of users immediately
+- Remove feature flags until solution is proven stable (minimum 30 days)
+- Ignore performance degradation signals during rollout
+
+**Example Feature Flag Workflow:**
+```typescript
+// Day 1: Enable for 1% of traffic
+VITE_CACHE_ROLLOUT_PERCENTAGE=1
+
+// Day 3: If metrics look good, increase to 10%
+VITE_CACHE_ROLLOUT_PERCENTAGE=10
+
+// Week 1: Increase to 50%
+VITE_CACHE_ROLLOUT_PERCENTAGE=50
+
+// Week 2: Full rollout after validation
+VITE_CACHE_ROLLOUT_PERCENTAGE=100
+```
+
+### 3. Cache Invalidation Best Practices
 
 **Do:**
 - Use event-based invalidation for critical updates
@@ -1127,7 +1216,7 @@ app.get('/api/author/:id', async (req, res) => {
 - Forget to invalidate related cache keys
 - Ignore cache headers in development
 
-### 3. Monitoring Cache Performance
+### 4. Monitoring Cache Performance
 
 ```typescript
 // Track cache metrics
@@ -1163,7 +1252,7 @@ class CacheMetrics {
 - Eviction rate (target: <5%)
 - Cache invalidation frequency
 
-### 4. Security Considerations
+### 5. Security Considerations
 
 **Cache Poisoning Prevention:**
 ```typescript
@@ -1211,7 +1300,7 @@ app.get('/api/author/:id', async (req, res) => {
 });
 ```
 
-### 5. Mexico-Specific Optimizations
+### 6. Mexico-Specific Optimizations
 
 **1. Prioritize Spanish (es-mx) Locale:**
 ```typescript
