@@ -4,6 +4,8 @@
 
 This document provides a comprehensive analysis of Azure caching techniques and strategies to accelerate repetitive API requests in North America, with particular emphasis on performance optimization for users in Mexico.
 
+> **Related Documentation:** This document focuses on Azure-specific caching infrastructure. For code-level optimizations and build strategies, see [PERFORMANCE-MEXICO.md](./PERFORMANCE-MEXICO.md).
+
 ## Table of Contents
 
 1. [Executive Summary](#executive-summary)
@@ -1520,6 +1522,13 @@ With full implementation of recommended strategies:
 - **Higher conversion rates** due to better UX
 
 The investment in proper caching infrastructure pays for itself through reduced infrastructure costs, improved user engagement, and better business outcomes.
+
+## Related Documentation
+
+For additional performance optimization strategies, see:
+- **[PERFORMANCE-MEXICO.md](./PERFORMANCE-MEXICO.md)** - Code-level optimizations, build strategies, and infrastructure setup for Mexico
+- **[PERFORMANCE-OPTIMIZATION.md](./PERFORMANCE-OPTIMIZATION.md)** - Core Web Vitals optimization guide
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Azure Static Web Apps deployment configuration
 
 ---
 
