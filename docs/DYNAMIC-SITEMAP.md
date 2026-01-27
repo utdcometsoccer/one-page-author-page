@@ -73,7 +73,7 @@ VITE_SITEMAP_API_URL=
 
 ### Decision Logic
 
-```
+```text
 ┌─────────────────────────────────────┐
 │ Application Starts                  │
 └──────────────┬──────────────────────┘
@@ -125,9 +125,11 @@ Integration happens in `src/App.tsx` during application initialization using a R
 The sitemap API endpoint must meet the following requirements:
 
 #### HTTP Method
+
 - **GET** request
 
 #### Response Format
+
 - **Content-Type**: `application/xml` or `text/xml`
 - **Body**: Valid XML sitemap following the [Sitemaps Protocol](https://www.sitemaps.org/protocol.html)
 
@@ -152,14 +154,16 @@ The sitemap API endpoint must meet the following requirements:
 ```
 
 #### Status Codes
+
 - **200 OK**: Sitemap successfully retrieved
 - **404 Not Found**: Sitemap not available (fallback to static sitemap)
 - **500 Server Error**: API error (fallback to static sitemap)
 
 #### CORS Configuration
+
 The API endpoint must have CORS headers configured to allow requests from your application domain:
 
-```
+```text
 Access-Control-Allow-Origin: https://your-author-page.com
 Access-Control-Allow-Methods: GET
 ```
@@ -193,12 +197,14 @@ module.exports = async function (context, req) {
 ### Example 1: Enable Dynamic Sitemap
 
 1. Set environment variables in `.env`:
+
    ```env
    VITE_DYNAMIC_SITEMAP_ENABLED=true
    VITE_SITEMAP_API_URL=https://api.mysite.com/api/GetSitemap?author=johndoe
    ```
 
 2. Build and deploy:
+
    ```bash
    npm run build
    ```
@@ -208,12 +214,14 @@ module.exports = async function (context, req) {
 ### Example 2: Disable Dynamic Sitemap
 
 1. Set environment variables in `.env`:
+
    ```env
    VITE_DYNAMIC_SITEMAP_ENABLED=false
    VITE_SITEMAP_API_URL=
    ```
 
 2. Build and deploy:
+
    ```bash
    npm run build
    ```
@@ -225,6 +233,7 @@ module.exports = async function (context, req) {
 You can test the dynamic sitemap feature locally:
 
 1. Start a local development server:
+
    ```bash
    npm run dev
    ```
@@ -236,6 +245,7 @@ You can test the dynamic sitemap feature locally:
    - Error messages if fetching fails
 
 3. Inspect the page `<head>` to verify sitemap link:
+
    ```html
    <link rel="sitemap" type="application/xml" href="/sitemap.xml" title="Sitemap">
    ```
@@ -247,6 +257,7 @@ You can test the dynamic sitemap feature locally:
 **Symptoms**: Console shows "Dynamic sitemap disabled, using static sitemap" even though it's enabled
 
 **Solutions**:
+
 1. Check that `VITE_DYNAMIC_SITEMAP_ENABLED=true` in `.env`
 2. Verify `VITE_SITEMAP_API_URL` is set to a valid URL
 3. Rebuild the application: `npm run build`
@@ -257,6 +268,7 @@ You can test the dynamic sitemap feature locally:
 **Symptoms**: Console shows "Dynamic sitemap fetch failed, falling back to static sitemap"
 
 **Solutions**:
+
 1. Verify the API endpoint is accessible (try in browser or curl)
 2. Check API CORS configuration allows your domain
 3. Verify API returns valid XML sitemap format
@@ -268,6 +280,7 @@ You can test the dynamic sitemap feature locally:
 **Symptoms**: No `<link rel="sitemap">` element in page head
 
 **Solutions**:
+
 1. Check browser console for error messages
 2. Verify static `public/sitemap.xml` file exists
 3. Check that App.tsx sitemap initialization is not throwing errors
@@ -278,6 +291,7 @@ You can test the dynamic sitemap feature locally:
 **Symptoms**: Console shows "Invalid sitemap format received from API"
 
 **Solutions**:
+
 1. Verify API response includes XML declaration `<?xml version="1.0" encoding="UTF-8"?>`
 2. Ensure response includes `<urlset>` root element
 3. Validate sitemap against [Sitemaps Protocol](https://www.sitemaps.org/protocol.html)
@@ -287,11 +301,14 @@ You can test the dynamic sitemap feature locally:
 
 1. **Enable verbose logging**: Check browser console for detailed logs
 2. **Test API endpoint**: Use curl or Postman to verify API response
+
    ```bash
    curl -i https://api.mysite.com/api/GetSitemap
    ```
+
 3. **Inspect network tab**: Look for sitemap API request in browser DevTools Network tab
 4. **Verify environment**: Ensure environment variables are loaded correctly
+
    ```javascript
    console.log('VITE_DYNAMIC_SITEMAP_ENABLED:', import.meta.env.VITE_DYNAMIC_SITEMAP_ENABLED);
    console.log('VITE_SITEMAP_API_URL:', import.meta.env.VITE_SITEMAP_API_URL);

@@ -1,4 +1,5 @@
 [![Azure Static Web Apps CI/CD](https://github.com/utdcometsoccer/one-page-author-page/actions/workflows/azure-static-web-apps-wonderful-moss-050caf31e.yml/badge.svg)](https://github.com/utdcometsoccer/one-page-author-page/actions/workflows/azure-static-web-apps-wonderful-moss-050caf31e.yml)
+
 # One Page Author Page
 
 A responsive, single-page React + TypeScript + Vite application for authors. This project features:
@@ -48,6 +49,9 @@ npm run build
 # Run linting
 npm run lint
 
+# Lint documentation (markdown files)
+npm run lint:docs
+
 # Run tests
 npm run test
 
@@ -57,7 +61,7 @@ npm run preview
 
 ## Project Structure
 
-```
+```bash
 ├── src/
 │   ├── components/          # Reusable UI components and hooks
 │   │   ├── Button.tsx       # Versatile button with variants (primary, secondary, outline)
@@ -213,6 +217,7 @@ The app supports dark and light themes. Users can toggle between themes using th
 ### Responsive Design
 
 The app uses CSS custom properties and media queries with breakpoints at:
+
 - 600px (mobile)
 - 768px (tablet)
 - 992px (desktop)
@@ -229,6 +234,7 @@ The app uses CSS custom properties and media queries with breakpoints at:
 ### Performance
 
 **Build Optimizations:**
+
 - Code splitting with React lazy loading for below-fold sections
 - Manual chunk splitting (react-vendor, mui-icons, insights)
 - esbuild minification for faster builds
@@ -239,6 +245,7 @@ The app uses CSS custom properties and media queries with breakpoints at:
 - HTTP caching headers for static assets (Cache-Control for assets, images, JS/CSS)
 
 **Mobile Performance (Mexico):**
+
 - ~65% bundle size reduction through optimization (473KB → 165KB gzipped)
 - Font preconnect for faster rendering
 - es/mx locale support with efficient loading
@@ -261,17 +268,20 @@ The app uses CSS custom properties and media queries with breakpoints at:
 The application includes comprehensive SEO and AI optimization features to maximize discoverability by search engines and AI systems:
 
 **Quick Reference Guides:**
+
 - 📋 **[SEO-AIO-CHECKLIST.md](./docs/SEO-AIO-CHECKLIST.md)** - Comprehensive checklist with implementation status and actionable items
 - 🤖 **[AIO-BEST-PRACTICES.md](./docs/AIO-BEST-PRACTICES.md)** - AI optimization strategies for ChatGPT, Claude, Perplexity, and other LLMs
 - ⚡ **[PERFORMANCE-OPTIMIZATION.md](./docs/PERFORMANCE-OPTIMIZATION.md)** - Performance optimization guide for Core Web Vitals
 
 **Dynamic Meta Tags:**
+
 - Open Graph tags for social sharing (Facebook, LinkedIn)
 - Twitter Card tags for enhanced Twitter previews
 - Standard SEO meta tags (description, keywords, author)
 - Canonical URLs to prevent duplicate content issues
 
 **Structured Data:**
+
 - JSON-LD schema.org markup for authors (Person schema)
 - Book schema for each published work
 - Article schema for published articles
@@ -280,6 +290,7 @@ The application includes comprehensive SEO and AI optimization features to maxim
 - Helps search engines and AI systems understand content relationships
 
 **AI Crawler Support:**
+
 - Explicit support for GPTBot (OpenAI)
 - Claude-Web (Anthropic)
 - Google-Extended
@@ -292,6 +303,7 @@ Authors can provide custom SEO metadata in their author data JSON files, or the 
 ## Design System
 
 See **[DESIGN-SYSTEM.md](./docs/DESIGN-SYSTEM.md)** for comprehensive documentation on:
+
 - Brand colors and theme tokens
 - Typography scale and font families
 - Spacing system

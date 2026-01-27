@@ -33,12 +33,14 @@ This document provides a comprehensive analysis of Azure caching techniques and 
 For applications serving North America, particularly Mexico, Azure offers a robust suite of caching solutions that can dramatically reduce API response times and improve user experience. The optimal strategy combines multiple caching layers:
 
 **Performance Improvements (Mexico-focused deployment):**
+
 - **75-85% reduction** in API response time for cached requests
 - **60-75% reduction** in Time to First Byte (TTFB) with Front Door
 - **90%+ cache hit ratio** achievable for repetitive API calls
 - **40-50% cost reduction** in compute resources through reduced backend load
 
 **Recommended Stack for Mexico:**
+
 1. **Azure Front Door** (Edge caching, global distribution)
 2. **Azure Cache for Redis** (In-memory caching, session management)
 3. **Azure CDN** (Static content delivery)
@@ -71,6 +73,7 @@ For applications serving North America, particularly Mexico, Azure offers a robu
 #### North America Points of Presence (PoPs)
 
 **United States:**
+
 - Atlanta, GA
 - Chicago, IL
 - Dallas, TX (closest to Mexico)
@@ -83,10 +86,12 @@ For applications serving North America, particularly Mexico, Azure offers a robu
 - Washington, DC
 
 **Mexico:**
+
 - Mexico City (Primary)
 - Querétaro (Secondary)
 
 **Canada:**
+
 - Montreal, QC
 - Toronto, ON
 
@@ -122,6 +127,7 @@ For applications serving North America, particularly Mexico, Azure offers a robu
 ```
 
 **Performance Impact for Mexico:**
+
 - **Before:** 200-300ms TTFB from East US 2
 - **After:** 20-50ms TTFB from Mexico City PoP
 - **Improvement:** 75-85% reduction in latency
@@ -152,6 +158,7 @@ For applications serving North America, particularly Mexico, Azure offers a robu
 #### Regional Deployment for North America
 
 **Recommended Regions:**
+
 1. **South Central US** (Texas) - Primary for Mexico traffic
 2. **East US 2** (Virginia) - Secondary for East Coast
 3. **West US 2** (Washington) - Tertiary for West Coast
@@ -314,6 +321,7 @@ app.get('/api/author/:authorId', async (req, res) => {
 ```
 
 **Performance Impact:**
+
 - **Database query time:** ~50-100ms
 - **Redis cache hit:** ~1-3ms
 - **Improvement:** 95-98% faster for cached requests
@@ -336,16 +344,19 @@ app.get('/api/author/:authorId', async (req, res) => {
 #### CDN Profiles
 
 **Microsoft CDN:**
+
 - Integrated with Azure services
 - Good for general-purpose content delivery
 - ~165 global PoPs
 
 **Verizon Premium:**
+
 - Advanced caching rules
 - Real-time analytics
 - Token authentication
 
 **Akamai Standard:**
+
 - Best performance
 - Largest PoP network (200+)
 - Higher cost
@@ -353,6 +364,7 @@ app.get('/api/author/:authorId', async (req, res) => {
 #### North America Coverage
 
 **Microsoft CDN PoPs in/near Mexico:**
+
 - Dallas, TX
 - Los Angeles, CA
 - Miami, FL
@@ -494,7 +506,7 @@ export const memoryCache = new MemoryCache();
 
 ### Network Topology
 
-```
+```text
 Mexico Users
     ↓
 Mexico City PoP (Front Door)
@@ -518,12 +530,14 @@ East US 2 (Redis Secondary + Backup API)
 ### ISP and Carrier Considerations
 
 **Major Mexican ISPs:**
+
 - Telmex/Telnor (60% market share)
 - Megacable
 - Axtel
 - Izzi
 
 **Peering Relationships:**
+
 - All major Mexican ISPs peer in Dallas, TX
 - Direct peering with Azure in Mexico City is available
 - Cross-border traffic typically routes through Dallas or Los Angeles
@@ -534,7 +548,7 @@ East US 2 (Redis Secondary + Backup API)
 
 ### Multi-Layer Caching Strategy
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────┐
 │ Layer 1: Browser Cache (Client-Side)                        │
 │ - Local storage: Theme preferences, user settings           │
@@ -678,6 +692,7 @@ app.get('/api/author/:id', async (req, res) => {
 
 > **🚀 Implementation Guidelines:**  
 > When implementing any of these caching strategies, always use **feature flags** to control rollout. Feature flags should:
+>
 > - **Default to OFF** in production
 > - Allow gradual rollout to subset of users
 > - Enable quick rollback if issues arise
@@ -730,6 +745,7 @@ export async function getCachedData<T>(
 **Cost:** ~$0-50/month
 
 **Components:**
+
 - Azure Static Web Apps (with built-in CDN)
 - HTTP caching headers
 - Browser caching
@@ -763,6 +779,7 @@ export async function getCachedData<T>(
 ```
 
 **Expected Performance (Mexico):**
+
 - Cache hit ratio: 60-70%
 - TTFB improvement: 20-30%
 - Cost savings: Minimal
@@ -773,6 +790,7 @@ export async function getCachedData<T>(
 **Cost:** ~$300-500/month
 
 **Components:**
+
 - Azure Front Door (Standard)
 - Azure Cache for Redis (Standard C1)
 - Azure CDN (Microsoft)
@@ -780,7 +798,7 @@ export async function getCachedData<T>(
 
 **Architecture:**
 
-```
+```text
 Mexico Users → Front Door (Mexico City PoP)
                     ↓
                Redis Cache (South Central US)
@@ -807,6 +825,7 @@ az redis create \
 ```
 
 **Expected Performance (Mexico):**
+
 - Cache hit ratio: 80-85%
 - TTFB improvement: 60-70%
 - API response time: 50-100ms (cached)
@@ -818,6 +837,7 @@ az redis create \
 **Cost:** ~$1,500-2,500/month
 
 **Components:**
+
 - Azure Front Door (Premium)
 - Azure Cache for Redis (Premium P1, geo-replicated)
 - Azure CDN (Verizon Premium or Akamai)
@@ -825,7 +845,7 @@ az redis create \
 
 **Architecture:**
 
-```
+```text
 Mexico Users → Front Door (Mexico City PoP)
                     ↓
          ┌──────────┴──────────┐
@@ -876,6 +896,7 @@ az redis server-link create \
 ```
 
 **Expected Performance (Mexico):**
+
 - Cache hit ratio: 90-95%
 - TTFB improvement: 75-85%
 - API response time: 20-50ms (edge cache), 1-5ms (Redis)
@@ -889,6 +910,7 @@ az redis server-link create \
 **Strategy 2.5: Enhanced Intermediate**
 
 **Components:**
+
 - Azure Front Door (Standard) - $35/month base
 - Azure Cache for Redis (Standard C1) - $61/month
 - Existing Azure Static Web Apps - Free/Standard tier
@@ -897,6 +919,7 @@ az redis server-link create \
 **Total Cost:** ~$106-116/month
 
 **Justification:**
+
 1. Static Web Apps already includes CDN capabilities
 2. Front Door provides edge caching for API responses
 3. Redis handles session state and frequently accessed data
@@ -907,6 +930,7 @@ az redis server-link create \
 ### 1. Cache Key Design
 
 **Poor Design:**
+
 ```typescript
 // Too generic - cache pollution
 const key = 'author-data';
@@ -916,6 +940,7 @@ const key = `author:${authorId}`;
 ```
 
 **Good Design:**
+
 ```typescript
 // Specific, hierarchical, includes locale
 const key = `author:${authorId}:${locale}:profile`;
@@ -1076,6 +1101,7 @@ app.get('/api/author/:id', async (req, res) => {
 ### Scenario: Medium-Traffic Author Platform
 
 **Assumptions:**
+
 - 100,000 monthly active users
 - 50% from Mexico, 30% US, 20% other
 - 5 API calls per session
@@ -1125,7 +1151,8 @@ app.get('/api/author/:id', async (req, res) => {
 
 **Cache Hit Ratio:** 90-95%  
 **Additional Costs:** $528/month vs. Strategy 2  
-**Benefits:** 
+**Benefits:**
+
 - 99.99% SLA
 - 75-85% faster TTFB for Mexico
 - Enterprise security (WAF)
@@ -1134,22 +1161,26 @@ app.get('/api/author/:id', async (req, res) => {
 ### ROI Analysis for Mexico Users
 
 **Assumptions:**
+
 - 50,000 monthly users from Mexico
 - Average session value: $2
 - Bounce rate reduction with faster load times: 15% → 10%
 - Conversion rate improvement: 2% → 2.5%
 
 **Baseline (Strategy 1):**
+
 - Bounce rate: 15% (7,500 lost users)
 - Conversions: 2% of 42,500 = 850
 - Revenue: 850 × $2 = $1,700/month
 
 **Optimized (Strategy 2):**
+
 - Bounce rate: 10% (5,000 lost users)
 - Conversions: 2.5% of 45,000 = 1,125
 - Revenue: 1,125 × $2 = $2,250/month
 
 **Net Benefit:**
+
 - Revenue increase: $550/month
 - Cost increase: $0 (savings of $389)
 - **Total ROI: $939/month positive**
@@ -1173,6 +1204,7 @@ app.get('/api/author/:id', async (req, res) => {
 **Critical Implementation Requirement:**
 
 **Do:**
+
 - **Always use feature flags** for any caching implementation
 - **Default flags to OFF** in production environments
 - Enable gradual rollout (e.g., 1% → 10% → 50% → 100%)
@@ -1182,12 +1214,14 @@ app.get('/api/author/:id', async (req, res) => {
 - Document feature flag configuration in deployment guides
 
 **Don't:**
+
 - Deploy caching changes without feature flags
 - Enable caching for 100% of users immediately
 - Remove feature flags until solution is proven stable (minimum 30 days)
 - Ignore performance degradation signals during rollout
 
 **Example Feature Flag Workflow:**
+
 ```typescript
 // Day 1: Enable for 1% of traffic
 VITE_CACHE_ROLLOUT_PERCENTAGE=1
@@ -1205,12 +1239,14 @@ VITE_CACHE_ROLLOUT_PERCENTAGE=100
 ### 3. Cache Invalidation Best Practices
 
 **Do:**
+
 - Use event-based invalidation for critical updates
 - Implement stale-while-revalidate for better UX
 - Log cache invalidation events for debugging
 - Use cache versioning for breaking changes
 
 **Don't:**
+
 - Invalidate entire cache on every update
 - Use aggressive TTLs (< 60 seconds) for edge caching
 - Forget to invalidate related cache keys
@@ -1246,6 +1282,7 @@ class CacheMetrics {
 ```
 
 **Key Metrics to Monitor:**
+
 - Cache hit ratio (target: >80%)
 - Average cache response time (target: <50ms)
 - Cache memory usage (target: <80% capacity)
@@ -1255,6 +1292,7 @@ class CacheMetrics {
 ### 5. Security Considerations
 
 **Cache Poisoning Prevention:**
+
 ```typescript
 // Validate and sanitize cache keys
 function sanitizeCacheKey(key: string): string {
@@ -1280,6 +1318,7 @@ app.use((req, res, next) => {
 ```
 
 **Authentication and Caching:**
+
 ```typescript
 // Never cache authenticated responses at edge
 app.get('/api/user/profile', authenticateUser, async (req, res) => {
@@ -1303,6 +1342,7 @@ app.get('/api/author/:id', async (req, res) => {
 ### 6. Mexico-Specific Optimizations
 
 **1. Prioritize Spanish (es-mx) Locale:**
+
 ```typescript
 // Pre-warm cache for Spanish content
 const priorityLocales = ['es-mx', 'en-us'];
@@ -1323,6 +1363,7 @@ async function warmCacheForMexico() {
 ```
 
 **2. Optimize for Mobile Networks:**
+
 ```typescript
 // Smaller payloads for mobile users
 app.get('/api/author/:id', async (req, res) => {
@@ -1345,6 +1386,7 @@ app.get('/api/author/:id', async (req, res) => {
 ```
 
 **3. Use Compression:**
+
 ```typescript
 // Brotli compression for modern browsers
 import compression from 'compression';
@@ -1366,6 +1408,7 @@ app.use(compression({
 ### Azure Monitor Queries
 
 **Cache Hit Ratio:**
+
 ```kusto
 traces
 | where message contains "Cache"
@@ -1377,6 +1420,7 @@ traces
 ```
 
 **Performance by Region:**
+
 ```kusto
 requests
 | where name contains "/api/"
@@ -1390,6 +1434,7 @@ requests
 ```
 
 **Cache Effectiveness:**
+
 ```kusto
 dependencies
 | where type == "Redis"
@@ -1468,12 +1513,14 @@ az monitor metrics alert create \
 ### Current Implementation
 
 The One Page Author application currently uses:
+
 - Azure Static Web Apps (East US 2)
 - Static content delivery via built-in CDN
 - HTTP caching headers for browser caching
 - No server-side caching layer
 
 **Current Performance (Mexico):**
+
 - TTFB: 200-300ms (from East US 2)
 - Cache hit ratio: ~60% (browser only)
 - API response time: 150-250ms
@@ -1515,6 +1562,7 @@ az afd origin create \
 ```
 
 **Expected Results:**
+
 - TTFB: 20-50ms (from Mexico City PoP)
 - Cache hit ratio: 75-80%
 - API response time: 50-100ms
@@ -1554,6 +1602,7 @@ export async function getAuthorData(
 ```
 
 **Expected Results:**
+
 - Database queries: -95% (cached)
 - API response time: 1-5ms (Redis hit)
 - Monthly cost: ~$96-111
@@ -1572,6 +1621,7 @@ export async function getAuthorData(
 ### ROI Calculation
 
 **Assumptions:**
+
 - 10,000 monthly visitors
 - 60% from North America (6,000)
 - 40% from Mexico (4,000)
@@ -1579,13 +1629,16 @@ export async function getAuthorData(
 - Target bounce rate: 8% (with faster loads)
 
 **Before:**
+
 - Engaged users: 8,500 (85%)
 
 **After:**
+
 - Engaged users: 9,200 (92%)
 - Additional engaged users: 700
 
 **Value per engaged user: $1 (email signup, book interest, etc.)**
+
 - Additional value: $700/month
 - Cost increase: $96/month
 - **Net benefit: $604/month**
@@ -1623,6 +1676,7 @@ export async function getAuthorData(
 ### Implementation Priority
 
 **High Priority (Do First):**
+
 1. ✅ Add HTTP caching headers (already implemented)
 2. 🚀 Deploy Azure Front Door (maximum impact for cost)
 3. 📊 Set up Application Insights monitoring
@@ -1640,6 +1694,7 @@ export async function getAuthorData(
 ### Expected Outcomes
 
 With full implementation of recommended strategies:
+
 - **75-85% faster** API responses for Mexico users
 - **90%+ cache hit ratio** for repetitive requests
 - **99.99% availability** with geo-redundancy
@@ -1652,6 +1707,7 @@ The investment in proper caching infrastructure pays for itself through reduced 
 ## Related Documentation
 
 For additional performance optimization strategies, see:
+
 - **[PERFORMANCE-MEXICO.md](./PERFORMANCE-MEXICO.md)** - Code-level optimizations, build strategies, and infrastructure setup for Mexico
 - **[PERFORMANCE-OPTIMIZATION.md](./PERFORMANCE-OPTIMIZATION.md)** - Core Web Vitals optimization guide
 - **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Azure Static Web Apps deployment configuration

@@ -287,7 +287,7 @@ A skip link is provided for keyboard users:
 
 ## File Structure
 
-```
+```bash
 src/
 ├── components/
 │   ├── Button.tsx      # Button component
