@@ -1,9 +1,9 @@
 declare global {
   interface ImportMeta {
-    env: { [key: string]: any };
+    env: Record<string, string>;
   }
 }
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { getRemoteAuthorDataBaseConfig, getLocalAuthorDataBaseConfig } from '../src/utilities/authorDataBaseConfig';
 
 describe('getRemoteAuthorDataBaseConfig', () => {    
