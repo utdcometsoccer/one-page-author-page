@@ -11,6 +11,7 @@ This document describes the SEO (Search Engine Optimization) and AI optimization
 The application dynamically generates comprehensive meta tags for each author page:
 
 #### Standard Meta Tags
+
 - `title` - Page title optimized for search engines
 - `description` - Compelling description of the author and their work
 - `keywords` - Relevant keywords for search indexing
@@ -19,6 +20,7 @@ The application dynamically generates comprehensive meta tags for each author pa
 - `language` - Content language specification
 
 #### Open Graph Tags (Facebook, LinkedIn)
+
 - `og:title` - Title for social sharing
 - `og:description` - Description for social sharing
 - `og:type` - Content type (profile for author pages)
@@ -29,6 +31,7 @@ The application dynamically generates comprehensive meta tags for each author pa
 - `og:site_name` - Site name
 
 #### Twitter Card Tags
+
 - `twitter:card` - Card type (summary_large_image)
 - `twitter:title` - Title for Twitter
 - `twitter:description` - Description for Twitter
@@ -40,6 +43,7 @@ The application dynamically generates comprehensive meta tags for each author pa
 The application generates comprehensive structured data using schema.org vocabulary:
 
 #### Person Schema
+
 ```json
 {
   "@context": "https://schema.org",
@@ -57,7 +61,9 @@ The application generates comprehensive structured data using schema.org vocabul
 ```
 
 #### Book Schema
+
 Each book is marked up with:
+
 ```json
 {
   "@type": "Book",
@@ -73,7 +79,9 @@ Each book is marked up with:
 ```
 
 #### Article Schema
+
 Each article is marked up with:
+
 ```json
 {
   "@type": "Article",
@@ -94,6 +102,7 @@ Each article is marked up with:
 ### 3. Canonical URLs
 
 Canonical URLs are automatically generated and injected to:
+
 - Prevent duplicate content issues
 - Consolidate ranking signals
 - Specify the preferred version of a page
@@ -101,6 +110,7 @@ Canonical URLs are automatically generated and injected to:
 ### 4. Robots.txt
 
 Located at `/public/robots.txt`, the file:
+
 - Allows all search engines to crawl the site
 - Explicitly allows AI crawlers (GPTBot, Claude-Web, Google-Extended, etc.)
 - Specifies the sitemap location
@@ -108,12 +118,14 @@ Located at `/public/robots.txt`, the file:
 ### 5. Sitemap
 
 Located at `/public/sitemap.xml`, provides:
+
 - List of all pages for search engines
 - Last modification dates
 - Change frequency hints
 - Page priority indicators
 
 **Note:** The default sitemap is a template. For production deployment:
+
 - Update the URL to match your actual domain
 - Update the `lastmod` date to reflect content changes
 - Consider generating the sitemap dynamically based on author data
@@ -136,6 +148,7 @@ The application explicitly allows and optimizes for AI crawlers:
 ### Rich Structured Data
 
 The comprehensive schema.org markup helps AI systems:
+
 - Understand author relationships to their work
 - Extract accurate information about books and articles
 - Build knowledge graphs
@@ -144,6 +157,7 @@ The comprehensive schema.org markup helps AI systems:
 ### Semantic HTML
 
 The application uses semantic HTML5 elements:
+
 - `<main>` for primary content
 - `<nav>` for navigation
 - `<section>` for content sections
@@ -251,6 +265,7 @@ If custom SEO metadata is not provided, the application intelligently generates 
 ### Search Console
 
 Set up Google Search Console to:
+
 - Monitor search appearance
 - Track click-through rates
 - Identify keyword rankings
@@ -259,6 +274,7 @@ Set up Google Search Console to:
 ### Analytics
 
 Use Application Insights to:
+
 - Track page views and user engagement
 - Monitor traffic sources
 - Identify popular content
@@ -267,6 +283,7 @@ Use Application Insights to:
 ### Social Sharing
 
 Monitor:
+
 - Open Graph preview appearance
 - Twitter Card rendering
 - Social share counts
@@ -306,6 +323,7 @@ Monitor:
 ### Meta Tags Not Updating
 
 If meta tags aren't updating dynamically:
+
 1. Check that author data includes the `seo` field
 2. Verify SEOManager component is rendering
 3. Clear browser cache and reload
@@ -314,6 +332,7 @@ If meta tags aren't updating dynamically:
 ### Structured Data Errors
 
 If structured data validation fails:
+
 1. Check that all required fields are present in author data
 2. Verify image URLs are absolute (include domain)
 3. Ensure date formats are ISO 8601 (YYYY-MM-DD)
@@ -322,6 +341,7 @@ If structured data validation fails:
 ### Social Sharing Issues
 
 If social previews don't work:
+
 1. Use platform-specific debuggers to clear cache
 2. Verify Open Graph tags are present and correct
 3. Ensure images are publicly accessible

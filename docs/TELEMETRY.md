@@ -22,6 +22,7 @@ This document provides comprehensive documentation for all Application Insights 
 The application uses Azure Application Insights to track user interactions and behavior. All events are sent through a centralized `TelemetryService` singleton that provides type-safe tracking methods.
 
 **Key Features:**
+
 - Singleton pattern ensures consistent tracking across the application
 - Type-safe event properties
 - Automatic tracking of external link clicks
@@ -40,6 +41,7 @@ telemetryService.initialize(import.meta.env.VITE_APPINSIGHTS_CONNECTION_STRING)
 ```
 
 **Environment Variable Required:**
+
 - `VITE_APPINSIGHTS_CONNECTION_STRING`: Azure Application Insights connection string
 
 ## Event Reference
@@ -47,6 +49,7 @@ telemetryService.initialize(import.meta.env.VITE_APPINSIGHTS_CONNECTION_STRING)
 ### Navigation Events
 
 #### SectionView
+
 **Event Name:** `SectionView`
 
 **Description:** Tracks when a user scrolls to a new section of the page.
@@ -54,11 +57,13 @@ telemetryService.initialize(import.meta.env.VITE_APPINSIGHTS_CONNECTION_STRING)
 **When Triggered:** Automatically triggered when a section enters the viewport (scroll spy)
 
 **Properties:**
+
 | Property | Type | Description |
 |----------|------|-------------|
 | `sectionName` | string | The ID of the section viewed (e.g., 'welcome', 'about-me', 'articles', 'my-books', 'contact-me') |
 
 **Example:**
+
 ```typescript
 telemetryService.trackSectionView('about-me')
 ```
@@ -68,6 +73,7 @@ telemetryService.trackSectionView('about-me')
 ---
 
 #### NavClick
+
 **Event Name:** `NavClick`
 
 **Description:** Tracks when a user clicks a navigation link in the navbar.
@@ -75,11 +81,13 @@ telemetryService.trackSectionView('about-me')
 **When Triggered:** On click of any navigation link in the navbar
 
 **Properties:**
+
 | Property | Type | Description |
 |----------|------|-------------|
 | `targetSection` | string | The section ID being navigated to (e.g., 'welcome', 'about-me') |
 
 **Example:**
+
 ```typescript
 telemetryService.trackNavClick('about-me')
 ```
@@ -89,6 +97,7 @@ telemetryService.trackNavClick('about-me')
 ---
 
 #### MenuToggle
+
 **Event Name:** `MenuToggle`
 
 **Description:** Tracks when the mobile navigation menu is opened or closed.
@@ -96,11 +105,13 @@ telemetryService.trackNavClick('about-me')
 **When Triggered:** On click of the mobile menu hamburger button
 
 **Properties:**
+
 | Property | Type | Description |
 |----------|------|-------------|
 | `isOpen` | boolean | Whether the menu is now open (true) or closed (false) |
 
 **Example:**
+
 ```typescript
 telemetryService.trackMenuToggle(true)
 ```
@@ -110,6 +121,7 @@ telemetryService.trackMenuToggle(true)
 ---
 
 #### BackToTop
+
 **Event Name:** `BackToTop`
 
 **Description:** Tracks when a user clicks the "Back to Top" button.
@@ -119,6 +131,7 @@ telemetryService.trackMenuToggle(true)
 **Properties:** None
 
 **Example:**
+
 ```typescript
 telemetryService.trackBackToTop()
 ```
@@ -130,6 +143,7 @@ telemetryService.trackBackToTop()
 ### Content Interaction Events
 
 #### ArticleLinkClick
+
 **Event Name:** `ArticleLinkClick`
 
 **Description:** Tracks when a user clicks on an article link.
@@ -137,12 +151,14 @@ telemetryService.trackBackToTop()
 **When Triggered:** On click of any article link in the Articles section
 
 **Properties:**
+
 | Property | Type | Description |
 |----------|------|-------------|
 | `articleTitle` | string | The title of the article clicked |
 | `url` | string | The URL of the article |
 
 **Example:**
+
 ```typescript
 telemetryService.trackArticleLinkClick('Sample Article One', 'https://example.com/article')
 ```
@@ -152,6 +168,7 @@ telemetryService.trackArticleLinkClick('Sample Article One', 'https://example.co
 ---
 
 #### BookLinkClick
+
 **Event Name:** `BookLinkClick`
 
 **Description:** Tracks when a user clicks on a "Learn More" link for a book.
@@ -159,12 +176,14 @@ telemetryService.trackArticleLinkClick('Sample Article One', 'https://example.co
 **When Triggered:** On click of any book's "Learn More" button
 
 **Properties:**
+
 | Property | Type | Description |
 |----------|------|-------------|
 | `bookTitle` | string | The title of the book |
 | `url` | string | The URL where more information can be found |
 
 **Example:**
+
 ```typescript
 telemetryService.trackBookLinkClick('The Journey Begins', 'https://example.com/book1')
 ```
@@ -174,6 +193,7 @@ telemetryService.trackBookLinkClick('The Journey Begins', 'https://example.com/b
 ---
 
 #### ContactEmailClick
+
 **Event Name:** `ContactEmailClick`
 
 **Description:** Tracks when a user clicks the email contact link.
@@ -181,11 +201,13 @@ telemetryService.trackBookLinkClick('The Journey Begins', 'https://example.com/b
 **When Triggered:** On click of the email link in the Contact section
 
 **Properties:**
+
 | Property | Type | Description |
 |----------|------|-------------|
 | `email` | string | The email address clicked |
 
 **Example:**
+
 ```typescript
 telemetryService.trackContactEmailClick('author@example.com')
 ```
@@ -195,6 +217,7 @@ telemetryService.trackContactEmailClick('author@example.com')
 ---
 
 #### LinkClick / ExternalLinkClick
+
 **Event Name:** `LinkClick` or `ExternalLinkClick`
 
 **Description:** Tracks all link clicks throughout the application. External links (http/https) trigger `ExternalLinkClick`, internal links trigger `LinkClick`.
@@ -202,6 +225,7 @@ telemetryService.trackContactEmailClick('author@example.com')
 **When Triggered:** On click of any `<Link>` component
 
 **Properties:**
+
 | Property | Type | Description |
 |----------|------|-------------|
 | `url` | string | The destination URL |
@@ -209,6 +233,7 @@ telemetryService.trackContactEmailClick('author@example.com')
 | `isExternal` | boolean? | Whether the link is external |
 
 **Example:**
+
 ```typescript
 telemetryService.trackLinkClick('https://example.com', 'Example Site', true)
 ```
@@ -220,6 +245,7 @@ telemetryService.trackLinkClick('https://example.com', 'Example Site', true)
 ### Social & Sharing Events
 
 #### SocialIconClick
+
 **Event Name:** `SocialIconClick`
 
 **Description:** Tracks when a user clicks a social media icon in the footer.
@@ -227,12 +253,14 @@ telemetryService.trackLinkClick('https://example.com', 'Example Site', true)
 **When Triggered:** On click of any social media icon (Facebook, Twitter, Instagram, LinkedIn, YouTube, GitHub, Threads, TikTok, Substack)
 
 **Properties:**
+
 | Property | Type | Description |
 |----------|------|-------------|
 | `platform` | string | The social media platform name (e.g., 'Facebook', 'Twitter') |
 | `url` | string | The destination URL |
 
 **Example:**
+
 ```typescript
 telemetryService.trackSocialIconClick('Twitter', 'https://twitter.com/username')
 ```
@@ -242,6 +270,7 @@ telemetryService.trackSocialIconClick('Twitter', 'https://twitter.com/username')
 ---
 
 #### ShareClick
+
 **Event Name:** `ShareClick`
 
 **Description:** Tracks when a user clicks a share button.
@@ -249,12 +278,14 @@ telemetryService.trackSocialIconClick('Twitter', 'https://twitter.com/username')
 **When Triggered:** On click of any share button (Copy Link, Native Share, Twitter, Facebook, LinkedIn)
 
 **Properties:**
+
 | Property | Type | Description |
 |----------|------|-------------|
 | `platform` | string | The sharing method ('copy', 'native', 'twitter', 'facebook', 'linkedin') |
 | `url` | string? | The URL being shared |
 
 **Example:**
+
 ```typescript
 telemetryService.trackShareClick('twitter', 'https://example.com')
 ```
@@ -266,6 +297,7 @@ telemetryService.trackShareClick('twitter', 'https://example.com')
 ### UI Interaction Events
 
 #### ButtonClick
+
 **Event Name:** `ButtonClick`
 
 **Description:** Tracks when a user clicks any button in the application (except share buttons, which have their own event).
@@ -273,12 +305,14 @@ telemetryService.trackShareClick('twitter', 'https://example.com')
 **When Triggered:** On click of any `<Button>` component
 
 **Properties:**
+
 | Property | Type | Description |
 |----------|------|-------------|
 | `buttonName` | string | The button label or tracking name |
 | `variant` | string? | The button variant ('primary', 'secondary', 'outline') |
 
 **Example:**
+
 ```typescript
 telemetryService.trackButtonClick('Submit Form', 'primary')
 ```
@@ -286,6 +320,7 @@ telemetryService.trackButtonClick('Submit Form', 'primary')
 **Tracked In:** `Button.tsx`
 
 **Note:** The button name is determined by:
+
 1. `trackingName` prop if provided
 2. Button text if children is a string
 3. `aria-label` attribute if available
@@ -295,6 +330,7 @@ telemetryService.trackButtonClick('Submit Form', 'primary')
 ---
 
 #### ThemeToggle
+
 **Event Name:** `ThemeToggle`
 
 **Description:** Tracks when a user switches between light and dark themes.
@@ -302,11 +338,13 @@ telemetryService.trackButtonClick('Submit Form', 'primary')
 **When Triggered:** On click of the theme toggle button in the footer
 
 **Properties:**
+
 | Property | Type | Description |
 |----------|------|-------------|
 | `newTheme` | string | The newly selected theme ('light' or 'dark') |
 
 **Example:**
+
 ```typescript
 telemetryService.trackThemeToggle('light')
 ```
@@ -318,6 +356,7 @@ telemetryService.trackThemeToggle('light')
 ### PWA Events
 
 #### InstallPrompt
+
 **Event Name:** `InstallPrompt`
 
 **Description:** Tracks when a user clicks the "Install" button on the PWA install banner.
@@ -327,6 +366,7 @@ telemetryService.trackThemeToggle('light')
 **Properties:** None
 
 **Example:**
+
 ```typescript
 telemetryService.trackInstallPrompt()
 ```
@@ -336,6 +376,7 @@ telemetryService.trackInstallPrompt()
 ---
 
 #### InstallDismiss
+
 **Event Name:** `InstallDismiss`
 
 **Description:** Tracks when a user dismisses the PWA install banner.
@@ -345,6 +386,7 @@ telemetryService.trackInstallPrompt()
 **Properties:** None
 
 **Example:**
+
 ```typescript
 telemetryService.trackInstallDismiss()
 ```
@@ -356,6 +398,7 @@ telemetryService.trackInstallDismiss()
 ### System Events
 
 #### AuthorLoadEvent
+
 **Event Name:** `AuthorLoadEvent`
 
 **Description:** Tracks when author data is successfully loaded into the application.
@@ -363,12 +406,14 @@ telemetryService.trackInstallDismiss()
 **When Triggered:** Automatically when author data is fetched and loaded
 
 **Properties:**
+
 | Property | Type | Description |
 |----------|------|-------------|
 | `authorName` | string | The name of the author |
 | `domain` | string | The domain/hostname where the page is loaded |
 
 **Example:**
+
 ```typescript
 telemetryService.trackAuthorLoad('Jane Johnson', 'example.com')
 ```
@@ -459,21 +504,25 @@ type TelemetryEventProperties = Record<string, string | number | boolean | undef
 ## Best Practices
 
 ### 1. Consistent Naming
+
 - Use the provided convenience methods when possible
 - Follow existing patterns for custom events
 - Use descriptive property names
 
 ### 2. Privacy Considerations
+
 - Avoid tracking PII (Personally Identifiable Information)
 - Email addresses in `ContactEmailClick` should be the author's public contact email only
 - Do not track user-entered data
 
 ### 3. Performance
+
 - Events are sent asynchronously and won't block user interactions
 - The telemetry service handles initialization and connection automatically
 - Failed tracking calls fail silently to prevent application errors
 
 ### 4. Testing
+
 - Telemetry tracking is active in all environments
 - Use environment-specific connection strings to separate development/production data
 - Mock the telemetry service in unit tests to avoid sending test events

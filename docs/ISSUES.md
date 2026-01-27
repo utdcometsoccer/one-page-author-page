@@ -12,6 +12,7 @@ This document provides a template for GitHub issues to be created based on the p
 ### Testing & Quality
 
 #### Issue: Fix Playwright Browser Installation in CI
+
 ```markdown
 **Priority:** P0 - Critical
 **Labels:** bug, testing, ci/cd
@@ -22,11 +23,14 @@ This document provides a template for GitHub issues to be created based on the p
 The Playwright browser installation is failing in CI, preventing test execution. This blocks the test automation pipeline.
 
 **Error:**
-```
+```text
+
 Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell
+
 ```
 
 **Tasks:**
+
 - [ ] Update `.github/workflows/azure-static-web-apps-wonderful-moss-050caf31e.yml`
 - [ ] Add `npx playwright install` step before test execution
 - [ ] Add `npx playwright install-deps` for system dependencies
@@ -34,12 +38,13 @@ Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-pl
 - [ ] Document Playwright setup in README.md
 
 **Acceptance Criteria:**
+
 - All tests pass in CI
 - Playwright browsers install correctly
 - Documentation updated
-```
 
 #### Issue: Set Up Test Coverage Reporting
+
 ```markdown
 **Priority:** P0 - Critical
 **Labels:** enhancement, testing, quality
@@ -64,6 +69,7 @@ Implement test coverage reporting to track code coverage and ensure quality stan
 ```
 
 #### Issue: Expand Test Coverage to >90%
+
 ```markdown
 **Priority:** P0 - Critical
 **Labels:** testing, quality
@@ -91,6 +97,7 @@ Increase unit test coverage from current ~70-80% to >90% to ensure code quality 
 ```
 
 #### Issue: Implement Service Worker and Offline Support
+
 ```markdown
 **Priority:** P0 - Critical
 **Labels:** enhancement, pwa, performance
@@ -123,6 +130,7 @@ Add service worker functionality to enable offline support and improve PWA capab
 ### Performance Monitoring
 
 #### Issue: Implement Web Vitals Tracking
+
 ```markdown
 **Priority:** P0 - Critical
 **Labels:** enhancement, performance, analytics
@@ -146,6 +154,7 @@ Track Core Web Vitals to monitor and improve performance.
 ```
 
 #### Issue: Create Performance Dashboard and Budgets
+
 ```markdown
 **Priority:** P0 - Critical
 **Labels:** enhancement, performance, monitoring
@@ -181,6 +190,7 @@ Set up performance monitoring dashboard and define performance budgets.
 ### Image Optimization
 
 #### Issue: Implement Comprehensive Image Optimization
+
 ```markdown
 **Priority:** P1 - High
 **Labels:** enhancement, performance, images
@@ -213,6 +223,7 @@ Optimize image loading and formats to improve performance and user experience.
 ### Security & Error Tracking
 
 #### Issue: Security Audit and Dependency Updates
+
 ```markdown
 **Priority:** P1 - High
 **Labels:** security, maintenance
@@ -239,6 +250,7 @@ Conduct comprehensive security audit and update vulnerable dependencies.
 ```
 
 #### Issue: Implement Content Security Policy
+
 ```markdown
 **Priority:** P1 - High
 **Labels:** security, enhancement
@@ -263,6 +275,7 @@ Add Content Security Policy headers to enhance application security.
 ```
 
 #### Issue: Enhanced Error Tracking and Monitoring
+
 ```markdown
 **Priority:** P1 - High
 **Labels:** enhancement, monitoring, debugging
@@ -290,6 +303,7 @@ Improve error tracking and create analytics dashboard for better debugging and m
 ### Multi-Author Management
 
 #### Issue: Multi-Author Management System
+
 ```markdown
 **Priority:** P1 - High
 **Labels:** feature, enhancement
@@ -322,6 +336,7 @@ Implement multi-author management capabilities to support multiple authors effic
 ### Analytics Enhancement
 
 #### Issue: Advanced Analytics and A/B Testing
+
 ```markdown
 **Priority:** P1 - High
 **Labels:** enhancement, analytics, experimentation
@@ -357,6 +372,7 @@ Implement advanced analytics features including user journey tracking, conversio
 ### CMS Integration
 
 #### Issue: Headless CMS Integration
+
 ```markdown
 **Priority:** P2 - Medium
 **Labels:** feature, enhancement, content
@@ -391,6 +407,7 @@ Integrate a headless CMS to enable visual content editing and management.
 ### Internationalization
 
 #### Issue: Enhanced Internationalization with RTL Support
+
 ```markdown
 **Priority:** P2 - Medium
 **Labels:** enhancement, i18n, accessibility
@@ -423,6 +440,7 @@ Expand internationalization capabilities with RTL language support and additiona
 ### Advanced PWA Features
 
 #### Issue: Push Notifications and Background Sync
+
 ```markdown
 **Priority:** P2 - Medium
 **Labels:** enhancement, pwa, notifications
@@ -453,6 +471,7 @@ Add advanced PWA features including push notifications and background sync.
 ### Newsletter Integration
 
 #### Issue: Newsletter Integration with ESP
+
 ```markdown
 **Priority:** P2 - Medium
 **Labels:** feature, marketing
@@ -485,6 +504,7 @@ Add newsletter signup functionality with email service provider integration.
 ### Visual Regression Testing
 
 #### Issue: Visual Regression Testing Implementation
+
 ```markdown
 **Priority:** P2 - Medium
 **Labels:** testing, quality, automation
@@ -521,6 +541,7 @@ Implement visual regression testing to catch UI regressions automatically.
 ### E-commerce
 
 #### Issue: E-commerce Integration with Payment Processing
+
 ```markdown
 **Priority:** P3 - Low
 **Labels:** feature, e-commerce
@@ -557,6 +578,7 @@ Enable direct book sales through integrated payment processing.
 ### Blog Platform
 
 #### Issue: Built-in Blog Platform
+
 ```markdown
 **Priority:** P3 - Low
 **Labels:** feature, content
@@ -594,6 +616,7 @@ Add built-in blog functionality for authors to publish articles directly.
 ### Event Management
 
 #### Issue: Event Management System
+
 ```markdown
 **Priority:** P3 - Low
 **Labels:** feature, events
@@ -626,6 +649,7 @@ Add event management capabilities for book signings, virtual events, etc.
 ### Advanced SEO
 
 #### Issue: Advanced SEO Features and Dashboard
+
 ```markdown
 **Priority:** P3 - Low
 **Labels:** enhancement, seo
@@ -657,6 +681,7 @@ Implement advanced SEO features including per-author sitemaps and SEO scoring.
 ### Accessibility AAA
 
 #### Issue: WCAG 2.2 AAA Compliance
+
 ```markdown
 **Priority:** P3 - Low
 **Labels:** accessibility, quality
@@ -688,6 +713,7 @@ Achieve WCAG 2.2 AAA compliance for superior accessibility.
 ### Developer Experience
 
 #### Issue: Storybook and Component Playground
+
 ```markdown
 **Priority:** P3 - Low
 **Labels:** developer experience, documentation

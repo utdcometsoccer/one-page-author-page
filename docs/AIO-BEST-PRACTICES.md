@@ -9,6 +9,7 @@ This guide provides comprehensive best practices for optimizing the One Page Aut
 ## Why AI Optimization Matters
 
 ### The Rise of AI-Powered Search
+
 - **Perplexity AI**: Direct answers with citations
 - **ChatGPT**: Conversational search and recommendations
 - **Google SGE**: Search Generative Experience with AI summaries
@@ -16,6 +17,7 @@ This guide provides comprehensive best practices for optimizing the One Page Aut
 - **Claude**: Advanced reasoning and comprehension
 
 ### Benefits of AIO
+
 1. **Increased Visibility**: Appear in AI-generated answers and recommendations
 2. **Accurate Representation**: Ensure AI systems understand your content correctly
 3. **Citation and Attribution**: Get cited as authoritative sources
@@ -29,6 +31,7 @@ This guide provides comprehensive best practices for optimizing the One Page Aut
 AI systems rely heavily on structured data to understand content relationships and context.
 
 **Implementation:**
+
 ```json
 {
   "@context": "https://schema.org",
@@ -45,6 +48,7 @@ AI systems rely heavily on structured data to understand content relationships a
 ```
 
 **Best Practices:**
+
 - Use comprehensive schema.org markup for all entities (Person, Book, Article)
 - Create relationships between entities (author → books, author → articles)
 - Use @graph for complex entity relationships
@@ -55,6 +59,7 @@ AI systems rely heavily on structured data to understand content relationships a
 AI systems are trained on natural, conversational text. Write as if answering questions.
 
 **Good Example:**
+
 ```markdown
 ## Who is John Doe?
 
@@ -65,12 +70,14 @@ York Times, NPR, and Wired Magazine.
 ```
 
 **Poor Example:**
+
 ```markdown
 ## About
 Award-winning author. 8 books. Sci-fi writer.
 ```
 
 **Best Practices:**
+
 - Use complete sentences and paragraphs
 - Answer questions explicitly (Who, What, When, Where, Why, How)
 - Provide context and background
@@ -82,6 +89,7 @@ Award-winning author. 8 books. Sci-fi writer.
 Use proper HTML5 semantic elements to help AI understand content structure.
 
 **Implementation:**
+
 ```html
 <main>
   <article>
@@ -104,6 +112,7 @@ Use proper HTML5 semantic elements to help AI understand content structure.
 ```
 
 **Best Practices:**
+
 - Use `<main>` for primary content
 - Use `<article>` for self-contained content
 - Use `<section>` for thematic groupings
@@ -116,6 +125,7 @@ Use proper HTML5 semantic elements to help AI understand content structure.
 Explicitly define relationships between entities to help AI build knowledge graphs.
 
 **Example:**
+
 ```json
 {
   "@type": "Book",
@@ -133,6 +143,7 @@ Explicitly define relationships between entities to help AI build knowledge grap
 ```
 
 **Best Practices:**
+
 - Link books to authors
 - Link articles to authors and publications
 - Link authors to organizations
@@ -144,6 +155,7 @@ Explicitly define relationships between entities to help AI build knowledge grap
 AI systems use alt text to understand images. Provide detailed, descriptive alt text.
 
 **Good Example:**
+
 ```html
 <img 
   src="author-headshot.webp" 
@@ -155,11 +167,13 @@ AI systems use alt text to understand images. Provide detailed, descriptive alt 
 ```
 
 **Poor Example:**
+
 ```html
 <img src="headshot.jpg" alt="headshot" />
 ```
 
 **Best Practices:**
+
 - Describe what's in the image specifically
 - Include relevant context (who, where, what)
 - Use natural language
@@ -206,6 +220,7 @@ Provide maximum snippet and preview permissions:
 ```
 
 **Parameters:**
+
 - `max-snippet:-1`: Unlimited text snippet length
 - `max-image-preview:large`: Large image previews
 - `max-video-preview:-1`: Unlimited video preview
@@ -269,6 +284,7 @@ Provide maximum snippet and preview permissions:
 The application implements comprehensive JSON-LD structured data:
 
 **Person Schema:**
+
 ```typescript
 {
   '@context': 'https://schema.org',
@@ -286,6 +302,7 @@ The application implements comprehensive JSON-LD structured data:
 ```
 
 **Book Schema:**
+
 ```typescript
 {
   '@type': 'Book',
@@ -301,6 +318,7 @@ The application implements comprehensive JSON-LD structured data:
 ```
 
 **Article Schema:**
+
 ```typescript
 {
   '@type': 'Article',
@@ -359,12 +377,14 @@ The application implements comprehensive JSON-LD structured data:
 ### ChatGPT / GPTBot
 
 **Characteristics:**
+
 - Trained on data up to cutoff date (periodically updated)
 - Prioritizes authoritative, well-structured content
 - Understands natural language well
 - Can access web in real-time (ChatGPT with browsing)
 
 **Optimization:**
+
 - Ensure robots.txt allows GPTBot
 - Use clear, natural language
 - Provide comprehensive structured data
@@ -373,11 +393,13 @@ The application implements comprehensive JSON-LD structured data:
 ### Claude / Claude-Web
 
 **Characteristics:**
+
 - Strong at understanding context and relationships
 - Good at reasoning and analysis
 - Prioritizes accuracy and citations
 
 **Optimization:**
+
 - Explicit entity relationships
 - Detailed context and background
 - Accurate dates and citations
@@ -386,12 +408,14 @@ The application implements comprehensive JSON-LD structured data:
 ### Perplexity AI
 
 **Characteristics:**
+
 - Real-time web search
 - Provides citations
 - Aggregates multiple sources
 - Conversational interface
 
 **Optimization:**
+
 - Authoritative content
 - Clear source attribution
 - Structured data for easy extraction
@@ -400,11 +424,13 @@ The application implements comprehensive JSON-LD structured data:
 ### Google Gemini / Google-Extended
 
 **Characteristics:**
+
 - Integration with Google Search
 - Multi-modal (text and images)
 - Leverages Google's knowledge graph
 
 **Optimization:**
+
 - Schema.org markup
 - Google Search Console verification
 - High-quality images with alt text
@@ -544,23 +570,27 @@ Prevent AI systems from seeing duplicate content:
 ## Content Calendar for AI Optimization
 
 ### Weekly
+
 - [ ] Publish new content (blog post, article link, update)
 - [ ] Share on social media with proper schema markup
 - [ ] Monitor AI crawler activity in logs
 
 ### Monthly
+
 - [ ] Review and update author bio
 - [ ] Add new books/articles to bibliographies
 - [ ] Validate all structured data
 - [ ] Check for AI citations/mentions
 
 ### Quarterly
+
 - [ ] Comprehensive content audit
 - [ ] Update schema.org to latest specifications
 - [ ] Review AI crawler policies and update robots.txt
 - [ ] Analyze AI referral traffic
 
 ### Annually
+
 - [ ] Major content refresh
 - [ ] Review emerging AI platforms and optimize accordingly
 - [ ] Update all photos and media
@@ -615,20 +645,23 @@ Prevent AI systems from seeing duplicate content:
 ## Resources
 
 ### Official Documentation
-- **Schema.org**: https://schema.org
-- **OpenAI GPTBot**: https://platform.openai.com/docs/gptbot
-- **Google AI**: https://ai.google/
-- **Anthropic**: https://www.anthropic.com
+
+- **Schema.org**: <https://schema.org>
+- **OpenAI GPTBot**: <https://platform.openai.com/docs/gptbot>
+- **Google AI**: <https://ai.google/>
+- **Anthropic**: <https://www.anthropic.com>
 
 ### Tools
-- **Schema Markup Validator**: https://validator.schema.org
-- **Google Rich Results Test**: https://search.google.com/test/rich-results
-- **JSON-LD Playground**: https://json-ld.org/playground
+
+- **Schema Markup Validator**: <https://validator.schema.org>
+- **Google Rich Results Test**: <https://search.google.com/test/rich-results>
+- **JSON-LD Playground**: <https://json-ld.org/playground>
 
 ### Community
-- **Search Engine Journal**: https://www.searchenginejournal.com
-- **Moz Blog**: https://moz.com/blog
-- **Search Engine Land**: https://searchengineland.com
+
+- **Search Engine Journal**: <https://www.searchenginejournal.com>
+- **Moz Blog**: <https://moz.com/blog>
+- **Search Engine Land**: <https://searchengineland.com>
 
 ---
 

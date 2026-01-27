@@ -41,6 +41,7 @@ Book bloggers are influential voices in the literary community with dedicated, e
 ### Blogger Influence Metrics
 
 **Micro-Influencers (500-5,000 followers):**
+
 - High engagement rates (5-10%)
 - Niche audiences
 - More accessible
@@ -48,6 +49,7 @@ Book bloggers are influential voices in the literary community with dedicated, e
 - Often accept self-published books
 
 **Mid-Tier Bloggers (5,000-50,000 followers):**
+
 - Balanced reach and engagement
 - Established reputation
 - More selective
@@ -55,6 +57,7 @@ Book bloggers are influential voices in the literary community with dedicated, e
 - Prefer traditionally published books
 
 **Top-Tier Bloggers (50,000+ followers):**
+
 - Massive reach
 - Industry connections
 - Very selective
@@ -100,6 +103,7 @@ Book bloggers are influential voices in the literary community with dedicated, e
 ### Finding Bloggers
 
 **Online Directories:**
+
 - Edelweiss reviewer database
 - NetGalley reviewer community
 - The Indie View blogger list
@@ -107,6 +111,7 @@ Book bloggers are influential voices in the literary community with dedicated, e
 - Reedsy's book blogger directory
 
 **Social Media Search:**
+
 - Instagram hashtags: #bookblogger #bookstagram #bookreview
 - Twitter lists: Book bloggers by genre
 - Facebook groups: Book blogger communities
@@ -114,6 +119,7 @@ Book bloggers are influential voices in the literary community with dedicated, e
 - Goodreads: Active reviewers and groups
 
 **Organic Discovery:**
+
 - Amazon book reviews (find active reviewers)
 - Goodreads reviews of similar books
 - "Readers also enjoyed" sections
@@ -149,13 +155,14 @@ Book bloggers are influential voices in the literary community with dedicated, e
 ### Outreach Email Template
 
 **Subject Line Options:**
+
 - "Review Request: [Book Title] - [Genre]"
 - "[Blogger Name], would you review my [Genre] novel?"
 - "ARC Request: [Book Title] by [Author Name]"
 
 **Email Body:**
 
-```
+```text
 Hi [Blogger Name],
 
 I've been following your blog and really enjoyed your recent review of [Specific Book They Reviewed]. Your insight about [specific detail] resonated with me.
@@ -188,6 +195,7 @@ P.S. You can learn more about me and my work at [Your Author Website]
 ### Follow-Up Protocol
 
 **Timeline:**
+
 - **Week 0**: Initial outreach
 - **Week 2-3**: Gentle follow-up (only if no response)
 - **After sending book**: No follow-up unless blogger requests it
@@ -195,7 +203,7 @@ P.S. You can learn more about me and my work at [Your Author Website]
 
 **Follow-Up Email Example:**
 
-```
+```text
 Hi [Blogger Name],
 
 I wanted to follow up on my email from [Date] about my book [Title]. I know you're busy, so just checking if you had a chance to consider my review request.
@@ -209,6 +217,7 @@ Best,
 ```
 
 **Important Rules:**
+
 - Never send unsolicited review copies
 - Don't follow up more than once
 - Respect "no" or silence as an answer
@@ -250,12 +259,14 @@ Best,
 ### Sending Review Copies
 
 **Digital ARCs:**
+
 - PDF (universally compatible)
 - EPUB (preferred for ereaders)
 - MOBI (for Kindle)
 - Send via: Email, BookFunnel, Dropbox, Google Drive
 
 **Physical ARCs:**
+
 - Professional quality printing
 - Include note card with publication info
 - Send with tracking
@@ -264,7 +275,7 @@ Best,
 
 **Advance Reader Copy (ARC) Note Example:**
 
-```
+```text
 Dear [Blogger Name],
 
 Thank you for agreeing to review [Book Title]! Here's your digital ARC.
@@ -293,6 +304,7 @@ Best regards,
 ### After the Review
 
 **When Review is Positive:**
+
 - Send heartfelt thank you
 - Share on social media (tag the blogger)
 - Comment on their blog post
@@ -301,6 +313,7 @@ Best regards,
 - Add to testimonials
 
 **When Review is Mixed/Negative:**
+
 - Thank them professionally
 - Don't argue or defend
 - Don't ask them to change it
@@ -310,7 +323,7 @@ Best regards,
 
 **Thank You Email Template:**
 
-```
+```text
 Hi [Blogger Name],
 
 Thank you so much for reading and reviewing [Book Title]! I really appreciate the time you took to share your thoughts with your readers.
@@ -359,6 +372,7 @@ Best wishes,
 ### Blogger Events and Opportunities
 
 **Blog Tours:**
+
 - Coordinated review campaign
 - Multiple bloggers, scheduled posts
 - Mix of reviews, interviews, guest posts
@@ -366,6 +380,7 @@ Best wishes,
 - Cost: $50-500 depending on tour size
 
 **Cover Reveals:**
+
 - Exciting visual content
 - Easy for bloggers (low time commitment)
 - Good for building pre-launch buzz
@@ -373,6 +388,7 @@ Best wishes,
 - Coordinate timing across bloggers
 
 **Author Interviews:**
+
 - Q&A format
 - Provides depth beyond book review
 - Builds author platform
@@ -380,6 +396,7 @@ Best wishes,
 - Good for author-reader connection
 
 **Guest Posts:**
+
 - Author writes content for blog
 - Writing tips, behind-the-scenes, essays
 - Provides value to blogger's audience
@@ -387,6 +404,7 @@ Best wishes,
 - Win-win content arrangement
 
 **Giveaways:**
+
 - Author provides prize (signed books, swag)
 - Blogger hosts contest on their site
 - Drives engagement for blogger
@@ -398,6 +416,7 @@ Best wishes,
 ### Professional Blog Tour Companies
 
 **Popular Services:**
+
 - **TLC Book Tours**: Traditional publishing focus
 - **Great Escapes Virtual Book Tours**: Wide genre coverage
 - **Goddess Fish Promotions**: Romance and cozy mystery
@@ -405,6 +424,7 @@ Best wishes,
 - **Pump Up Your Book**: All genres, multimedia tours
 
 **Tour Components:**
+
 - Schedule coordination
 - Blogger recruitment
 - Material preparation
@@ -413,11 +433,13 @@ Best wishes,
 - Analytics and reporting
 
 **Costs:**
+
 - Basic tours: $50-200
 - Comprehensive tours: $200-500
 - Premium services: $500-1,000+
 
 **DIY vs. Service:**
+
 - DIY: Free but time-intensive
 - Service: Costs money but saves time and provides expertise
 - Consider for major launches or if short on time
@@ -427,6 +449,7 @@ Best wishes,
 ### Key Performance Indicators
 
 **Quantitative Metrics:**
+
 - Number of reviews obtained
 - Review rating average
 - Blog traffic to your website
@@ -436,6 +459,7 @@ Best wishes,
 - Goodreads adds
 
 **Qualitative Metrics:**
+
 - Review quality and depth
 - Blogger enthusiasm
 - Audience engagement (comments)
@@ -445,6 +469,7 @@ Best wishes,
 ### Tracking and Analytics
 
 **Spreadsheet Tracking:**
+
 - Blogger name and contact info
 - Outreach date
 - Response date
@@ -457,6 +482,7 @@ Best wishes,
 - Notes for future outreach
 
 **Traffic Tracking:**
+
 - Use UTM parameters in links
 - Google Analytics referral traffic
 - Track clicks from blogger sites
@@ -464,6 +490,7 @@ Best wishes,
 - Watch social media engagement
 
 **ROI Calculation:**
+
 - Time invested
 - Costs (books, shipping, tour services)
 - Reviews generated
@@ -489,24 +516,28 @@ Best wishes,
 ### Costs to Consider
 
 **Free Options:**
+
 - Email outreach (time only)
 - Digital ARCs (file sharing)
 - Social media engagement
 - DIY blog tour coordination
 
 **Low-Cost Options ($50-200):**
+
 - Print ARCs (printing and shipping)
 - Basic blog tour service
 - BookFunnel or similar service (for ARC distribution)
 - Canva Pro for graphics
 
 **Medium Investment ($200-500):**
+
 - Comprehensive blog tour
 - Multiple print ARCs with international shipping
 - Professional press kit design
 - Paid blogger reviews (where ethical and disclosed)
 
 **High Investment ($500+):**
+
 - Premium blog tour packages
 - Multiple tour services
 - Large print ARC runs
@@ -516,6 +547,7 @@ Best wishes,
 ### Time Investment
 
 **Initial Setup (10-20 hours):**
+
 - Research bloggers
 - Build database
 - Create templates
@@ -523,6 +555,7 @@ Best wishes,
 - Learn blogger landscape
 
 **Per Campaign (15-30 hours):**
+
 - Personalized outreach emails
 - Follow-ups
 - Sending review copies
@@ -531,6 +564,7 @@ Best wishes,
 - Social media sharing
 
 **Ongoing (2-5 hours/month):**
+
 - Engaging with blogger content
 - Relationship nurturing
 - Database maintenance
@@ -539,31 +573,37 @@ Best wishes,
 ## Timeline for Book Launch
 
 ### 6 Months Before Release
+
 - Research and build blogger list
 - Prepare ARC materials
 - Create press kit
 
 ### 4-5 Months Before Release
+
 - Begin blogger outreach
 - Send ARCs to interested bloggers
 - Schedule blog tour (if using)
 
 ### 2-3 Months Before Release
+
 - Follow up with bloggers who requested ARCs
 - Continue outreach to additional bloggers
 - Plan cover reveal with bloggers
 
 ### 1 Month Before Release
+
 - Cover reveal campaign
 - Pre-launch review posting begins
 - Guest posts and interviews
 
 ### Launch Week
+
 - Peak review posting
 - Blog tour (if applicable)
 - Maximum social media engagement
 
 ### Post-Launch (1-3 Months)
+
 - Thank you messages
 - Share reviews received
 - Maintain blogger relationships
@@ -572,6 +612,7 @@ Best wishes,
 ## Resources and Tools
 
 ### Blogger Discovery Tools
+
 - Google Advanced Search
 - Twitter advanced search
 - Instagram hashtag explorer
@@ -579,18 +620,21 @@ Best wishes,
 - Blog directories
 
 ### Organization Tools
+
 - Google Sheets/Excel for tracking
 - Airtable for advanced database
 - Trello for campaign management
 - Asana for task coordination
 
 ### Communication Tools
+
 - Gmail/Outlook for email
 - Mailchimp for mass communications
 - BookFunnel for ARC distribution
 - Dropbox/Google Drive for file sharing
 
 ### Design Tools
+
 - Canva for graphics
 - Adobe Spark for media kits
 - Stencil for social media images
@@ -600,6 +644,7 @@ Best wishes,
 ### Review Ethics
 
 **Do:**
+
 - Disclose that you provided free copy
 - Accept honest reviews
 - Be transparent about any relationships
@@ -607,6 +652,7 @@ Best wishes,
 - Respect editorial independence
 
 **Don't:**
+
 - Pay for positive reviews
 - Require positive reviews
 - Ask to approve reviews before posting

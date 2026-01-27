@@ -5,6 +5,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 ## ✅ Implemented SEO/AIO Features
 
 ### Technical SEO
+
 - [x] **Meta Tags**: Comprehensive meta tags including title, description, keywords
 - [x] **Open Graph Tags**: Facebook, LinkedIn social sharing optimization
 - [x] **Twitter Cards**: Enhanced Twitter previews with images
@@ -23,6 +24,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [x] **Theme Color**: Mobile browser theme color meta tags
 
 ### Structured Data (Schema.org)
+
 - [x] **Person Schema**: Author profile with name, bio, image, email, social links
 - [x] **Book Schema**: Each book with title, description, author, cover, URL
 - [x] **Article Schema**: Each article with headline, author, publisher, date
@@ -31,6 +33,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [x] **Graph Structure**: JSON-LD @graph for relationships between entities
 
 ### AI Crawler Support
+
 - [x] **GPTBot (OpenAI)**: Explicitly allowed in robots.txt
 - [x] **Claude-Web (Anthropic)**: Explicitly allowed in robots.txt
 - [x] **Google-Extended**: Explicitly allowed in robots.txt
@@ -42,6 +45,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [x] **Max Video Preview**: Unlimited video preview for AI systems
 
 ### Content Optimization
+
 - [x] **Dynamic SEO**: Custom SEO metadata via author API
 - [x] **Descriptive Alt Text**: All images have descriptive alt attributes
 - [x] **Locale Support**: Multi-language support (EN, FR, DE, ES)
@@ -50,6 +54,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [x] **Contact Information**: Email contact for author
 
 ### Performance
+
 - [x] **Code Splitting**: Lazy loading of below-fold sections
 - [x] **Font Loading**: Optimized Google Fonts loading
 - [x] **Image Formats**: WebP and AVIF support for modern browsers
@@ -59,6 +64,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 ## 🚀 Quick Wins (Can Be Implemented Immediately)
 
 ### Content Strategy
+
 - [ ] **Unique Page Titles**: Ensure each author has unique, descriptive title (50-60 chars)
 - [ ] **Compelling Meta Descriptions**: Write engaging descriptions (150-160 chars)
 - [ ] **Keyword Research**: Identify and use relevant keywords naturally
@@ -67,6 +73,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [ ] **Internal Linking**: Link between books, articles, and sections
 
 ### Image Optimization
+
 - [ ] **Image Compression**: Compress all images without quality loss
 - [ ] **Proper Dimensions**: Use correct size images (no oversized images)
 - [ ] **WebP/AVIF Format**: Convert all images to modern formats
@@ -76,6 +83,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [ ] **OG Images**: Custom Open Graph images (1200x630px recommended)
 
 ### Social Media Optimization
+
 - [ ] **Complete Social Profiles**: Fill out all social media profiles completely
 - [ ] **Consistent Branding**: Use same name/handle across platforms
 - [ ] **Profile Photos**: Use professional, high-quality photos
@@ -84,6 +92,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [ ] **LinkedIn Preview**: Check LinkedIn Post Inspector
 
 ### Technical Improvements
+
 - [ ] **Custom Domain**: Use custom domain instead of .azurestaticapps.net
 - [ ] **SSL Certificate**: Ensure HTTPS is enforced (automatic with custom domain)
 - [ ] **Redirect WWW**: Set up www to non-www redirects (or vice versa)
@@ -94,6 +103,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 ## 📋 Medium Priority Enhancements
 
 ### Content Enhancements
+
 - [ ] **Author Bio Video**: Add video introduction to author page
 - [ ] **Book Excerpts**: Include sample chapters or excerpts
 - [ ] **Reader Reviews**: Display book reviews and ratings
@@ -103,6 +113,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [ ] **Newsletter Signup**: Add email list subscription
 
 ### Advanced Schema Markup
+
 - [ ] **Review Schema**: Add review/rating schema for books
 - [ ] **Event Schema**: Mark up book signings, readings, launches
 - [ ] **Video Schema**: Mark up author interviews, readings
@@ -112,6 +123,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [ ] **SameAs Links**: Link to author's other official websites
 
 ### Performance Optimization
+
 - [ ] **Critical CSS**: Inline critical CSS for faster first paint
 - [ ] **Font Subsetting**: Load only required font characters
 - [ ] **Service Worker**: Implement service worker for offline access
@@ -121,6 +133,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [ ] **Reduce JavaScript**: Minimize JS bundle size
 
 ### Analytics and Tracking
+
 - [ ] **Google Search Console**: Set up and monitor GSC
 - [ ] **Google Analytics**: Track user behavior (already using App Insights)
 - [ ] **Conversion Tracking**: Track book purchase clicks
@@ -130,6 +143,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 ## 🎯 Advanced / Long-term Improvements
 
 ### Content Strategy
+
 - [ ] **Blog Integration**: Add blog for SEO and engagement
 - [ ] **Guest Posts**: Write guest posts on relevant blogs
 - [ ] **Podcast Appearances**: Get featured on podcasts
@@ -139,6 +153,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [ ] **Behind the Scenes**: Share writing process content
 
 ### Technical SEO
+
 - [ ] **Hreflang Tags**: Multi-language hreflang implementation
 - [ ] **Dynamic Sitemap**: Generate sitemap from author data API
 - [ ] **AMP Pages**: Accelerated Mobile Pages for faster mobile
@@ -148,6 +163,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [ ] **API Documentation**: Document author data API for third parties
 
 ### AI Optimization
+
 - [ ] **AI Training Data**: Provide clear, structured data for AI training
 - [ ] **Conversational Content**: Write in Q&A format for AI understanding
 - [ ] **Entity Relationships**: Clearly define relationships (author-book-publisher)
@@ -157,6 +173,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [ ] **Interactive AI**: Consider AI chatbot for author FAQs
 
 ### Marketing Integration
+
 - [ ] **Email Marketing**: Integrate with email marketing platform
 - [ ] **CRM Integration**: Connect with customer relationship management
 - [ ] **Book Launch Campaigns**: Coordinated multi-channel launches
@@ -168,6 +185,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 ## 🔍 Testing and Validation
 
 ### SEO Testing Tools
+
 - [ ] **Google PageSpeed Insights**: Test page speed and performance
 - [ ] **Google Lighthouse**: Comprehensive audit (SEO, Performance, Accessibility)
 - [ ] **Google Search Console**: Monitor search performance
@@ -179,12 +197,14 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [ ] **Ahrefs**: Backlink analysis and SEO audit
 
 ### Social Media Testing
+
 - [ ] **Facebook Sharing Debugger**: Test Open Graph tags
 - [ ] **Twitter Card Validator**: Test Twitter Card rendering
 - [ ] **LinkedIn Post Inspector**: Test LinkedIn previews
 - [ ] **Pinterest Rich Pins Validator**: Test Pinterest pins
 
 ### Accessibility Testing
+
 - [ ] **WAVE**: Web accessibility evaluation
 - [ ] **axe DevTools**: Automated accessibility testing
 - [ ] **Screen Reader**: Manual screen reader testing
@@ -194,6 +214,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 ## 📊 Performance Benchmarks
 
 ### Target Metrics
+
 - [ ] **Page Load Time**: < 2 seconds
 - [ ] **First Contentful Paint**: < 1.5 seconds
 - [ ] **Largest Contentful Paint**: < 2.5 seconds
@@ -207,6 +228,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 ## 📝 Content Guidelines for Authors
 
 ### Writing for SEO and AI
+
 1. **Use Natural Language**: Write conversationally, as if answering questions
 2. **Be Specific**: Provide detailed, accurate information
 3. **Use Keywords**: Include relevant keywords naturally in content
@@ -219,6 +241,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 10. **Cite Sources**: Attribute quotes and reference materials
 
 ### Image Best Practices
+
 1. **Use High Quality**: Professional, high-resolution images
 2. **Optimize File Size**: Compress images without quality loss
 3. **Descriptive Filenames**: author-name-book-title-cover.webp
@@ -228,6 +251,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 7. **Mobile Responsive**: Ensure images look good on all devices
 
 ### Social Media Best Practices
+
 1. **Complete Profiles**: Fill out all profile fields
 2. **Regular Updates**: Post regularly to stay relevant
 3. **Engage**: Respond to comments and messages
@@ -239,6 +263,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 ## 🚨 Common SEO Mistakes to Avoid
 
 ### Technical Issues
+
 - [ ] **Duplicate Content**: Ensure unique content on each page
 - [ ] **Broken Links**: Regularly check and fix broken links
 - [ ] **Slow Load Times**: Optimize for fast page loads
@@ -250,6 +275,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - [ ] **Cloaking**: Show same content to users and search engines
 
 ### Content Issues
+
 - [ ] **Generic Titles**: Avoid vague titles like "Home" or "Welcome"
 - [ ] **Missing Descriptions**: Every page needs meta description
 - [ ] **Poor Grammar**: Proofread all content carefully
@@ -260,37 +286,43 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 ## 📚 Resources and Tools
 
 ### SEO Resources
-- **Google Search Central**: https://developers.google.com/search
-- **Schema.org**: https://schema.org
-- **Moz SEO Guide**: https://moz.com/beginners-guide-to-seo
-- **Ahrefs Blog**: https://ahrefs.com/blog
+
+- **Google Search Central**: <https://developers.google.com/search>
+- **Schema.org**: <https://schema.org>
+- **Moz SEO Guide**: <https://moz.com/beginners-guide-to-seo>
+- **Ahrefs Blog**: <https://ahrefs.com/blog>
 
 ### AI Optimization Resources
-- **OpenAI Documentation**: https://platform.openai.com/docs
-- **Anthropic AI**: https://www.anthropic.com
-- **Google AI**: https://ai.google/
+
+- **OpenAI Documentation**: <https://platform.openai.com/docs>
+- **Anthropic AI**: <https://www.anthropic.com>
+- **Google AI**: <https://ai.google/>
 
 ### Testing Tools
-- **Google PageSpeed Insights**: https://pagespeed.web.dev
-- **Google Rich Results Test**: https://search.google.com/test/rich-results
-- **Facebook Sharing Debugger**: https://developers.facebook.com/tools/debug
-- **Twitter Card Validator**: https://cards-dev.twitter.com/validator
-- **Schema Markup Validator**: https://validator.schema.org
+
+- **Google PageSpeed Insights**: <https://pagespeed.web.dev>
+- **Google Rich Results Test**: <https://search.google.com/test/rich-results>
+- **Facebook Sharing Debugger**: <https://developers.facebook.com/tools/debug>
+- **Twitter Card Validator**: <https://cards-dev.twitter.com/validator>
+- **Schema Markup Validator**: <https://validator.schema.org>
 
 ### Performance Tools
-- **WebPageTest**: https://www.webpagetest.org
-- **GTmetrix**: https://gtmetrix.com
-- **Lighthouse CI**: https://github.com/GoogleChrome/lighthouse-ci
+
+- **WebPageTest**: <https://www.webpagetest.org>
+- **GTmetrix**: <https://gtmetrix.com>
+- **Lighthouse CI**: <https://github.com/GoogleChrome/lighthouse-ci>
 
 ## 🎓 Learning Resources
 
 ### SEO Training
+
 - **Google SEO Starter Guide**: Free comprehensive guide
 - **Moz Academy**: SEO training courses
 - **HubSpot Academy**: Free SEO certification
 - **SEMrush Academy**: Free SEO courses
 
 ### Web Performance
+
 - **web.dev**: Google's web development best practices
 - **MDN Web Docs**: Comprehensive web development documentation
 - **CSS-Tricks**: Web development tutorials and tips
@@ -298,15 +330,18 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 ## 📅 Maintenance Schedule
 
 ### Daily
+
 - Monitor analytics for traffic anomalies
 - Respond to social media engagement
 
 ### Weekly
+
 - Check for broken links
 - Review and respond to contact form submissions
 - Update content as needed (new articles, books)
 
 ### Monthly
+
 - Review Google Search Console for issues
 - Update sitemap if content changed
 - Check page load speeds
@@ -314,6 +349,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - Analyze top-performing content
 
 ### Quarterly
+
 - Full SEO audit using tools like Screaming Frog
 - Review and update keyword strategy
 - Analyze competitor sites
@@ -321,6 +357,7 @@ This document provides a comprehensive checklist for optimizing the One Page Aut
 - Review and improve content strategy
 
 ### Annually
+
 - Comprehensive site redesign review
 - Update author bio and photos
 - Review and update all documentation

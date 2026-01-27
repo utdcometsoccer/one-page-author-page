@@ -7,18 +7,21 @@ This guide provides comprehensive performance optimization strategies for the On
 ## Why Performance Matters
 
 ### SEO Impact
+
 - **Core Web Vitals**: Google ranking factor
 - **Crawl Budget**: Faster pages = more pages crawled
 - **User Experience**: Better engagement signals
 - **Mobile-First Indexing**: Mobile performance is critical
 
 ### User Experience
+
 - **Bounce Rate**: Slow pages = higher bounce rates
 - **Conversions**: Faster pages = higher conversions
 - **Engagement**: Better performance = longer sessions
 - **Accessibility**: Performance is an accessibility feature
 
 ### AI Crawling
+
 - **Efficiency**: AI crawlers prefer fast, efficient sites
 - **Resource Usage**: Less bandwidth = more crawls
 - **Content Discovery**: Faster loading = more content discovered
@@ -26,11 +29,13 @@ This guide provides comprehensive performance optimization strategies for the On
 ## Core Web Vitals
 
 ### Largest Contentful Paint (LCP)
+
 **Target: < 2.5 seconds**
 
 LCP measures loading performance - when the largest content element becomes visible.
 
 **Optimization Strategies:**
+
 1. **Optimize Images**
    - Use WebP/AVIF formats
    - Compress images (TinyPNG, ImageOptim)
@@ -50,6 +55,7 @@ LCP measures loading performance - when the largest content element becomes visi
    - Inline critical CSS
 
 **Implementation:**
+
 ```html
 <!-- Preload critical images -->
 <link rel="preload" as="image" href="/author-headshot.webp" />
@@ -59,11 +65,13 @@ LCP measures loading performance - when the largest content element becomes visi
 ```
 
 ### First Input Delay (FID)
+
 **Target: < 100 milliseconds**
 
 FID measures interactivity - time from user interaction to browser response.
 
 **Optimization Strategies:**
+
 1. **Minimize JavaScript**
    - Code splitting
    - Remove unused code
@@ -80,6 +88,7 @@ FID measures interactivity - time from user interaction to browser response.
    - Keep main thread responsive
 
 **Implementation:**
+
 ```javascript
 // Passive event listener
 element.addEventListener('scroll', handleScroll, { passive: true });
@@ -89,11 +98,13 @@ const debouncedSearch = debounce(handleSearch, 300);
 ```
 
 ### Cumulative Layout Shift (CLS)
+
 **Target: < 0.1**
 
 CLS measures visual stability - unexpected layout shifts.
 
 **Optimization Strategies:**
+
 1. **Image Dimensions**
    - Always specify width and height
    - Use aspect-ratio CSS
@@ -110,6 +121,7 @@ CLS measures visual stability - unexpected layout shifts.
    - Use transform instead of position changes
 
 **Implementation:**
+
 ```html
 <!-- Always specify dimensions -->
 <img src="book.webp" width="200" height="300" alt="Book cover" />
@@ -125,7 +137,9 @@ CLS measures visual stability - unexpected layout shifts.
 ## Implemented Optimizations
 
 ### Code Splitting
+
 ✅ **Current Implementation:**
+
 ```typescript
 // Lazy load below-fold sections
 const AboutMeSection = lazy(() => import('./AboutMeSection'));
@@ -136,12 +150,15 @@ const Footer = lazy(() => import('./Footer'));
 ```
 
 **Benefits:**
+
 - Smaller initial bundle size
 - Faster time to interactive
 - Better caching granularity
 
 ### Image Optimization
+
 ✅ **Current Implementation:**
+
 ```tsx
 <img
   src={headshot}
@@ -153,12 +170,15 @@ const Footer = lazy(() => import('./Footer'));
 ```
 
 **Benefits:**
+
 - Lazy loading reduces initial page weight
 - Width/height prevent layout shifts
 - Descriptive alt text for accessibility and SEO
 
 ### Resource Hints
+
 ✅ **Current Implementation:**
+
 ```html
 <!-- DNS prefetch -->
 <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -170,17 +190,21 @@ const Footer = lazy(() => import('./Footer'));
 ```
 
 **Benefits:**
+
 - Faster DNS resolution
 - Earlier connection establishment
 - Reduced latency for external resources
 
 ### Font Optimization
+
 ✅ **Current Implementation:**
+
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 ```
 
 **Benefits:**
+
 - `display=swap` prevents invisible text
 - Limited font weights reduce file size
 - Google Fonts CDN provides caching
@@ -192,6 +216,7 @@ const Footer = lazy(() => import('./Footer'));
 **Strategy:** Inline critical CSS for above-fold content.
 
 **Implementation:**
+
 ```html
 <head>
   <style>
@@ -206,6 +231,7 @@ const Footer = lazy(() => import('./Footer'));
 ```
 
 **Benefits:**
+
 - Faster first paint
 - Reduced render-blocking resources
 - Better perceived performance
@@ -215,6 +241,7 @@ const Footer = lazy(() => import('./Footer'));
 **Strategy:** Implement service worker for offline access and caching.
 
 **Implementation:**
+
 ```javascript
 // service-worker.js
 self.addEventListener('install', (event) => {
@@ -232,6 +259,7 @@ self.addEventListener('install', (event) => {
 ```
 
 **Benefits:**
+
 - Offline functionality
 - Faster repeat visits
 - Better mobile experience
@@ -242,6 +270,7 @@ self.addEventListener('install', (event) => {
 **Strategy:** Serve modern image formats with fallbacks.
 
 **Implementation:**
+
 ```html
 <picture>
   <source srcset="author.avif" type="image/avif">
@@ -251,6 +280,7 @@ self.addEventListener('install', (event) => {
 ```
 
 **Benefits:**
+
 - AVIF: 50% smaller than JPEG
 - WebP: 30% smaller than JPEG
 - Automatic fallback for older browsers
@@ -260,6 +290,7 @@ self.addEventListener('install', (event) => {
 **Strategy:** Minimize and optimize JavaScript execution.
 
 **Implementation:**
+
 ```typescript
 // Use useMemo for expensive computations
 const sectionIds = useMemo(() => ['welcome', 'about-me', 'articles', 'my-books', 'contact-me'], []);
@@ -274,6 +305,7 @@ const navigateToSection = useCallback((sectionId: string) => {
 ```
 
 **Benefits:**
+
 - Reduced re-renders
 - Better performance
 - Lower memory usage
@@ -283,6 +315,7 @@ const navigateToSection = useCallback((sectionId: string) => {
 **Strategy:** Analyze and reduce bundle size.
 
 **Tools:**
+
 ```bash
 # Analyze bundle
 npm run build
@@ -293,6 +326,7 @@ const Charts = lazy(() => import('heavy-chart-library'));
 ```
 
 **Benefits:**
+
 - Faster downloads
 - Quicker parse/compile
 - Better mobile performance
@@ -302,6 +336,7 @@ const Charts = lazy(() => import('heavy-chart-library'));
 ### Tools and Metrics
 
 **Google Lighthouse:**
+
 ```bash
 # Run Lighthouse audit
 npm run build
@@ -310,6 +345,7 @@ npm run preview
 ```
 
 **Key Metrics to Monitor:**
+
 - Performance Score: > 90
 - First Contentful Paint: < 1.5s
 - Largest Contentful Paint: < 2.5s
@@ -318,12 +354,14 @@ npm run preview
 - Cumulative Layout Shift: < 0.1
 
 **WebPageTest:**
-- Visit https://www.webpagetest.org
+
+- Visit <https://www.webpagetest.org>
 - Test from multiple locations
 - Compare with competitors
 - Monitor trends over time
 
 **Application Insights:**
+
 ```typescript
 // Track performance metrics
 telemetryService.trackPageView({
@@ -340,12 +378,14 @@ telemetryService.trackPageView({
 ### Continuous Monitoring
 
 **Set Up Alerts:**
+
 1. Page load time > 3 seconds
 2. Core Web Vitals failing
 3. Build size increasing significantly
 4. Error rate spikes
 
 **Regular Audits:**
+
 - Weekly: Quick Lighthouse check
 - Monthly: Full performance audit
 - Quarterly: Competitive analysis
@@ -355,6 +395,7 @@ telemetryService.trackPageView({
 ### Mobile-Specific Optimizations
 
 **1. Touch Target Size:**
+
 ```css
 /* Minimum 48x48px touch targets */
 .button, .link {
@@ -364,11 +405,13 @@ telemetryService.trackPageView({
 ```
 
 **2. Viewport Optimization:**
+
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
 
 **3. Reduced Motion:**
+
 ```css
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -379,6 +422,7 @@ telemetryService.trackPageView({
 ```
 
 **4. Network-Aware Loading:**
+
 ```javascript
 // Check connection quality
 if (navigator.connection) {
@@ -396,13 +440,15 @@ if (navigator.connection) {
 ### Browser Caching
 
 **Static Assets:**
-```
+
+```bash
 # Cache-Control headers (configured in hosting)
 Cache-Control: public, max-age=31536000, immutable  # 1 year for static assets
 Cache-Control: public, max-age=0, must-revalidate   # For HTML
 ```
 
 **Service Worker Caching:**
+
 ```javascript
 // Cache-first strategy for static assets
 self.addEventListener('fetch', (event) => {
@@ -417,6 +463,7 @@ self.addEventListener('fetch', (event) => {
 ### CDN Strategy
 
 **Implementation:**
+
 1. Serve static assets from CDN
 2. Enable HTTP/2 for multiplexing
 3. Use edge caching for global distribution
@@ -427,18 +474,21 @@ self.addEventListener('fetch', (event) => {
 ### Set Performance Budgets
 
 **Bundle Sizes:**
+
 - Total JavaScript: < 200KB (gzipped)
 - Total CSS: < 50KB (gzipped)
 - Total Images: < 500KB (first load)
 - Total Fonts: < 100KB
 
 **Timing Budgets:**
+
 - First Contentful Paint: < 1.5s
 - Largest Contentful Paint: < 2.5s
 - Time to Interactive: < 3.5s
 - First Input Delay: < 100ms
 
 **Monitoring:**
+
 ```json
 // package.json
 {
@@ -459,6 +509,7 @@ self.addEventListener('fetch', (event) => {
 ## Best Practices Checklist
 
 ### Images
+
 - [ ] Use modern formats (WebP, AVIF)
 - [ ] Compress all images
 - [ ] Specify width/height attributes
@@ -467,6 +518,7 @@ self.addEventListener('fetch', (event) => {
 - [ ] Optimize alt text
 
 ### JavaScript
+
 - [ ] Code splitting implemented
 - [ ] Unused code removed
 - [ ] Dependencies optimized
@@ -475,6 +527,7 @@ self.addEventListener('fetch', (event) => {
 - [ ] Use production builds
 
 ### CSS
+
 - [ ] Critical CSS inlined
 - [ ] Unused CSS removed
 - [ ] Minified in production
@@ -482,6 +535,7 @@ self.addEventListener('fetch', (event) => {
 - [ ] Font loading optimized
 
 ### Fonts
+
 - [ ] Limited font weights
 - [ ] font-display: swap
 - [ ] Preload critical fonts
@@ -489,6 +543,7 @@ self.addEventListener('fetch', (event) => {
 - [ ] Consider system fonts
 
 ### Caching
+
 - [ ] Browser caching configured
 - [ ] Service worker implemented
 - [ ] CDN for static assets
@@ -496,6 +551,7 @@ self.addEventListener('fetch', (event) => {
 - [ ] Efficient cache invalidation
 
 ### Network
+
 - [ ] HTTP/2 enabled
 - [ ] Compression enabled (Gzip/Brotli)
 - [ ] DNS prefetch for external domains
@@ -549,7 +605,7 @@ if ('requestIdleCallback' in window) {
 
 ### 4. HTTP/2 Server Push (if supported)
 
-```
+```text
 Link: </styles.css>; rel=preload; as=style
 Link: </app.js>; rel=preload; as=script
 ```
@@ -559,24 +615,28 @@ Link: </app.js>; rel=preload; as=script
 ### Common Issues and Solutions
 
 **Slow Initial Load:**
+
 - Check bundle size with bundle analyzer
 - Implement code splitting
 - Optimize images
 - Enable compression
 
 **High Cumulative Layout Shift:**
+
 - Add width/height to images
 - Reserve space for dynamic content
 - Use CSS aspect-ratio
 - Optimize font loading
 
 **Poor Time to Interactive:**
+
 - Reduce JavaScript execution time
 - Defer non-critical scripts
 - Use code splitting
 - Minimize third-party scripts
 
 **Large Bundle Size:**
+
 - Remove unused dependencies
 - Use dynamic imports
 - Optimize images
@@ -621,19 +681,22 @@ getLCP(metric => telemetryService.trackMetric('LCP', metric.value));
 ## Resources
 
 ### Tools
-- **Lighthouse**: https://developers.google.com/web/tools/lighthouse
-- **WebPageTest**: https://www.webpagetest.org
-- **GTmetrix**: https://gtmetrix.com
-- **Bundle Analyzer**: https://www.npmjs.com/package/vite-bundle-visualizer
+
+- **Lighthouse**: <https://developers.google.com/web/tools/lighthouse>
+- **WebPageTest**: <https://www.webpagetest.org>
+- **GTmetrix**: <https://gtmetrix.com>
+- **Bundle Analyzer**: <https://www.npmjs.com/package/vite-bundle-visualizer>
 
 ### Documentation
-- **Web.dev**: https://web.dev/performance
-- **MDN Performance**: https://developer.mozilla.org/en-US/docs/Web/Performance
-- **Core Web Vitals**: https://web.dev/vitals
+
+- **Web.dev**: <https://web.dev/performance>
+- **MDN Performance**: <https://developer.mozilla.org/en-US/docs/Web/Performance>
+- **Core Web Vitals**: <https://web.dev/vitals>
 
 ### Communities
-- **Web Performance Slack**: https://webperformance.slack.com
-- **Performance.now() Conference**: https://perfnow.nl
+
+- **Web Performance Slack**: <https://webperformance.slack.com>
+- **Performance.now() Conference**: <https://perfnow.nl>
 
 ---
 

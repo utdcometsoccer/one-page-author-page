@@ -11,6 +11,7 @@ This directory contains Bicep templates for deploying Azure resources.
 The application has been optimized for mobile performance in Mexico with:
 
 **Code Optimizations:**
+
 - ✅ Vite build optimizations (code splitting, esbuild minification)
 - ✅ Manual chunk splitting for better browser caching
 - ✅ CSS code splitting
@@ -19,11 +20,13 @@ The application has been optimized for mobile performance in Mexico with:
 - ✅ HTTP caching headers configured
 
 **Expected Performance Improvements:**
+
 - 65% bundle size reduction (473KB → 165KB gzipped)
 - 40-60% faster initial page load
 - Better caching for repeat visitors
 
 **Infrastructure Recommendations:**
+
 - Deploy Azure Static Web App to **South Central US** (closest to Mexico)
 - Implement Azure Front Door for geographic redundancy
 - Enable CDN for static assets
@@ -80,6 +83,7 @@ The GitHub Actions workflow will:
 3. **Deploy the Bicep template** - Only if secrets are present AND the resource doesn't exist
 
 This ensures that:
+
 - Deployments are safe and idempotent
 - Existing resources are not accidentally modified or recreated
 - The workflow can run successfully even without Azure credentials (e.g., in forks)

@@ -3,6 +3,7 @@
 This document outlines performance optimization strategies for serving the One Page Author application to users in Mexico, with a focus on mobile performance.
 
 ## Table of Contents
+
 1. [Current Performance Optimizations](#current-performance-optimizations)
 2. [Code-Level Optimizations](#code-level-optimizations)
 3. [Infrastructure Optimizations](#infrastructure-optimizations)
@@ -17,27 +18,32 @@ This document outlines performance optimization strategies for serving the One P
 ### Implemented Code Optimizations
 
 ✅ **Code Splitting & Lazy Loading**
+
 - 5 below-fold components lazy-loaded: AboutMe, Articles, Books, Contact, Footer
 - Social media icons loaded dynamically via `Promise.all()`
 - Reduces initial bundle size by ~60%
 
 ✅ **Image Optimization**
+
 - Modern image formats (WebP, AVIF) supported
 - Lazy loading with `loading="lazy"` attribute
 - Proper dimensions specified (prevents layout shift)
 
 ✅ **React Performance**
+
 - `useCallback` and `useMemo` hooks for optimized re-renders
 - Error boundaries prevent cascading failures
 - Minimal re-renders with proper state management
 
 ✅ **Build Optimizations** (as of this update)
+
 - esbuild minification (faster than terser)
 - Manual chunk splitting for vendor code
 - CSS code splitting enabled
 - Source maps disabled in production
 
 ✅ **Vite Configuration**
+
 ```typescript
 // vite.config.ts optimizations
 build: {
@@ -76,6 +82,7 @@ The application uses Google Fonts with preconnect optimization:
 ```
 
 **Benefits:**
+
 - Early DNS resolution reduces latency
 - `display=swap` prevents invisible text
 - Critical for First Contentful Paint (FCP)
@@ -111,6 +118,7 @@ Configured in `public/staticwebapp.config.json`:
 The application is currently deployed to Azure Static Web Apps in **East US 2** region.
 
 **Limitations for Mexico:**
+
 - Single region deployment (East US 2)
 - No automatic geo-replication
 - ~50-100ms additional latency for Mexico users vs US users
@@ -119,7 +127,7 @@ The application is currently deployed to Azure Static Web Apps in **East US 2** 
 
 For optimal performance in Mexico, deploy Azure Front Door with multiple origins:
 
-```
+```text
 ┌─────────────────────────────────────────────────────┐
 │         Azure Front Door (Global)                    │
 │  • DDoS Protection                                   │
@@ -155,7 +163,7 @@ az staticwebapp create \
   --output-location "dist"
 ```
 
-2. **Configure Azure Front Door**
+1. **Configure Azure Front Door**
 
 ```bash
 # Create Front Door profile
@@ -184,7 +192,7 @@ az afd origin-group create \
   --additional-latency-in-milliseconds 50
 ```
 
-3. **Add Origins (Static Web Apps)**
+1. **Add Origins (Static Web Apps)**
 
 ```bash
 # Primary: South Central US (Mexico proximity)
@@ -224,22 +232,26 @@ az afd origin create \
 ### Multi-Region Deployment Strategy
 
 **Tier 1: High Priority (Immediate)**
+
 - **South Central US** (Texas) - Closest to Mexico (~500-800ms vs ~150-300ms)
 - **East US 2** (Virginia) - Current primary
 
 **Tier 2: Future Expansion**
+
 - **West US 3** (California) - West Coast coverage
 - **Brazil South** - Latin America coverage
 
 ### DNS and Routing
 
 **Option 1: Azure Front Door (Recommended)**
+
 - Automatic health checks and failover
 - Intelligent routing based on latency
 - Built-in caching at edge locations
 - Cost: ~$35/month + data transfer
 
 **Option 2: Azure Traffic Manager**
+
 - DNS-based routing (less responsive)
 - Lower cost (~$0.54/million queries)
 - No caching capabilities
@@ -292,6 +304,7 @@ jobs:
 Azure Static Web Apps automatically applies appropriate cache headers, but can be customized:
 
 **Current Configuration** (`staticwebapp.config.json`):
+
 ```json
 {
   "routes": [
@@ -324,6 +337,7 @@ Azure Static Web Apps automatically applies appropriate cache headers, but can b
 ```
 
 **Caching Strategy:**
+
 - **Static Assets** (`/assets/*`, JS, CSS): 1 year cache (versioned by build hash)
 - **Images**: 30 days cache
 - **HTML**: No cache (always fetch fresh)
@@ -332,11 +346,13 @@ Azure Static Web Apps automatically applies appropriate cache headers, but can b
 ### CDN Caching Layers
 
 **Layer 1: Azure Front Door Cache**
+
 - Edge locations worldwide (150+ POPs)
 - Automatic cache management
 - Query string caching for personalization
 
 **Layer 2: Browser Cache**
+
 - Service Worker for offline support
 - LocalStorage for preferences
 - IndexedDB for large assets
@@ -344,6 +360,7 @@ Azure Static Web Apps automatically applies appropriate cache headers, but can b
 ### Locale-Specific Caching
 
 Mexico users (`es/mx` locale) benefit from:
+
 1. **Preloaded Spanish locale** in service worker
 2. **Cached author data** for faster subsequent loads
 3. **Font subsetting** for Spanish characters only
@@ -365,11 +382,13 @@ self.addEventListener('fetch', (event) => {
 ### Current Image Strategy
 
 ✅ **Modern Formats Supported**
+
 - WebP for broad compatibility
 - AVIF for next-gen browsers (60% smaller than JPEG)
 - Fallback to JPEG/PNG for older browsers
 
 ✅ **Lazy Loading**
+
 - Native `loading="lazy"` attribute
 - Proper width/height to prevent layout shift
 
@@ -404,6 +423,7 @@ self.addEventListener('fetch', (event) => {
 ```
 
 **Benefits:**
+
 - 40-60% smaller file sizes
 - Responsive to screen size
 - Automatic format negotiation
@@ -411,6 +431,7 @@ self.addEventListener('fetch', (event) => {
 #### 2. Image CDN Integration
 
 **Option A: Azure CDN (Integrated)**
+
 ```bash
 # Enable Azure CDN for Static Web App
 az cdn endpoint create \
@@ -422,12 +443,14 @@ az cdn endpoint create \
 ```
 
 **Option B: Cloudflare Images (External)**
+
 - ~$5/month for 100,000 images
 - Automatic format conversion
 - Real-time resizing
 - Global CDN
 
 **Implementation:**
+
 ```typescript
 // utilities/imageOptimizer.ts
 export function getOptimizedImageUrl(
@@ -444,13 +467,15 @@ export function getOptimizedImageUrl(
 #### 3. Compression and Quality
 
 **Current:** Unoptimized source images  
-**Target:** 
+**Target:**
+
 - WebP quality: 85
 - AVIF quality: 80
 - Progressive JPEG for fallback
 - Estimated savings: 40-50% file size
 
 **Tool Recommendation:**
+
 ```bash
 # Use Sharp for build-time optimization
 npm install --save-dev sharp
@@ -468,11 +493,13 @@ sharp('input.jpg')
 ### HTTP/2 and HTTP/3
 
 ✅ **Already Enabled**
+
 - Azure Static Web Apps supports HTTP/2 by default
 - Multiplexing reduces connection overhead
 - Server Push for critical resources
 
 **Recommendation:** Enable HTTP/3 (QUIC) when available
+
 - Faster connection establishment
 - Better performance over lossy networks (mobile)
 - Reduced latency for Mexico users on 3G/4G
@@ -480,11 +507,13 @@ sharp('input.jpg')
 ### Compression
 
 ✅ **Gzip/Brotli Enabled**
+
 - Azure Static Web Apps automatically compresses responses
 - Brotli compression for modern browsers (20% better than Gzip)
 - Automatic content negotiation
 
 **Verification:**
+
 ```bash
 curl -H "Accept-Encoding: br" -I https://wonderful-moss-050caf31e.azurestaticapps.net
 # Response should include: Content-Encoding: br
@@ -493,6 +522,7 @@ curl -H "Accept-Encoding: br" -I https://wonderful-moss-050caf31e.azurestaticapp
 ### Resource Hints
 
 Implemented in `index.html`:
+
 ```html
 <!-- DNS prefetch for external resources -->
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -509,11 +539,13 @@ Implemented in `index.html`:
 ### Reduce Third-Party Dependencies
 
 **Current Third-Party Requests:**
+
 1. Google Fonts (2 requests)
 2. Application Insights (1 request)
 3. MUI Icons (bundled, not external)
 
 **Optimization:**
+
 - ✅ Font preconnect implemented
 - ✅ Icons bundled (not CDN)
 - ⚠️ Consider self-hosting fonts for Mexico market
@@ -521,6 +553,7 @@ Implemented in `index.html`:
 ### Service Worker for Offline Support
 
 **Future Enhancement:**
+
 ```javascript
 // public/sw.js (to be implemented)
 const CACHE_NAME = 'authorpage-v1';
@@ -543,6 +576,7 @@ self.addEventListener('install', (event) => {
 ### Current Monitoring
 
 ✅ **Application Insights Integration**
+
 - Page view tracking
 - Performance metrics
 - Error tracking
@@ -551,16 +585,19 @@ self.addEventListener('install', (event) => {
 ### Recommended Metrics to Track
 
 **Core Web Vitals:**
+
 - **LCP** (Largest Contentful Paint): Target <2.5s
 - **FID** (First Input Delay): Target <100ms
 - **CLS** (Cumulative Layout Shift): Target <0.1
 
 **Geographic Metrics:**
+
 - Time to First Byte (TTFB) by region
 - Download speed by country
 - Error rates by locale
 
 **Implementation:**
+
 ```typescript
 // Add to TelemetryService.ts
 import { getCLS, getFID, getLCP } from 'web-vitals';
@@ -631,6 +668,7 @@ telemetryService.trackEvent('PerformanceExperiment', {
 | **Total** | **$68/month** |
 
 **ROI Calculation:**
+
 - Performance improvement: 40-60%
 - User engagement increase: +25% (estimated)
 - Bounce rate reduction: -20% (estimated)
@@ -639,24 +677,28 @@ telemetryService.trackEvent('PerformanceExperiment', {
 ## Implementation Roadmap
 
 ### Phase 1: Immediate Code Optimizations (Completed)
+
 - ✅ Vite build optimization
 - ✅ Caching headers configuration
 - ✅ Font loading optimization
 - ✅ Bundle splitting
 
 ### Phase 2: Infrastructure (Recommended - 1-2 weeks)
+
 1. Deploy second Static Web App in South Central US
 2. Configure Azure Front Door
 3. Update DNS to point to Front Door
 4. Test failover and performance
 
 ### Phase 3: Advanced Optimizations (1 month)
+
 1. Implement responsive images
 2. Add Service Worker for offline support
 3. Integrate image CDN
 4. Self-host fonts for Mexico market
 
 ### Phase 4: Monitoring & Iteration (Ongoing)
+
 1. Set up performance dashboards
 2. Track Core Web Vitals by region
 3. A/B test optimizations
@@ -694,6 +736,7 @@ lighthouse https://wonderful-moss-050caf31e.azurestaticapps.net \
 ```
 
 **Target Scores:**
+
 - Performance: 90+
 - Accessibility: 95+
 - Best Practices: 90+
@@ -702,7 +745,8 @@ lighthouse https://wonderful-moss-050caf31e.azurestaticapps.net \
 ### WebPageTest
 
 Test from Mexico City location:
-```
+
+```text
 https://www.webpagetest.org/
 Location: Mexico City
 Browser: Chrome Mobile
@@ -710,6 +754,7 @@ Connection: 4G LTE
 ```
 
 **Key Metrics to Monitor:**
+
 - First Byte Time: <200ms
 - Start Render: <1.5s
 - Fully Loaded: <3.0s
@@ -719,6 +764,7 @@ Connection: 4G LTE
 This guide provides a comprehensive roadmap for optimizing mobile performance for Mexico users. The immediate code optimizations (Phase 1) provide significant improvements with zero infrastructure cost. For production deployments with high traffic from Mexico, implementing Phase 2 infrastructure changes will deliver the best user experience with minimal additional cost.
 
 **Key Takeaways:**
+
 1. ✅ Code optimizations deliver 20-30% improvement immediately
 2. 🏗️ Geographic redundancy can reduce latency by 60-75% for Mexico
 3. 📊 Monitor performance metrics to validate improvements
