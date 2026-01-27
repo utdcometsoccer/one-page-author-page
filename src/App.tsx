@@ -232,7 +232,7 @@ function App() {
     getSitemap()
       .then(sitemapContent => {
         if (sitemapContent) {
-          injectSitemapLink(sitemapContent);
+          injectSitemapLink();
           console.log('Sitemap initialized successfully');
         } else {
           console.warn('Failed to load sitemap');

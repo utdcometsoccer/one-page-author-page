@@ -128,10 +128,8 @@ export function isDynamicSitemapEnabled(): boolean {
  * For static sitemaps, it points directly to /sitemap.xml.
  * Note: Dynamic sitemaps use the static sitemap as well since the sitemap
  * is primarily for search engine crawlers that fetch it via URL.
- * 
- * @param _sitemapContent - The sitemap XML content (unused, reserved for future use)
  */
-export function injectSitemapLink(_sitemapContent?: string): void {
+export function injectSitemapLink(): void {
   // Remove any existing sitemap link
   const existingLink = document.querySelector('link[rel="sitemap"]');
   if (existingLink) {

@@ -1,5 +1,5 @@
 // Rewritten tests below
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { getAuthorDataFile, AuthorDataBaseConfig } from '../src/utilities/getAuthorDataFile';
 
 const makeHostProvider = (hostname: string) => ({ getHostname: () => hostname });
