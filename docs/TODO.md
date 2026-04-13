@@ -690,6 +690,7 @@ Items for next sprint will be selected from P0 Critical Priority section based o
 ### Contributing
 
 When adding new TODO items:
+
 - Place in appropriate priority section
 - Provide clear description
 - Include estimate

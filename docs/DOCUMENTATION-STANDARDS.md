@@ -13,7 +13,7 @@ All project documentation should be stored in the `/docs` folder at the root of 
 
 ### Documentation Structure
 
-```
+```bash
 docs/
 ├── DESIGN-SYSTEM.md       # Design system and component documentation
 ├── DEPLOYMENT.md          # Deployment procedures and configuration
@@ -36,6 +36,47 @@ docs/
 - Use proper Markdown formatting for readability
 - Keep documentation up-to-date with code changes
 - Cross-reference related documents when appropriate
+- **Run `npm run lint:docs` before committing to ensure documentation follows linting standards**
+
+## Markdown Linting
+
+This repository uses [markdownlint](https://github.com/DavidAnson/markdownlint) to ensure consistent markdown formatting across all documentation files.
+
+### Running the Linter
+
+```bash
+# Lint all markdown files
+npm run lint:docs
+
+# Auto-fix issues (when possible)
+npx markdownlint "**/*.md" --ignore node_modules --fix
+```
+
+### Linting Configuration
+
+Markdown linting rules are configured in `.markdownlint.json` at the repository root. Key rules:
+
+- **MD013** (line-length): Disabled - allows long lines for readability
+- **MD033** (no-inline-html): Disabled - allows HTML in markdown when needed
+- **MD041** (first-line-heading): Disabled - flexible first line
+- **MD024** (no-duplicate-heading): Only enforces uniqueness among sibling headings
+- **MD036** (no-emphasis-as-heading): Disabled - allows bold text for emphasis
+- **MD060** (table-column-style): Disabled - flexible table formatting
+
+### Common Markdown Best Practices
+
+1. **Headings**: Surround headings with blank lines (before and after)
+2. **Lists**: Add blank lines before and after lists
+3. **Code Blocks**: Always specify the language for fenced code blocks
+
+   ```markdown
+   ​```javascript
+   const example = "Good";
+   ​```
+   ```
+
+4. **Ordered Lists**: Start each new section's numbered list from 1
+5. **Blank Lines**: Use blank lines to separate different content blocks
 
 ### What Should Not Go in /docs
 

@@ -11,6 +11,7 @@ Media appearances provide authors with opportunities to reach new audiences, est
 ### The Podcast Landscape for Authors
 
 **Why Podcasts Matter:**
+
 - 464 million podcast listeners globally (2024)
 - Average listener subscribes to 7 shows
 - 71% of listeners take action after hearing ads
@@ -77,6 +78,7 @@ Media appearances provide authors with opportunities to reach new audiences, est
    - Join Facebook groups for podcast guests
 
 **Evaluation Criteria:**
+
 - Episode frequency (active shows)
 - Download numbers (if public)
 - Guest profile (do they interview authors?)
@@ -115,7 +117,7 @@ Media appearances provide authors with opportunities to reach new audiences, est
 
 **Outreach Email Template:**
 
-```
+```text
 Subject: Guest Idea for [Podcast Name]: [Compelling Topic]
 
 Hi [Host Name],
@@ -146,6 +148,7 @@ Best,
 ```
 
 **Follow-Up Strategy:**
+
 - Wait 1-2 weeks before following up
 - Send one polite follow-up email
 - Accept non-responses as a no
@@ -154,6 +157,7 @@ Best,
 ### Preparing for the Interview
 
 **Technical Setup:**
+
 - Good quality microphone (Blue Yeti or similar)
 - Quiet recording space
 - Reliable internet connection
@@ -162,6 +166,7 @@ Best,
 - Test equipment before call
 
 **Content Preparation:**
+
 - Review your talking points
 - Prepare 3-5 compelling stories
 - Have book details handy
@@ -171,6 +176,7 @@ Best,
 - Prepare for common questions
 
 **Common Interview Questions:**
+
 - Tell us about your book
 - What inspired you to write it?
 - Who should read this book?
@@ -180,6 +186,7 @@ Best,
 - Where can people find you?
 
 **Interview Best Practices:**
+
 - Be conversational and authentic
 - Tell stories, not summaries
 - Speak in soundbites
@@ -193,6 +200,7 @@ Best,
 ### Post-Interview
 
 **Thank You Process:**
+
 - Send thank you email within 24 hours
 - Express gratitude for the opportunity
 - Mention specific moments you enjoyed
@@ -200,6 +208,7 @@ Best,
 - Stay connected on social media
 
 **Promotion Plan:**
+
 - Share episode when it releases
 - Tag the podcast on social media
 - Send to your email list
@@ -211,7 +220,7 @@ Best,
 
 **Sample Thank You Email:**
 
-```
+```text
 Hi [Host Name],
 
 Thank you so much for having me on [Podcast Name] today! I really enjoyed our conversation, especially when we discussed [specific moment]. Your questions really helped me articulate [topic] in a new way.
@@ -231,6 +240,7 @@ Best,
 ### YouTube for Authors
 
 **Why YouTube Matters:**
+
 - 2+ billion users worldwide
 - Second largest search engine (after Google)
 - Video content is highly engaging
@@ -268,6 +278,7 @@ Best,
 ### Finding BookTube Opportunities
 
 **Search Methods:**
+
 - YouTube search: "[Genre] book review"
 - "[Genre] BookTube"
 - "Author interview YouTube"
@@ -276,6 +287,7 @@ Best,
 - Join BookTube Facebook groups
 
 **Evaluation Criteria:**
+
 - Subscriber count
 - View counts per video
 - Engagement (likes, comments)
@@ -288,7 +300,7 @@ Best,
 
 **Outreach Template:**
 
-```
+```text
 Subject: Collaboration Opportunity: [Book Title] by [Your Name]
 
 Hi [Channel Name],
@@ -355,6 +367,7 @@ Best,
 ### Preparing for Video Interviews
 
 **Technical Requirements:**
+
 - Good camera (webcam or DSLR)
 - Proper lighting (ring light recommended)
 - Clear audio (external mic if possible)
@@ -363,6 +376,7 @@ Best,
 - Zoom/Skype/StreamYard setup
 
 **Visual Presentation:**
+
 - Professional but approachable appearance
 - Solid colored clothing (avoid patterns)
 - Good posture and eye contact
@@ -371,6 +385,7 @@ Best,
 - Bookshelf background (if applicable)
 
 **Content Preparation:**
+
 - More visual/animated than podcast
 - Prepare to show your book on camera
 - Have key quotes ready to share
@@ -385,6 +400,7 @@ Best,
 ### Television
 
 **Local TV Opportunities:**
+
 - Morning shows
 - Local news programs
 - Community spotlight segments
@@ -392,6 +408,7 @@ Best,
 - Public access programming
 
 **Why Local TV:**
+
 - Accessible for most authors
 - Community interest angle
 - Builds local credibility
@@ -399,6 +416,7 @@ Best,
 - Can lead to book sales in local stores
 
 **Pitch Angles for TV:**
+
 - Local author angle
 - Timely/seasonal tie-in
 - Unique personal story
@@ -429,7 +447,7 @@ Best,
 
 **TV Pitch Email Template:**
 
-```
+```text
 Subject: Local Author Story: [Compelling Hook]
 
 Dear [Producer Name],
@@ -459,6 +477,7 @@ Thanks for considering!
 ```
 
 **TV Interview Tips:**
+
 - Dress professionally (solid colors, avoid white)
 - Speak in soundbites (10-15 seconds)
 - Make eye contact with interviewer (not camera)
@@ -472,6 +491,7 @@ Thanks for considering!
 ### Radio
 
 **Radio Opportunities:**
+
 - Local NPR stations
 - Commercial radio morning shows
 - Talk radio programs
@@ -480,6 +500,7 @@ Thanks for considering!
 - Sirius XM (for bigger authors)
 
 **Why Radio:**
+
 - Easier to book than TV
 - Can do remotely
 - Great for audio learners
@@ -490,6 +511,7 @@ Thanks for considering!
 **Radio Pitch Approach:**
 
 Similar to podcast but focus on:
+
 - Local angle for local stations
 - Timely news hooks
 - Controversial or debate-worthy topics
@@ -497,6 +519,7 @@ Similar to podcast but focus on:
 - Caller interaction opportunities
 
 **Radio Interview Best Practices:**
+
 - Speak clearly and at good pace
 - Vary your vocal tone
 - Paint pictures with words
@@ -508,6 +531,7 @@ Similar to podcast but focus on:
 ### Newspapers and Magazines
 
 **Print Media Opportunities:**
+
 - Local newspaper features
 - Op-ed pieces
 - Book reviews
@@ -545,7 +569,7 @@ Similar to podcast but focus on:
 
 **Newspaper Pitch Template:**
 
-```
+```text
 Subject: Story Pitch: [Compelling Headline]
 
 Dear [Editor Name],
@@ -575,6 +599,7 @@ Best regards,
 ```
 
 **Building Media Relationships:**
+
 - Follow journalists on social media
 - Comment on their articles
 - Share their work
@@ -637,6 +662,7 @@ Best regards,
 ### Digital vs. Physical Media Kit
 
 **Digital Kit:**
+
 - PDF media kit
 - Online press page
 - Dropbox/Google Drive folder
@@ -644,6 +670,7 @@ Best regards,
 - Easy to update and distribute
 
 **Physical Kit:**
+
 - For in-person meetings
 - Press folders with materials
 - Business cards
@@ -655,30 +682,35 @@ Best regards,
 ## Publicity Timeline
 
 ### 6-12 Months Before Release
+
 - Create media kit
 - Build media contact list
 - Practice interview skills
 - Hire publicist (if budget allows)
 
 ### 3-6 Months Before Release
+
 - Begin outreach to long-lead publications
 - Pitch feature stories
 - Send advance copies to reviewers
 - Schedule podcast interviews
 
 ### 1-3 Months Before Release
+
 - Increase outreach frequency
 - Schedule TV and radio appearances
 - Place op-eds
 - Confirm scheduled appearances
 
 ### Launch Month
+
 - Peak media activity
 - Daily social media promotion
 - Follow up on all coverage
 - Track all mentions
 
 ### Post-Launch
+
 - Continue scheduled appearances
 - Thank everyone who covered you
 - Build relationships for next book
@@ -691,6 +723,7 @@ Best regards,
 ### Metrics to Track
 
 **Direct Metrics:**
+
 - Number of appearances
 - Audience size reached
 - Website traffic spikes
@@ -698,6 +731,7 @@ Best regards,
 - Book sales correlation
 
 **Indirect Metrics:**
+
 - Brand awareness increase
 - Media relationships built
 - Press mentions and links
@@ -717,24 +751,28 @@ Best regards,
 ## Budget Considerations
 
 ### Free Options
+
 - DIY outreach
 - Local media appearances
 - Podcast interviews
 - Digital media kit
 
 ### Low Budget ($100-500)
+
 - Professional headshots
 - Media kit design
 - Podcast guest matching services
 - Book copies for review
 
 ### Medium Budget ($500-2,000)
+
 - Podcast tour service
 - Video equipment upgrades
 - Travel to local stations
 - Media training
 
 ### High Budget ($2,000+)
+
 - Professional publicist
 - PR agency campaign
 - National media pitching
@@ -745,18 +783,21 @@ Best regards,
 ## Resources
 
 ### Media Databases
+
 - Cision
 - Muck Rack
 - HARO (Help a Reporter Out)
 - Podcast Guest Databases
 
 ### Training
+
 - Media training courses
 - Toastmasters for public speaking
 - Online interview practice
 - Author marketing workshops
 
 ### Tools
+
 - Canva for media kit design
 - Dropbox for file sharing
 - Calendly for scheduling

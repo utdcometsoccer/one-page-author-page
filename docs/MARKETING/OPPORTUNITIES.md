@@ -11,6 +11,7 @@ Beyond the core marketing channels (social media, email, bloggers, and tradition
 ### Why Enter Awards
 
 **Benefits:**
+
 - Credibility and prestige
 - Marketing angle ("Award-winning author")
 - Media coverage opportunities
@@ -21,6 +22,7 @@ Beyond the core marketing channels (social media, email, bloggers, and tradition
 ### Types of Awards
 
 **Major Literary Awards:**
+
 - Pulitzer Prize
 - National Book Award
 - Edgar Awards (Mystery)
@@ -29,6 +31,7 @@ Beyond the core marketing channels (social media, email, bloggers, and tradition
 - *Note: Most require publisher submission*
 
 **Independent Author Awards:**
+
 - Independent Book Publishers Association (IBPA)
 - Foreword INDIES Awards
 - International Book Awards
@@ -37,12 +40,14 @@ Beyond the core marketing channels (social media, email, bloggers, and tradition
 - Independent Author Network Awards
 
 **Genre-Specific Awards:**
+
 - Romance Writers of America Awards
 - Mystery Writers of America Awards
 - Science Fiction and Fantasy Writers Awards
 - Crime Writers' Association Awards
 
 **Regional Awards:**
+
 - State book awards
 - Regional literary prizes
 - Local writing competitions
@@ -51,6 +56,7 @@ Beyond the core marketing channels (social media, email, bloggers, and tradition
 ### Award Submission Strategy
 
 **Selection Criteria:**
+
 - Entry fee (typically $50-150)
 - Genre alignment
 - Award prestige and recognition
@@ -59,6 +65,7 @@ Beyond the core marketing channels (social media, email, bloggers, and tradition
 - Marketing benefit potential
 
 **Best Practices:**
+
 - Read submission guidelines carefully
 - Submit early (closer to deadline = more competition for judges' attention)
 - Follow formatting requirements exactly
@@ -73,6 +80,7 @@ Beyond the core marketing channels (social media, email, bloggers, and tradition
 ### Why Libraries Matter
 
 **Benefits:**
+
 - Readers discover new authors at libraries
 - Library checkouts count toward bestseller lists (some)
 - Builds word-of-mouth
@@ -83,12 +91,14 @@ Beyond the core marketing channels (social media, email, bloggers, and tradition
 ### Library Outreach Strategies
 
 **1. Request Library Purchase**
+
 - Visit local libraries
 - Request they purchase your book
 - Donate signed copies
 - Offer to do author events
 
 **2. Library Events:**
+
 - Author readings
 - Book discussions
 - Writing workshops
@@ -96,12 +106,14 @@ Beyond the core marketing channels (social media, email, bloggers, and tradition
 - Signing events
 
 **3. Library Partnerships:**
+
 - Summer reading programs
 - Book club selections
 - Young adult programs
 - Literacy initiatives
 
 **4. OverDrive/Libby Digital Distribution:**
+
 - Make ebook available to libraries
 - Libraries purchase digital copies
 - Readers access through library apps
@@ -109,7 +121,7 @@ Beyond the core marketing channels (social media, email, bloggers, and tradition
 
 **Outreach Email Template:**
 
-```
+```text
 Subject: Local Author Request: [Book Title] by [Your Name]
 
 Dear [Librarian Name],
@@ -146,6 +158,7 @@ Best regards,
 ### Engaging Book Clubs
 
 **Why Book Clubs:**
+
 - Concentrated groups of readers
 - Word-of-mouth multiplication
 - Deep engagement with your work
@@ -154,6 +167,7 @@ Best regards,
 - Long-term fans
 
 **Finding Book Clubs:**
+
 - Local libraries (often host clubs)
 - Bookstores (many coordinate clubs)
 - Goodreads groups
@@ -183,6 +197,7 @@ Best regards,
    - Exclusive content
 
 **Book Club Package:**
+
 - Discussion guide (PDF)
 - Letter to book clubs
 - Offer for author visit
@@ -196,6 +211,7 @@ Best regards,
 ### Professional Speaking
 
 **Venues:**
+
 - Writing conferences
 - Book festivals
 - University classes
@@ -208,6 +224,7 @@ Best regards,
 - Literary festivals
 
 **Types of Presentations:**
+
 - Craft talks (writing techniques)
 - Career talks (author journey)
 - Topic expertise (book subject matter)
@@ -237,6 +254,7 @@ Best regards,
    - Conference directories
 
 **Monetization:**
+
 - Speaking fees ($500-$5,000+ depending on experience)
 - Book sales at events
 - Consulting opportunities
@@ -250,6 +268,7 @@ Best regards,
 ### Schools and Universities
 
 **Opportunities:**
+
 - School visits (K-12)
 - University guest lectures
 - Creative writing classes
@@ -260,6 +279,7 @@ Best regards,
 **Approaching Educational Market:**
 
 **For K-12:**
+
 - Contact school librarians
 - Reach out to English departments
 - Offer free or subsidized visits
@@ -267,6 +287,7 @@ Best regards,
 - Provide teaching guides
 
 **For Higher Education:**
+
 - Contact English/Creative Writing departments
 - Offer guest lecture
 - Pitch as course reading
@@ -274,6 +295,7 @@ Best regards,
 - Create course supplements
 
 **Educational Pricing:**
+
 - Bulk discounts for class sets
 - Examination copies for professors
 - Desk copies for instructors
@@ -286,6 +308,7 @@ Best regards,
 ### Teaching What You Know
 
 **Course Platforms:**
+
 - Udemy
 - Teachable
 - Skillshare
@@ -294,6 +317,7 @@ Best regards,
 - Your own website
 
 **Course Topics for Authors:**
+
 - Your writing genre/craft
 - Your book's subject matter
 - Publishing and marketing
@@ -302,6 +326,7 @@ Best regards,
 - Character development
 
 **Benefits:**
+
 - Passive income stream
 - Platform building
 - Establishes expertise
@@ -310,6 +335,7 @@ Best regards,
 - Creates valuable content
 
 **Course Development:**
+
 1. Identify your expertise
 2. Outline curriculum
 3. Create video lessons
@@ -324,6 +350,7 @@ Best regards,
 ### Expanding Your Brand
 
 **Product Ideas:**
+
 - Branded merchandise (t-shirts, mugs, tote bags)
 - Art prints (character art, quotes, maps)
 - Bookmarks and bookplates
@@ -336,6 +363,7 @@ Best regards,
 - Book-themed journals
 
 **Platforms:**
+
 - Print-on-demand (Printful, Redbubble)
 - Etsy shop
 - Your website store
@@ -343,6 +371,7 @@ Best regards,
 - Society6
 
 **Benefits:**
+
 - Additional revenue stream
 - Brand extension
 - Fan engagement
@@ -356,6 +385,7 @@ Best regards,
 ### Working with Other Authors
 
 **Bundle Deals:**
+
 - Multi-author ebook bundles
 - Genre-specific collections
 - Themed anthologies
@@ -363,6 +393,7 @@ Best regards,
 - Shared audience access
 
 **Co-Marketing:**
+
 - Joint newsletter promotions
 - Social media takeovers
 - Shared advertising costs
@@ -370,6 +401,7 @@ Best regards,
 - Collaborative events
 
 **Anthology Contributions:**
+
 - Submit stories to themed collections
 - Reach new audiences
 - Establish genre credibility
@@ -377,6 +409,7 @@ Best regards,
 - Lower barrier to entry for readers
 
 **Writing Partnerships:**
+
 - Co-written books
 - Series collaborations
 - Shared universes
@@ -389,6 +422,7 @@ Best regards,
 ### Building Authority Through Content
 
 **Blog Content:**
+
 - Writing tips and advice
 - Book reviews and recommendations
 - Industry insights
@@ -398,6 +432,7 @@ Best regards,
 - Character development
 
 **Guest Posting:**
+
 - Write for popular blogs in your niche
 - Contribute to industry publications
 - Medium articles
@@ -405,6 +440,7 @@ Best regards,
 - Writing community sites
 
 **Video Content:**
+
 - YouTube channel
 - Writing vlogs
 - Book recommendations
@@ -413,6 +449,7 @@ Best regards,
 - Book trailers
 
 **Podcast Hosting:**
+
 - Start your own podcast
 - Interview other authors
 - Discuss your book's themes
@@ -426,6 +463,7 @@ Best regards,
 ### Book Festivals and Conventions
 
 **Types of Events:**
+
 - Book festivals (local and national)
 - Genre conventions (Dragon Con, Comic-Con, RT Booklovers)
 - Writing conferences (ThrillerFest, RWA, etc.)
@@ -433,6 +471,7 @@ Best regards,
 - Fan conventions
 
 **Participation Options:**
+
 - Author signing tables
 - Panel discussions
 - Workshops and presentations
@@ -441,6 +480,7 @@ Best regards,
 - Book launches
 
 **Preparation:**
+
 - Professional signage
 - Swag (bookmarks, postcards, stickers)
 - Multiple payment options
@@ -450,6 +490,7 @@ Best regards,
 - Price books competitively
 
 **Convention ROI:**
+
 - Direct book sales
 - Email list growth
 - Networking opportunities
@@ -464,6 +505,7 @@ Best regards,
 ### Local Community Building
 
 **Local Bookstores:**
+
 - Consignment sales
 - Author events
 - Staff recommendations
@@ -472,6 +514,7 @@ Best regards,
 - Local author sections
 
 **Community Organizations:**
+
 - Rotary Club presentations
 - Chamber of Commerce
 - Professional associations
@@ -479,6 +522,7 @@ Best regards,
 - Service organizations
 
 **Local Media:**
+
 - Community newspapers
 - Local magazines
 - Community radio
@@ -493,6 +537,7 @@ Best regards,
 ### Paid Promotion Strategies
 
 **Amazon Ads:**
+
 - Sponsored product ads
 - Sponsored brand ads
 - Lockscreen ads
@@ -500,24 +545,28 @@ Best regards,
 - Pay-per-click model
 
 **Facebook/Instagram Ads:**
+
 - Targeted to specific interests
 - Lookalike audiences
 - Retargeting website visitors
 - Cost-effective for awareness
 
 **BookBub Featured Deals:**
+
 - Highly effective but competitive
 - Requires discounted price
 - Massive email reach
 - Strong ROI when accepted
 
 **Other Platforms:**
+
 - Google Ads (broad reach)
 - Goodreads Ads (reader-focused)
 - TikTok Ads (younger demographic)
 - Pinterest Ads (visual content)
 
 **Ad Budget Allocation:**
+
 - Start small ($100-300/month)
 - Test different platforms
 - Track ROI carefully
@@ -531,18 +580,21 @@ Best regards,
 ### Expanding Geographic Reach
 
 **Translation Rights:**
+
 - Sell foreign rights to publishers
 - Hire translators for self-pub
 - Tap into non-English markets
 - Rights agents can help
 
 **International Book Fairs:**
+
 - Frankfurt Book Fair
 - London Book Fair
 - BookExpo America
 - Regional book fairs
 
 **International Digital Distribution:**
+
 - Make ebooks available globally
 - Amazon international sites
 - Kobo international
@@ -555,6 +607,7 @@ Best regards,
 ### Selling to Organizations
 
 **Potential Buyers:**
+
 - Corporations (for employee gifts, training)
 - Non-profits (fundraising)
 - Educational institutions
@@ -563,6 +616,7 @@ Best regards,
 - Conference organizers
 
 **Approach:**
+
 - Identify organizations aligned with your book
 - Offer bulk discounts (40-55% off retail)
 - Customization options
@@ -570,6 +624,7 @@ Best regards,
 - Licensing opportunities
 
 **Benefits:**
+
 - Large volume sales
 - Cash flow boost
 - Platform expansion
@@ -583,6 +638,7 @@ Best regards,
 ### Creative Low-Cost Strategies
 
 **Ideas:**
+
 - Leave bookmarks in library books (related genres)
 - Chalk art sidewalk advertising (where legal)
 - Book benches (decorated benches in community)
@@ -596,6 +652,7 @@ Best regards,
 - Book vending machines
 
 **Best Practices:**
+
 - Always legal and ethical
 - Creative and attention-grabbing
 - Trackable (QR codes, unique URLs)
@@ -610,12 +667,14 @@ Best regards,
 ### Ongoing Reader Relationships
 
 **Platforms:**
+
 - Patreon
 - Substack (paid tiers)
 - Ko-fi (memberships)
 - Buy Me a Coffee (memberships)
 
 **Exclusive Content:**
+
 - Early chapter access
 - Deleted scenes
 - Character backstories
@@ -626,6 +685,7 @@ Best regards,
 - Name-a-character opportunities
 
 **Pricing Tiers:**
+
 - Basic ($3-5/month): Early access, extras
 - Mid ($10-15/month): All above + exclusive stories
 - Premium ($25+/month): Everything + personalized content
@@ -637,6 +697,7 @@ Best regards,
 ### Building Loyal Fan Base
 
 **Street Team:**
+
 - Recruit dedicated fans
 - Provide ARCs and swag
 - They help promote launches
@@ -644,18 +705,21 @@ Best regards,
 - Social media support
 
 **Beta Readers:**
+
 - Early feedback on manuscripts
 - Makes readers feel special
 - Generates advance buzz
 - Quality improvements
 
 **Character Naming:**
+
 - Auction off character names
 - Fundraising opportunity
 - Deep fan engagement
 - Creates investment in book
 
 **Reader Events:**
+
 - Virtual book clubs
 - Release parties (virtual or in-person)
 - Annual reader appreciation events
@@ -668,6 +732,7 @@ Best regards,
 ### Maximizing Content Value
 
 **From One Book:**
+
 - Social media quote graphics
 - Blog post series
 - Podcast episode topics
@@ -681,6 +746,7 @@ Best regards,
 - Study guides
 
 **Content Calendar:**
+
 - Plan content 3-6 months ahead
 - Batch create content
 - Repurpose across platforms
@@ -693,6 +759,7 @@ Best regards,
 ### Beyond Book Bloggers
 
 **Types of Influencers:**
+
 - Instagram influencers (lifestyle, book, niche)
 - YouTube creators (not just BookTube)
 - TikTok creators
@@ -701,6 +768,7 @@ Best regards,
 - Twitter personalities
 
 **Partnership Models:**
+
 - Gifted copy for honest review
 - Sponsored post (if budget allows)
 - Affiliate partnerships
@@ -714,6 +782,7 @@ Best regards,
 ### Future-Forward Marketing
 
 **Emerging Platforms:**
+
 - Threads (Meta's Twitter alternative)
 - BeReal (authentic social sharing)
 - Discord communities
@@ -724,6 +793,7 @@ Best regards,
 - AI-assisted marketing
 
 **Experimental Ideas:**
+
 - Interactive fiction
 - Choose-your-own-adventure digital
 - AR (Augmented Reality) experiences
@@ -737,6 +807,7 @@ Best regards,
 ## Budget Planning by Opportunity
 
 ### Free/Low-Cost ($0-100)
+
 - Library outreach
 - Book club outreach
 - Guest blogging
@@ -747,6 +818,7 @@ Best regards,
 - Community engagement
 
 ### Moderate Cost ($100-1,000)
+
 - Award submissions
 - Convention table
 - Basic advertising
@@ -757,6 +829,7 @@ Best regards,
 - Book club materials
 
 ### Higher Investment ($1,000+)
+
 - Major advertising campaigns
 - BookBub Featured Deal
 - Large convention booth
@@ -773,6 +846,7 @@ Best regards,
 ### Measuring Success
 
 **Metrics to Track:**
+
 - Direct sales attribution
 - Email list growth
 - Website traffic
@@ -783,6 +857,7 @@ Best regards,
 - Future opportunity creation
 
 **Tools:**
+
 - Google Analytics
 - Amazon Author Central
 - Social media insights
@@ -794,27 +869,31 @@ Best regards,
 
 ## Priority Matrix
 
-### High Impact, Low Effort:
+### High Impact, Low Effort
+
 - Email marketing
 - Library outreach
 - Book club engagement
 - Guest podcasting
 - Social media (strategic)
 
-### High Impact, High Effort:
+### High Impact, High Effort
+
 - Speaking engagements
 - Course creation
 - Convention circuit
 - Book award submissions
 - Professional relationships
 
-### Low Impact, Low Effort:
+### Low Impact, Low Effort
+
 - Social media (scattered)
 - Basic website updates
 - Periodic email
 - Casual networking
 
-### Low Impact, High Effort:
+### Low Impact, High Effort
+
 - Ineffective advertising
 - Wrong-fit events
 - Generic outreach
