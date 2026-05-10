@@ -100,14 +100,14 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState<string>('welcome');
 
-  // Track homepage experiment exposure whenever author data with featuredBook is loaded
+  // Track homepage experiment exposure when the author is opted into the experiment
   useEffect(() => {
-    if (data?.featuredBook && data.experiment) {
+    if (data?.experiment) {
       const variant = data.experiment.homepageHeroVariant ?? 'control';
       telemetryService.trackHomepageExperimentExposed(
         variant,
         data.name,
-        data.featuredBook.title
+        data.featuredBook?.title
       );
     }
   }, [data]);
@@ -307,21 +307,24 @@ function App() {
             activeSection={activeSection}
           />
           <main id="main-content">
-            {shouldShowFeaturedBookHero(data.featuredBook, data.experiment) ? (
-              <FeaturedBookHero
-                title={data.featuredBook!.title}
-                subtitle={data.featuredBook!.subtitle}
-                authorName={data.featuredBook!.authorName}
-                description={data.featuredBook!.description}
-                coverImageUrl={data.featuredBook!.coverImageUrl}
-                coverImageAlt={data.featuredBook!.coverImageAlt}
-                primaryCtaLabel={data.featuredBook!.primaryCtaLabel}
-                primaryCtaUrl={data.featuredBook!.primaryCtaUrl}
-                secondaryCtaLabel={data.featuredBook!.secondaryCtaLabel}
-                secondaryCtaUrl={data.featuredBook!.secondaryCtaUrl}
-                formats={data.featuredBook!.formats}
-              />
-            ) : (
+            {shouldShowFeaturedBookHero(data.featuredBook, data.experiment) ? (() => {
+              const featuredBook = data.featuredBook!;
+              return (
+                <FeaturedBookHero
+                  title={featuredBook.title}
+                  subtitle={featuredBook.subtitle}
+                  authorName={featuredBook.authorName}
+                  description={featuredBook.description}
+                  coverImageUrl={featuredBook.coverImageUrl}
+                  coverImageAlt={featuredBook.coverImageAlt}
+                  primaryCtaLabel={featuredBook.primaryCtaLabel}
+                  primaryCtaUrl={featuredBook.primaryCtaUrl}
+                  secondaryCtaLabel={featuredBook.secondaryCtaLabel}
+                  secondaryCtaUrl={featuredBook.secondaryCtaUrl}
+                  formats={featuredBook.formats}
+                />
+              );
+            })() : (
               <WelcomeSection header={headers.welcome} welcome={data.welcome} />
             )}
             <Suspense fallback={<SectionFallback />}>
