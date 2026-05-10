@@ -99,6 +99,17 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState<string>('welcome');
 
+  // Track homepage experiment exposure whenever author data with featuredBook is loaded
+  useEffect(() => {
+    if (data?.featuredBook && data.experiment?.homepageHeroVariant) {
+      telemetryService.trackHomepageExperimentExposed(
+        data.experiment.homepageHeroVariant,
+        data.name,
+        data.featuredBook.title
+      );
+    }
+  }, [data]);
+
   // Load social icons dynamically
   useEffect(() => {
     loadSocialIcons().then(setSocialIcons);

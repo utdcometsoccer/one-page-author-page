@@ -48,7 +48,7 @@ export type AuthorData = {
   email?: string
   articles?: Article[]
   seo?: SEOMetadata
-  featuredBook?: FeaturedBook | null
+  featuredBook?: FeaturedBook
   experiment?: HomepageExperiment
 }
 

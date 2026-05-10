@@ -6,7 +6,6 @@ import '@testing-library/jest-dom'
 // Mock telemetry so tests don't attempt real AppInsights calls
 vi.mock('../src/utilities/TelemetryService', () => ({
   telemetryService: {
-    trackHomepageExperimentExposed: vi.fn(),
     trackFeaturedBookPrimaryCtaClicked: vi.fn(),
     trackFeaturedBookSecondaryCtaClicked: vi.fn(),
   },

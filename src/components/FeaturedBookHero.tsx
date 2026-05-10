@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { telemetryService } from '../utilities/TelemetryService'
 
 export interface FeaturedBookHeroProps {
@@ -28,10 +28,6 @@ const FeaturedBookHero: React.FC<FeaturedBookHeroProps> = ({
   secondaryCtaUrl,
   formats,
 }) => {
-  useEffect(() => {
-    telemetryService.trackHomepageExperimentExposed('featured-book-hero', authorName, title)
-  }, [authorName, title])
-
   const handlePrimaryCtaClick = () => {
     telemetryService.trackFeaturedBookPrimaryCtaClicked(title, primaryCtaUrl, authorName)
   }
