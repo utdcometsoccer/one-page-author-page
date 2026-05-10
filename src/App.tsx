@@ -94,7 +94,9 @@ function App() {
     aboutMe: 'About Me',
     myBooks: 'My Books',
     loading: 'Loading...',
-    articles: 'Articles'
+    articles: 'Articles',
+    errorTitle: 'Error',
+    errorMessage: 'Unable to load author data. Please try again later.'
   });
   const [darkMode, setDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState<string>('welcome');
@@ -252,8 +254,7 @@ function App() {
   }
 
   if (error) {
-    const errorTitle = import.meta.env.VITE_ERROR_TITLE || 'Error';
-    return <ErrorContainer title={errorTitle} message={error} />;
+    return <ErrorContainer title={headers.errorTitle || 'Error'} message={headers.errorMessage || 'Unable to load author data. Please try again later.'} />;
   }
   if (!data) {
     return <LoadingContainer label={headers.loading} />;

@@ -47,6 +47,8 @@ export type LocaleHeaders = {
   backToTop?: string
   installApp?: string
   notNow?: string
+  errorTitle?: string
+  errorMessage?: string
 }
 
 export type Article = {
