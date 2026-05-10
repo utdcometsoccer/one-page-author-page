@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import FeaturedBookHero from '../src/components/FeaturedBookHero'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { telemetryService } from '../src/utilities/TelemetryService'
 
 // Mock telemetry so tests don't attempt real AppInsights calls
 vi.mock('../src/utilities/TelemetryService', () => ({
@@ -54,6 +55,16 @@ describe('FeaturedBookHero', () => {
     expect(link).toHaveAttribute('target', '_blank')
   })
 
+  it('tracks telemetry when primary CTA is clicked', () => {
+    render(<FeaturedBookHero {...baseProps} />)
+    fireEvent.click(screen.getByRole('link', { name: 'Buy Now' }))
+    expect(telemetryService.trackFeaturedBookPrimaryCtaClicked).toHaveBeenCalledWith(
+      'The Great Novel',
+      'https://example.com/buy',
+      'Jane Doe'
+    )
+  })
+
   it('renders subtitle when provided', () => {
     render(<FeaturedBookHero {...baseProps} subtitle="An Epic Tale" />)
     expect(screen.getByText('An Epic Tale')).toBeInTheDocument()
@@ -76,6 +87,22 @@ describe('FeaturedBookHero', () => {
     expect(link).toHaveAttribute('href', 'https://example.com/more')
   })
 
+  it('tracks telemetry when secondary CTA is clicked', () => {
+    render(
+      <FeaturedBookHero
+        {...baseProps}
+        secondaryCtaLabel="Learn More"
+        secondaryCtaUrl="https://example.com/more"
+      />
+    )
+    fireEvent.click(screen.getByRole('link', { name: 'Learn More' }))
+    expect(telemetryService.trackFeaturedBookSecondaryCtaClicked).toHaveBeenCalledWith(
+      'The Great Novel',
+      'https://example.com/more',
+      'Jane Doe'
+    )
+  })
+
   it('does not render secondary CTA when not provided', () => {
     render(<FeaturedBookHero {...baseProps} />)
     expect(screen.queryByRole('link', { name: 'Learn More' })).not.toBeInTheDocument()
@@ -94,5 +121,10 @@ describe('FeaturedBookHero', () => {
   it('has an accessible section landmark with aria-label', () => {
     render(<FeaturedBookHero {...baseProps} />)
     expect(screen.getByRole('region', { name: 'Featured book: The Great Novel' })).toBeInTheDocument()
+  })
+
+  it('uses id="welcome" so NavBar anchors and scroll-spy remain functional', () => {
+    render(<FeaturedBookHero {...baseProps} />)
+    expect(document.getElementById('welcome')).not.toBeNull()
   })
 })

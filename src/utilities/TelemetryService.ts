@@ -40,9 +40,9 @@ export const TelemetryEvents = {
   AUTHOR_LOAD: 'AuthorLoadEvent',
 
   // Experiment events
-  HOMEPAGE_EXPERIMENT_EXPOSED: 'homepage_experiment_exposed',
-  FEATURED_BOOK_PRIMARY_CTA_CLICKED: 'featured_book_primary_cta_clicked',
-  FEATURED_BOOK_SECONDARY_CTA_CLICKED: 'featured_book_secondary_cta_clicked',
+  HOMEPAGE_EXPERIMENT_EXPOSED: 'HomepageExperimentExposed',
+  FEATURED_BOOK_PRIMARY_CTA_CLICKED: 'FeaturedBookPrimaryCtaClicked',
+  FEATURED_BOOK_SECONDARY_CTA_CLICKED: 'FeaturedBookSecondaryCtaClicked',
 } as const;
 
 class TelemetryService {

@@ -1,19 +1,8 @@
 import React from 'react'
+import type { FeaturedBook } from '../types'
 import { telemetryService } from '../utilities/TelemetryService'
 
-export interface FeaturedBookHeroProps {
-  title: string
-  subtitle?: string
-  authorName: string
-  description: string
-  coverImageUrl: string
-  coverImageAlt: string
-  primaryCtaLabel: string
-  primaryCtaUrl: string
-  secondaryCtaLabel?: string
-  secondaryCtaUrl?: string
-  formats?: string[]
-}
+export type FeaturedBookHeroProps = FeaturedBook
 
 const FeaturedBookHero: React.FC<FeaturedBookHeroProps> = ({
   title,
@@ -39,7 +28,7 @@ const FeaturedBookHero: React.FC<FeaturedBookHeroProps> = ({
   }
 
   return (
-    <section className="featured-book-hero" id="featured-book-hero" aria-label={`Featured book: ${title}`}>
+    <section className="featured-book-hero" id="welcome" aria-label={`Featured book: ${title}`}>
       <div className="featured-book-hero__inner">
         <div className="featured-book-hero__cover">
           <img
