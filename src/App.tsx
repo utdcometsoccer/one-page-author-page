@@ -12,8 +12,8 @@ import { getDefaultLocaleFile } from './utilities/getDefaultLocaleFile';
 import { getLocaleFile } from './utilities/getLocaleFile';
 import { localeBaseConfig } from './utilities/localeBaseConfig';
 import { getLocalHostProvider, getWindowHostProvider } from './utilities/hostProvider';
-import ErrorContainer from './ErrorContainer';
 import LoadingContainer from './LoadingContainer';
+import TutorialContainer from './TutorialContainer';
 import { BackToTop, ScrollProgress, ShareButtons, AddToHomeScreenBanner, useSwipeGesture } from './components';
 import TelemetryService from './utilities/TelemetryService';
 import SEOManager from './utilities/SEOManager';
@@ -252,8 +252,7 @@ function App() {
   }
 
   if (error) {
-    const errorTitle = import.meta.env.VITE_ERROR_TITLE || 'Error';
-    return <ErrorContainer title={errorTitle} message={error} />;
+    return <TutorialContainer />;
   }
   if (!data) {
     return <LoadingContainer label={headers.loading} />;
