@@ -9,5 +9,7 @@
   "noEmail": "No se proporcionó correo de contacto.",
   "switchToLight": "Cambiar a tema claro",
   "switchToDark": "Cambiar a tema oscuro",
-  "articles": "Artículos"
+  "articles": "Artículos",
+  "errorTitle": "Error",
+  "errorMessage": "No se pudieron cargar los datos del autor. Por favor, inténtelo de nuevo más tarde."
 }

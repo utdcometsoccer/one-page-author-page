@@ -204,7 +204,6 @@ The application uses the following environment variables (configured in `.env`):
 | `VITE_LOCAL_LANG` | Default language code |
 | `VITE_LOCAL_REGION` | Default region code |
 | `VITE_LOCAL_HOST` | Local development hostname |
-| `VITE_ERROR_TITLE` | Custom error page title |
 | `VITE_DYNAMIC_SITEMAP_ENABLED` | Enable/disable dynamic sitemap feature (default: `false`) |
 | `VITE_SITEMAP_API_URL` | API endpoint for dynamic sitemap |
 

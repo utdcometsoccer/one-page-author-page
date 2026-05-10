@@ -9,5 +9,7 @@
   "noEmail": "Aucune adresse e-mail de contact fournie.",
   "switchToLight": "Passer en mode clair",
   "switchToDark": "Passer en mode sombre",
-  "articles": "Articles"
+  "articles": "Articles",
+  "errorTitle": "Erreur",
+  "errorMessage": "Impossible de charger les données de l'auteur. Veuillez réessayer plus tard."
 }

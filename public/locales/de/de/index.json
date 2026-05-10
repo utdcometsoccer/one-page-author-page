@@ -9,5 +9,7 @@
   "noEmail": "Keine Kontakt-E-Mail angegeben.",
   "switchToLight": "Zum hellen Modus wechseln",
   "switchToDark": "Zum dunklen Modus wechseln",
-  "articles": "Artikel"
+  "articles": "Artikel",
+  "errorTitle": "Fehler",
+  "errorMessage": "Die Autorendaten konnten nicht geladen werden. Bitte versuchen Sie es später erneut."
 }
