@@ -101,9 +101,10 @@ function App() {
 
   // Track homepage experiment exposure whenever author data with featuredBook is loaded
   useEffect(() => {
-    if (data?.featuredBook && data.experiment?.homepageHeroVariant) {
+    if (data?.featuredBook && data.experiment !== undefined) {
+      const variant = data.experiment.homepageHeroVariant ?? 'control';
       telemetryService.trackHomepageExperimentExposed(
-        data.experiment.homepageHeroVariant,
+        variant,
         data.name,
         data.featuredBook.title
       );
