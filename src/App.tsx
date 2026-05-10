@@ -14,7 +14,7 @@ import { localeBaseConfig } from './utilities/localeBaseConfig';
 import { getLocalHostProvider, getWindowHostProvider } from './utilities/hostProvider';
 import ErrorContainer from './ErrorContainer';
 import LoadingContainer from './LoadingContainer';
-import { BackToTop, ScrollProgress, ShareButtons, AddToHomeScreenBanner, useSwipeGesture } from './components';
+import { BackToTop, ScrollProgress, ShareButtons, AddToHomeScreenBanner, useSwipeGesture, FeaturedBookHero } from './components';
 import TelemetryService from './utilities/TelemetryService';
 import SEOManager from './utilities/SEOManager';
 import { injectStructuredData } from './utilities/structuredData';
@@ -294,7 +294,23 @@ function App() {
             activeSection={activeSection}
           />
           <main id="main-content">
-            <WelcomeSection header={headers.welcome} welcome={data.welcome} />
+            {data.featuredBook && data.experiment?.homepageHeroVariant === 'featured-book-hero' ? (
+              <FeaturedBookHero
+                title={data.featuredBook.title}
+                subtitle={data.featuredBook.subtitle}
+                authorName={data.featuredBook.authorName}
+                description={data.featuredBook.description}
+                coverImageUrl={data.featuredBook.coverImageUrl}
+                coverImageAlt={data.featuredBook.coverImageAlt}
+                primaryCtaLabel={data.featuredBook.primaryCtaLabel}
+                primaryCtaUrl={data.featuredBook.primaryCtaUrl}
+                secondaryCtaLabel={data.featuredBook.secondaryCtaLabel}
+                secondaryCtaUrl={data.featuredBook.secondaryCtaUrl}
+                formats={data.featuredBook.formats}
+              />
+            ) : (
+              <WelcomeSection header={headers.welcome} welcome={data.welcome} />
+            )}
             <Suspense fallback={<SectionFallback />}>
               <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} authorName={data.name} />
               {data.articles && data.articles.length > 0 && (

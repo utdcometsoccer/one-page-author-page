@@ -19,6 +19,24 @@ export type SEOMetadata = {
   type?: string
 }
 
+export type FeaturedBook = {
+  title: string
+  subtitle?: string
+  authorName: string
+  description: string
+  coverImageUrl: string
+  coverImageAlt: string
+  primaryCtaLabel: string
+  primaryCtaUrl: string
+  secondaryCtaLabel?: string
+  secondaryCtaUrl?: string
+  formats?: string[]
+}
+
+export type HomepageExperiment = {
+  homepageHeroVariant?: 'control' | 'featured-book-hero'
+}
+
 export type AuthorData = {
   name: string
   welcome: string
@@ -30,6 +48,8 @@ export type AuthorData = {
   email?: string
   articles?: Article[]
   seo?: SEOMetadata
+  featuredBook?: FeaturedBook | null
+  experiment?: HomepageExperiment
 }
 
 export type LocaleHeaders = {
