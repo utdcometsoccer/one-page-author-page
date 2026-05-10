@@ -14,12 +14,13 @@ import { localeBaseConfig } from './utilities/localeBaseConfig';
 import { getLocalHostProvider, getWindowHostProvider } from './utilities/hostProvider';
 import ErrorContainer from './ErrorContainer';
 import LoadingContainer from './LoadingContainer';
-import { BackToTop, ScrollProgress, ShareButtons, AddToHomeScreenBanner, useSwipeGesture } from './components';
+import { BackToTop, ScrollProgress, ShareButtons, AddToHomeScreenBanner, useSwipeGesture, FeaturedBookHero } from './components';
 import TelemetryService from './utilities/TelemetryService';
 import SEOManager from './utilities/SEOManager';
 import { injectStructuredData } from './utilities/structuredData';
 import { injectAdditionalStructuredData } from './utilities/additionalSchemas';
 import { getSitemap, injectSitemapLink } from './utilities/sitemapService';
+import { shouldShowFeaturedBookHero } from './utilities/homepageExperiment';
 
 // Lazy load below-fold sections for code splitting
 const AboutMeSection = lazy(() => import('./AboutMeSection'));
@@ -103,6 +104,18 @@ function App() {
   });
   const [darkMode, setDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState<string>('welcome');
+
+  // Track homepage experiment exposure when the author is opted into the experiment
+  useEffect(() => {
+    if (data?.experiment) {
+      const variant = data.experiment.homepageHeroVariant ?? 'control';
+      telemetryService.trackHomepageExperimentExposed(
+        variant,
+        data.name,
+        data.featuredBook?.title
+      );
+    }
+  }, [data]);
 
   // Load social icons dynamically
   useEffect(() => {
@@ -299,7 +312,26 @@ function App() {
             activeSection={activeSection}
           />
           <main id="main-content">
-            <WelcomeSection header={headers.welcome} welcome={data.welcome} />
+            {shouldShowFeaturedBookHero(data.featuredBook, data.experiment) ? (() => {
+              const featuredBook = data.featuredBook!;
+              return (
+                <FeaturedBookHero
+                  title={featuredBook.title}
+                  subtitle={featuredBook.subtitle}
+                  authorName={featuredBook.authorName}
+                  description={featuredBook.description}
+                  coverImageUrl={featuredBook.coverImageUrl}
+                  coverImageAlt={featuredBook.coverImageAlt}
+                  primaryCtaLabel={featuredBook.primaryCtaLabel}
+                  primaryCtaUrl={featuredBook.primaryCtaUrl}
+                  secondaryCtaLabel={featuredBook.secondaryCtaLabel}
+                  secondaryCtaUrl={featuredBook.secondaryCtaUrl}
+                  formats={featuredBook.formats}
+                />
+              );
+            })() : (
+              <WelcomeSection header={headers.welcome} welcome={data.welcome} />
+            )}
             <Suspense fallback={<SectionFallback />}>
               <AboutMeSection header={headers.aboutMe} aboutMe={data.aboutMe} headshot={data.headshot} authorName={data.name} />
               {data.articles && data.articles.length > 0 && (

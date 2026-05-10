@@ -38,6 +38,11 @@ export const TelemetryEvents = {
   
   // Author load event
   AUTHOR_LOAD: 'AuthorLoadEvent',
+
+  // Experiment events
+  HOMEPAGE_EXPERIMENT_EXPOSED: 'HomepageExperimentExposed',
+  FEATURED_BOOK_PRIMARY_CTA_CLICKED: 'FeaturedBookPrimaryCtaClicked',
+  FEATURED_BOOK_SECONDARY_CTA_CLICKED: 'FeaturedBookSecondaryCtaClicked',
 } as const;
 
 class TelemetryService {
@@ -152,6 +157,18 @@ class TelemetryService {
 
   public trackAuthorLoad(authorName: string, domain: string): void {
     this.trackEvent(TelemetryEvents.AUTHOR_LOAD, { authorName, domain });
+  }
+
+  public trackHomepageExperimentExposed(variant: string, authorName: string, featuredBookTitle?: string): void {
+    this.trackEvent(TelemetryEvents.HOMEPAGE_EXPERIMENT_EXPOSED, { variant, authorName, featuredBookTitle });
+  }
+
+  public trackFeaturedBookPrimaryCtaClicked(bookTitle: string, url: string, authorName: string): void {
+    this.trackEvent(TelemetryEvents.FEATURED_BOOK_PRIMARY_CTA_CLICKED, { bookTitle, url, authorName });
+  }
+
+  public trackFeaturedBookSecondaryCtaClicked(bookTitle: string, url: string, authorName: string): void {
+    this.trackEvent(TelemetryEvents.FEATURED_BOOK_SECONDARY_CTA_CLICKED, { bookTitle, url, authorName });
   }
 }
 
