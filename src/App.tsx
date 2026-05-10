@@ -70,15 +70,18 @@ const telemetryService = TelemetryService.getInstance();
 telemetryService.initialize(import.meta.env.VITE_APPINSIGHTS_CONNECTION_STRING);
 const reactPlugin = telemetryService.getReactPlugin()!
 
+const DEFAULT_ERROR_TITLE = 'Error';
+const DEFAULT_ERROR_MESSAGE = 'Unable to load author data. Please try again later.';
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [data, setData] = useState<AuthorData | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(false);
   const [socialIcons, setSocialIcons] = useState<Record<string, JSX.Element>>({});
   const handleAuthorData = (newData?: AuthorData) => {
     if (newData) {
       setData(newData);
-      setError(null);
+      setError(false);
       document.title = newData.name || document.title;
       telemetryService.trackAuthorLoad(newData.name || 'Unknown Author', window.location.hostname);
       // Inject structured data for SEO/AI optimization
@@ -95,8 +98,8 @@ function App() {
     myBooks: 'My Books',
     loading: 'Loading...',
     articles: 'Articles',
-    errorTitle: 'Error',
-    errorMessage: 'Unable to load author data. Please try again later.'
+    errorTitle: DEFAULT_ERROR_TITLE,
+    errorMessage: DEFAULT_ERROR_MESSAGE
   });
   const [darkMode, setDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState<string>('welcome');
@@ -185,11 +188,12 @@ function App() {
         if (!res.ok) throw new Error('Locale not found');
         return res.json();
       })
-      .then(setHeaders)
+      .then(data => setHeaders(prev => ({ ...prev, ...data })))
       .catch(() => {
         fetch(getDefaultLocaleFile(localeBaseConfig))
           .then(res => res.json())
-          .then(setHeaders);
+          .then(data => setHeaders(prev => ({ ...prev, ...data })))
+          .catch(() => {/* fall back to initial default headers */});
       });
   }, []);
 
@@ -223,7 +227,7 @@ function App() {
           })
           .then(handleAuthorData)
           .catch(() => {
-            setError('Unable to load author data from remote or local sources.');
+            setError(true);
             handleAuthorData();
           });
       });
@@ -254,7 +258,7 @@ function App() {
   }
 
   if (error) {
-    return <ErrorContainer title={headers.errorTitle || 'Error'} message={headers.errorMessage || 'Unable to load author data. Please try again later.'} />;
+    return <ErrorContainer title={headers.errorTitle ?? DEFAULT_ERROR_TITLE} message={headers.errorMessage ?? DEFAULT_ERROR_MESSAGE} />;
   }
   if (!data) {
     return <LoadingContainer label={headers.loading} />;
