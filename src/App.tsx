@@ -20,6 +20,7 @@ import SEOManager from './utilities/SEOManager';
 import { injectStructuredData } from './utilities/structuredData';
 import { injectAdditionalStructuredData } from './utilities/additionalSchemas';
 import { getSitemap, injectSitemapLink } from './utilities/sitemapService';
+import { shouldShowFeaturedBookHero } from './utilities/homepageExperiment';
 
 // Lazy load below-fold sections for code splitting
 const AboutMeSection = lazy(() => import('./AboutMeSection'));
@@ -101,7 +102,7 @@ function App() {
 
   // Track homepage experiment exposure whenever author data with featuredBook is loaded
   useEffect(() => {
-    if (data?.featuredBook && data.experiment !== undefined) {
+    if (data?.featuredBook && data.experiment) {
       const variant = data.experiment.homepageHeroVariant ?? 'control';
       telemetryService.trackHomepageExperimentExposed(
         variant,
@@ -306,19 +307,19 @@ function App() {
             activeSection={activeSection}
           />
           <main id="main-content">
-            {data.featuredBook && data.experiment?.homepageHeroVariant === 'featured-book-hero' ? (
+            {shouldShowFeaturedBookHero(data.featuredBook, data.experiment) ? (
               <FeaturedBookHero
-                title={data.featuredBook.title}
-                subtitle={data.featuredBook.subtitle}
-                authorName={data.featuredBook.authorName}
-                description={data.featuredBook.description}
-                coverImageUrl={data.featuredBook.coverImageUrl}
-                coverImageAlt={data.featuredBook.coverImageAlt}
-                primaryCtaLabel={data.featuredBook.primaryCtaLabel}
-                primaryCtaUrl={data.featuredBook.primaryCtaUrl}
-                secondaryCtaLabel={data.featuredBook.secondaryCtaLabel}
-                secondaryCtaUrl={data.featuredBook.secondaryCtaUrl}
-                formats={data.featuredBook.formats}
+                title={data.featuredBook!.title}
+                subtitle={data.featuredBook!.subtitle}
+                authorName={data.featuredBook!.authorName}
+                description={data.featuredBook!.description}
+                coverImageUrl={data.featuredBook!.coverImageUrl}
+                coverImageAlt={data.featuredBook!.coverImageAlt}
+                primaryCtaLabel={data.featuredBook!.primaryCtaLabel}
+                primaryCtaUrl={data.featuredBook!.primaryCtaUrl}
+                secondaryCtaLabel={data.featuredBook!.secondaryCtaLabel}
+                secondaryCtaUrl={data.featuredBook!.secondaryCtaUrl}
+                formats={data.featuredBook!.formats}
               />
             ) : (
               <WelcomeSection header={headers.welcome} welcome={data.welcome} />
